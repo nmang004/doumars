@@ -8,83 +8,30 @@ import { Button } from "@/components/ui/button"
 import { heroTitle, heroSubtitle, heroButton, fadeInUp } from "@/lib/motion"
 
 export function Hero() {
-  const [isPlaying, setIsPlaying] = useState(false) // Start paused to improve LCP
+  const [isPlaying, setIsPlaying] = useState(true)
   const [isMuted, setIsMuted] = useState(true)
-  const [videoLoaded, setVideoLoaded] = useState(false)
-  const [isInView, setIsInView] = useState(false)
-  const [imageLoaded, setImageLoaded] = useState(false)
   const [autoplayFailed, setAutoplayFailed] = useState(false)
-  const [isMobile, setIsMobile] = useState(false)
   const videoRef = useRef<HTMLVideoElement>(null)
-  const sectionRef = useRef<HTMLElement>(null)
 
-  // Detect mobile device
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))
-    }
-    checkMobile()
-  }, [])
-
-  // Preload the hero image for better LCP
-  useEffect(() => {
-    const img = new Image()
-    img.onload = () => setImageLoaded(true)
-    img.src = '/images/restaurant/cone-machine-operator.jpg'
-  }, [])
-
-  // Intersection Observer for lazy loading
-  useEffect(() => {
-    const section = sectionRef.current
-    if (!section) return
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsInView(true)
-          observer.disconnect()
-        }
-      },
-      { threshold: 0.1 }
-    )
-
-    observer.observe(section)
-    return () => observer.disconnect()
-  }, [])
-
-  // Video event listeners and autoplay logic
   useEffect(() => {
     const video = videoRef.current
-    if (!video || !isInView) return
+    if (!video) return
 
     const handlePlay = () => setIsPlaying(true)
     const handlePause = () => setIsPlaying(false)
     const handleVolumeChange = () => setIsMuted(video.muted)
-    const handleCanPlay = () => {
-      setVideoLoaded(true)
-      // Try autoplay immediately when video can play
-      video.play().catch((error) => {
-        console.log('Autoplay failed:', error)
-        setAutoplayFailed(true)
-      })
-    }
 
-    // Force load the video when in view
-    video.load()
-
-    // Add event listeners
+    // Add event listeners to sync state with actual video state
     video.addEventListener('play', handlePlay)
     video.addEventListener('pause', handlePause)
     video.addEventListener('volumechange', handleVolumeChange)
-    video.addEventListener('canplay', handleCanPlay)
 
     return () => {
       video.removeEventListener('play', handlePlay)
       video.removeEventListener('pause', handlePause)
       video.removeEventListener('volumechange', handleVolumeChange)
-      video.removeEventListener('canplay', handleCanPlay)
     }
-  }, [isInView])
+  }, [])
 
   const togglePlay = async () => {
     if (!videoRef.current) return
@@ -94,25 +41,9 @@ export function Hero() {
         await videoRef.current.pause()
       } else {
         await videoRef.current.play()
-        setAutoplayFailed(false) // Hide the big play button after successful play
       }
     } catch (error) {
       console.log('Video play/pause error:', error)
-    }
-  }
-
-  const handleVideoClick = async () => {
-    if (!videoRef.current) return
-    
-    try {
-      if (videoRef.current.paused) {
-        await videoRef.current.play()
-        setAutoplayFailed(false)
-      } else {
-        await videoRef.current.pause()
-      }
-    } catch (error) {
-      console.log('Video click error:', error)
     }
   }
 
@@ -128,44 +59,21 @@ export function Hero() {
   }
 
   return (
-    <section 
-      ref={sectionRef}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
-    >
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Video */}
       <div className="absolute inset-0 z-0">
-        {/* Optimized background image that loads immediately */}
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ 
-            backgroundImage: imageLoaded ? `url('/images/restaurant/cone-machine-operator.jpg')` : '',
-            backgroundColor: imageLoaded ? 'transparent' : '#1a1a1a',
-            opacity: videoLoaded ? 0 : 1,
-            transition: 'opacity 0.5s ease-in-out'
-          }}
-        />
-        
-        {/* Video loads only when in view */}
-        {isInView && (
-          <video
-            ref={videoRef}
-            className="w-full h-full object-cover object-center cursor-pointer"
-            autoPlay
-            muted={isMuted}
-            loop
-            playsInline
-            preload="metadata"
-            poster="/images/restaurant/cone-machine-operator.jpg"
-            onClick={handleVideoClick}
-            style={{ 
-              opacity: videoLoaded ? 1 : 0,
-              transition: 'opacity 0.5s ease-in-out'
-            }}
-          >
-            <source src="/videos/doumar-hero-video.mp4" type="video/mp4" />
-          </video>
-        )}
-        
+        <video
+          ref={videoRef}
+          className="w-full h-full object-cover object-center"
+          autoPlay
+          muted={isMuted}
+          loop
+          playsInline
+          preload="metadata"
+          poster="/images/restaurant/cone-machine-operator.jpg"
+        >
+          <source src="/videos/doumar-hero-video.mp4" type="video/mp4" />
+        </video>
         {/* Overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-black/30" />
       </div>
@@ -253,38 +161,14 @@ export function Hero() {
         </motion.div>
       </div>
 
-      {/* Large Play Button Overlay - Shows when autoplay fails (especially on mobile) */}
-      {videoLoaded && (autoplayFailed || (isMobile && !isPlaying)) && (
-        <motion.div
-          className="absolute inset-0 z-20 flex items-center justify-center"
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.8 }}
-          transition={{ duration: 0.3 }}
-        >
-          <motion.button
-            onClick={handleVideoClick}
-            className="w-20 h-20 md:w-24 md:h-24 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border-2 border-white/40 hover:bg-white/30 hover:border-white/60 transition-all duration-300 group"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <Play className="h-8 w-8 md:h-10 md:w-10 text-white ml-1 group-hover:text-primary-yellow transition-colors" />
-          </motion.button>
-          <div className="absolute bottom-[-60px] text-center">
-            <p className="text-white/80 text-sm font-medium">Tap to play video</p>
-          </div>
-        </motion.div>
-      )}
-
-      {/* Video Controls - Only show when video is loaded */}
-      {videoLoaded && (
-        <motion.div
-          className="absolute bottom-4 right-4 md:bottom-8 md:right-8 z-10 flex space-x-2 md:space-x-3"
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.5, duration: 0.6 }}
-        >
-          {/* Play/Pause Button */}
+      {/* Video Controls */}
+      <motion.div
+        className="absolute bottom-4 right-4 md:bottom-8 md:right-8 z-10 flex space-x-2 md:space-x-3"
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 2, duration: 0.6 }}
+      >
+        {/* Play/Pause Button */}
         <motion.button
           onClick={togglePlay}
           onTouchEnd={(e) => {
@@ -321,8 +205,7 @@ export function Hero() {
             <Volume2 className="h-5 w-5 text-white group-hover:text-primary-yellow transition-colors" />
           )}
         </motion.button>
-        </motion.div>
-      )}
+      </motion.div>
 
       {/* Scroll Indicator */}
       <motion.div
