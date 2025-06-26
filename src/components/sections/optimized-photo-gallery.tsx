@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect, useRef, useCallback } from "react"
-import { motion, AnimatePresence, useInView } from "framer-motion"
+import { motion, AnimatePresence, useInView, useMotionValue, useTransform, PanInfo } from "framer-motion"
 import { ChevronLeft, ChevronRight, Play, Pause, X, Camera, Clock } from "lucide-react"
 import { SectionHeading } from "@/components/ui/section-heading"
 import { Button } from "@/components/ui/button"
@@ -12,55 +12,55 @@ const galleryImages = [
   {
     id: 1,
     src: "/images/historical/1904-worlds-fair.jpg",
-    title: "1904 World's Fair",
-    description: "Where it all began - Abe Doumar inventing the waffle cone",
-    year: "1904",
-    category: "Historical",
+    title: "Annual Norfolk Day Festival",
+    description: "Serving thousands at Norfolk's biggest community celebration every year",
+    year: "Every Summer",
+    category: "Community Events",
     featured: true
   },
   {
     id: 2,
     src: "/images/restaurant/cone-machine-operator.jpg",
-    title: "Original Cone Machine",
-    description: "120+ years later, still making cones the same way",
-    year: "1905-Present",
-    category: "Equipment",
+    title: "School Field Trips",
+    description: "Teaching local students about Norfolk's history with live waffle cone demonstrations",
+    year: "Year-Round",
+    category: "Education",
     featured: true
   },
   {
     id: 3,
     src: "/images/food/bbq-sandwich.jpg",
-    title: "Famous BBQ",
-    description: "Slow-cooked perfection that keeps people coming back",
-    year: "Present",
-    category: "Food",
+    title: "Charity BBQ Nights",
+    description: "Monthly fundraisers supporting local organizations and families in need",
+    year: "Monthly",
+    category: "Fundraisers",
     featured: true
   },
   {
     id: 4,
     src: "/images/restaurant/ice-cream-sundae.jpg",
-    title: "Classic Sundae",
-    description: "Made with premium ice cream and fresh toppings",
-    year: "Present",
-    category: "Food",
+    title: "Little League Celebrations",
+    description: "The traditional victory spot for Norfolk's youth sports teams",
+    year: "Sports Season",
+    category: "Youth Sports",
     featured: false
   },
   {
     id: 5,
     src: "/images/restaurant/ice-cream-glass.jpg",
-    title: "Signature Limeade",
-    description: "The perfect complement to any meal",
-    year: "Present",
-    category: "Beverages",
+    title: "First Responder Appreciation",
+    description: "Free meals for Norfolk's police, fire, and medical heroes",
+    year: "Weekly",
+    category: "Community Service",
     featured: false
   },
   {
     id: 6,
     src: "/images/restaurant/doumar-sign-interior.jpg",
-    title: "Classic Interior",
-    description: "Step back in time in our vintage dining room",
-    year: "1950s",
-    category: "Interior",
+    title: "Family Reunions",
+    description: "Hosting Norfolk families' milestone gatherings for generations",
+    year: "Year-Round",
+    category: "Family Events",
     featured: false
   }
 ]
@@ -138,6 +138,11 @@ export function OptimizedPhotoGallery() {
   const intervalRef = useRef<NodeJS.Timeout>()
   const sectionRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(sectionRef, { once: false, margin: "-100px" })
+  
+  // Swipe handling
+  const x = useMotionValue(0)
+  const scale = useTransform(x, [-200, 0, 200], [0.85, 1, 0.85])
+  const opacity = useTransform(x, [-200, 0, 200], [0.5, 1, 0.5])
 
   // Auto-advance slides
   useEffect(() => {
@@ -176,6 +181,20 @@ export function OptimizedPhotoGallery() {
 
   const currentImage = selectedImage ? galleryImages.find(img => img.id === selectedImage) : null
 
+  // Handle swipe gestures
+  const handleDragEnd = useCallback((event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
+    const swipeThreshold = 50
+    const swipeVelocity = 0.5
+    
+    if (info.offset.x > swipeThreshold || info.velocity.x > swipeVelocity) {
+      // Swiped right - go to previous
+      prevSlide()
+    } else if (info.offset.x < -swipeThreshold || info.velocity.x < -swipeVelocity) {
+      // Swiped left - go to next
+      nextSlide()
+    }
+  }, [nextSlide, prevSlide])
+
   return (
     <>
       <section ref={sectionRef} className="py-20 md:py-32 bg-gradient-to-br from-neutral-black via-neutral-gray-dark to-neutral-black text-white overflow-hidden">
@@ -187,9 +206,9 @@ export function OptimizedPhotoGallery() {
             viewport={{ once: true }}
           >
             <SectionHeading
-              subtitle="Visual Journey"
-              title="Experience Our Story"
-              description="From the 1904 World's Fair to today - witness over 120 years of culinary excellence and family tradition."
+              subtitle="Community Hub"
+              title="Norfolk's Gathering Place"
+              description="For over a century, we've been more than a restaurant - we're where Norfolk comes together. From local fundraisers to family celebrations, we're proud to be part of your community moments."
               centered
               className="mb-16 text-white [&_span]:text-primary-yellow [&_h2]:text-white [&_p]:text-neutral-gray-light"
             />
@@ -197,7 +216,7 @@ export function OptimizedPhotoGallery() {
 
           {/* Main Featured Gallery */}
           <div className="relative mb-16">
-            <div className="relative h-[60vh] md:h-[70vh] rounded-2xl overflow-hidden shadow-2xl">
+            <div className="relative h-[60vh] md:h-[70vh] rounded-2xl overflow-hidden shadow-2xl touch-none">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={currentSlide}
@@ -206,6 +225,12 @@ export function OptimizedPhotoGallery() {
                   exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ duration: 0.7, ease: "easeInOut" }}
                   className="absolute inset-0"
+                  drag="x"
+                  dragConstraints={{ left: 0, right: 0 }}
+                  dragElastic={0.2}
+                  onDragEnd={handleDragEnd}
+                  style={{ x, scale, opacity }}
+                  whileTap={{ cursor: "grabbing" }}
                 >
                   <LazyImage
                     src={featuredImages[currentSlide].src}
@@ -254,12 +279,12 @@ export function OptimizedPhotoGallery() {
                 </motion.div>
               </AnimatePresence>
 
-              {/* Navigation buttons */}
+              {/* Navigation buttons - hidden on mobile */}
               <Button
                 onClick={prevSlide}
                 variant="ghost"
                 size="icon"
-                className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/30 backdrop-blur-sm hover:bg-black/50 text-white border-white/20 rounded-full w-12 h-12 opacity-0 hover:opacity-100 transition-all duration-300"
+                className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/30 backdrop-blur-sm hover:bg-black/50 text-white border-white/20 rounded-full w-12 h-12 opacity-0 hover:opacity-100 transition-all duration-300 hidden md:flex"
               >
                 <ChevronLeft className="w-6 h-6" />
               </Button>
@@ -268,10 +293,17 @@ export function OptimizedPhotoGallery() {
                 onClick={nextSlide}
                 variant="ghost"
                 size="icon"
-                className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/30 backdrop-blur-sm hover:bg-black/50 text-white border-white/20 rounded-full w-12 h-12 opacity-0 hover:opacity-100 transition-all duration-300"
+                className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/30 backdrop-blur-sm hover:bg-black/50 text-white border-white/20 rounded-full w-12 h-12 opacity-0 hover:opacity-100 transition-all duration-300 hidden md:flex"
               >
                 <ChevronRight className="w-6 h-6" />
               </Button>
+              
+              {/* Swipe indicator for mobile */}
+              <div className="absolute bottom-20 left-1/2 -translate-x-1/2 flex items-center space-x-2 md:hidden bg-black/50 backdrop-blur-sm rounded-full px-4 py-2">
+                <ChevronLeft className="w-4 h-4 text-white/70 animate-pulse" />
+                <span className="text-xs text-white/70">Swipe to browse</span>
+                <ChevronRight className="w-4 h-4 text-white/70 animate-pulse" />
+              </div>
 
               {/* Play/Pause button */}
               <Button
@@ -350,7 +382,7 @@ export function OptimizedPhotoGallery() {
 
       {/* Optimized Lightbox */}
       <Dialog open={lightboxOpen} onOpenChange={setLightboxOpen}>
-        <DialogContent className="max-w-6xl w-[95vw] p-0 bg-black border-none rounded-lg">
+        <DialogContent className="max-w-6xl w-[95vw] p-0 bg-black border-none rounded-lg touch-none">
           <AnimatePresence>
             {currentImage && (
               <motion.div
@@ -359,6 +391,23 @@ export function OptimizedPhotoGallery() {
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.3 }}
                 className="relative"
+                drag="x"
+                dragConstraints={{ left: 0, right: 0 }}
+                dragElastic={0.2}
+                onDragEnd={(e, info) => {
+                  const swipeThreshold = 50
+                  if (info.offset.x > swipeThreshold) {
+                    // Swiped right - go to previous image
+                    const currentIndex = galleryImages.findIndex(img => img.id === selectedImage)
+                    const prevIndex = currentIndex > 0 ? currentIndex - 1 : galleryImages.length - 1
+                    setSelectedImage(galleryImages[prevIndex].id)
+                  } else if (info.offset.x < -swipeThreshold) {
+                    // Swiped left - go to next image
+                    const currentIndex = galleryImages.findIndex(img => img.id === selectedImage)
+                    const nextIndex = currentIndex < galleryImages.length - 1 ? currentIndex + 1 : 0
+                    setSelectedImage(galleryImages[nextIndex].id)
+                  }
+                }}
               >
                 {/* Close button */}
                 <Button

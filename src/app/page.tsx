@@ -295,34 +295,34 @@ export default function Home() {
             {/* Contact Information */}
             <div className="space-y-8">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div className="bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10">
-                  <h3 className="text-xl font-heading font-semibold text-primary-yellow mb-3">Address</h3>
-                  <p className="text-neutral-gray-light leading-relaxed">
+                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
+                  <h3 className="text-xl font-heading font-semibold text-white mb-3">Address</h3>
+                  <p className="text-white/90 leading-relaxed">
                     1919 Monticello Ave<br />
                     Norfolk, VA 23517
                   </p>
                 </div>
                 
-                <div className="bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10">
-                  <h3 className="text-xl font-heading font-semibold text-primary-yellow mb-3">Phone</h3>
-                  <p className="text-neutral-gray-light">
-                    <a href="tel:7576274163" className="hover:text-primary-yellow transition-colors">
+                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
+                  <h3 className="text-xl font-heading font-semibold text-white mb-3">Phone</h3>
+                  <p className="text-white/90">
+                    <a href="tel:7576274163" className="hover:text-primary-yellow transition-colors underline">
                       (757) 627-4163
                     </a>
                   </p>
                 </div>
                 
-                <div className="bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10">
-                  <h3 className="text-xl font-heading font-semibold text-primary-yellow mb-3">Hours</h3>
-                  <div className="text-neutral-gray-light text-sm space-y-1">
+                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
+                  <h3 className="text-xl font-heading font-semibold text-white mb-3">Hours</h3>
+                  <div className="text-white/90 text-sm space-y-1">
                     <p>Mon-Thu: 11am-10pm</p>
                     <p>Fri-Sat: 11am-11pm</p>
                     <p>Sun: 11am-9pm</p>
                   </div>
                 </div>
                 
-                <div className="bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10">
-                  <h3 className="text-xl font-heading font-semibold text-primary-yellow mb-3">Quick Order</h3>
+                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
+                  <h3 className="text-xl font-heading font-semibold text-white mb-3">Quick Order</h3>
                   <Button
                     asChild
                     variant="secondary"
@@ -340,9 +340,9 @@ export default function Home() {
               </div>
               
               {/* Special features */}
-              <div className="bg-primary-yellow/10 rounded-lg p-6 border border-primary-yellow/20">
-                <h3 className="text-xl font-heading font-semibold text-primary-yellow mb-3">What Makes Us Special</h3>
-                <ul className="text-neutral-gray-light space-y-2 text-sm">
+              <div className="bg-white/10 rounded-lg p-6 border border-white/20">
+                <h3 className="text-xl font-heading font-semibold text-white mb-3">What Makes Us Special</h3>
+                <ul className="text-white/90 space-y-2 text-sm">
                   <li>• Famous curb service - we bring food to your car!</li>
                   <li>• Live waffle cone demonstrations on original 1905 machine</li>
                   <li>• Family-friendly atmosphere with kids menu</li>
