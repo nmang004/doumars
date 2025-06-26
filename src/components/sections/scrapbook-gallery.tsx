@@ -504,7 +504,7 @@ export function ScrapbookGallery() {
 
       {/* Lightbox */}
       <Dialog open={lightboxOpen} onOpenChange={setLightboxOpen}>
-        <DialogContent className="max-w-[95vw] w-[95vw] h-[90vh] p-0 bg-gradient-to-br from-amber-50 to-orange-50 border-amber-200 rounded-2xl overflow-hidden">
+        <DialogContent className="!max-w-none !w-[96vw] !h-[92vh] p-0 bg-gradient-to-br from-amber-50 to-orange-50 border-amber-200 rounded-2xl overflow-hidden" style={{ maxWidth: '96vw', width: '96vw', height: '92vh' }}>
           <motion.div
             variants={scaleIn}
             initial="initial"
@@ -543,56 +543,61 @@ export function ScrapbookGallery() {
                   <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
                 </Button>
 
-                {/* Content */}
-                <div className="flex flex-col lg:flex-row h-full">
+                {/* Content - Using CSS Grid for precise control */}
+                <div className="h-full grid grid-cols-1 lg:grid-cols-2 gap-0">
                   {/* Image */}
-                  <div className="lg:w-1/2 p-6 flex items-center justify-center">
-                    <div className="bg-white p-6 shadow-xl rounded-xl max-w-full max-h-full flex items-center justify-center">
+                  <div className="p-4 lg:p-6 flex items-center justify-center bg-white/30">
+                    <div className="bg-white p-4 lg:p-6 shadow-xl rounded-xl w-full h-full flex items-center justify-center">
                       <img
                         src={currentImage.src}
                         alt={currentImage.title}
-                        className="max-w-full max-h-[70vh] object-contain rounded-lg"
+                        className="max-w-full max-h-full object-contain rounded-lg"
                       />
                     </div>
                   </div>
                   
-                  {/* Story Content */}
-                  <div className="lg:w-1/2 p-6 flex flex-col">
-                    <div className="bg-white/95 backdrop-blur-sm p-8 rounded-xl shadow-lg h-full flex flex-col overflow-hidden">
-                      <div className="flex flex-wrap items-center gap-3 mb-6">
-                        <span className="bg-primary-red text-white text-sm px-4 py-2 rounded-full font-medium">
-                          {currentImage.category}
-                        </span>
-                        <span className="bg-primary-yellow text-neutral-charcoal text-sm px-4 py-2 rounded-full font-medium">
-                          {currentImage.decade}
-                        </span>
-                      </div>
-                      
-                      <h3 className="text-3xl lg:text-4xl font-heading font-bold text-neutral-charcoal mb-6 leading-tight">
-                        {currentImage.title}
-                      </h3>
-                      
-                      <div className="flex flex-wrap items-center gap-6 mb-8 text-base text-neutral-gray">
-                        <div className="flex items-center space-x-3">
-                          <Clock className="w-5 h-5" />
-                          <span className="font-medium">{currentImage.year}</span>
+                  {/* Story Content - Full height with internal scrolling */}
+                  <div className="p-4 lg:p-6 flex flex-col min-h-0">
+                    <div className="bg-white/98 backdrop-blur-sm rounded-xl shadow-lg h-full flex flex-col p-6 lg:p-8 min-h-0">
+                      {/* Header Section */}
+                      <div className="flex-shrink-0">
+                        <div className="flex flex-wrap items-center gap-3 mb-4 lg:mb-6">
+                          <span className="bg-primary-red text-white text-xs lg:text-sm px-3 lg:px-4 py-1.5 lg:py-2 rounded-full font-medium">
+                            {currentImage.category}
+                          </span>
+                          <span className="bg-primary-yellow text-neutral-charcoal text-xs lg:text-sm px-3 lg:px-4 py-1.5 lg:py-2 rounded-full font-medium">
+                            {currentImage.decade}
+                          </span>
                         </div>
-                        {currentImage.location && (
-                          <div className="flex items-center space-x-3">
-                            <MapPin className="w-5 h-5" />
-                            <span className="font-medium">{currentImage.location}</span>
+                        
+                        <h3 className="text-2xl lg:text-3xl xl:text-4xl font-heading font-bold text-neutral-charcoal mb-4 lg:mb-6 leading-tight">
+                          {currentImage.title}
+                        </h3>
+                        
+                        <div className="flex flex-wrap items-center gap-4 lg:gap-6 mb-6 lg:mb-8 text-sm lg:text-base text-neutral-gray">
+                          <div className="flex items-center space-x-2 lg:space-x-3">
+                            <Clock className="w-4 h-4 lg:w-5 lg:h-5" />
+                            <span className="font-medium">{currentImage.year}</span>
                           </div>
-                        )}
+                          {currentImage.location && (
+                            <div className="flex items-center space-x-2 lg:space-x-3">
+                              <MapPin className="w-4 h-4 lg:w-5 lg:h-5" />
+                              <span className="font-medium">{currentImage.location}</span>
+                            </div>
+                          )}
+                        </div>
                       </div>
                       
-                      <div className="flex-1 overflow-y-auto pr-2">
-                        <p className="text-neutral-gray-dark leading-relaxed text-lg font-sans">
+                      {/* Scrollable Story Content */}
+                      <div className="flex-1 overflow-y-auto min-h-0 pr-2 lg:pr-4">
+                        <p className="text-neutral-gray-dark leading-relaxed text-base lg:text-lg xl:text-xl font-sans">
                           {currentImage.story}
                         </p>
                       </div>
                       
-                      <div className="mt-8 pt-6 border-t border-amber-200 flex-shrink-0">
-                        <p className="text-base text-neutral-gray italic font-medium">
+                      {/* Footer Section */}
+                      <div className="flex-shrink-0 mt-6 lg:mt-8 pt-4 lg:pt-6 border-t border-amber-200">
+                        <p className="text-sm lg:text-base text-neutral-gray italic font-medium">
                           &ldquo;{currentImage.era}&rdquo;
                         </p>
                       </div>
