@@ -100,7 +100,7 @@ export function Hero() {
             variants={heroTitle}
             className="font-heading text-h1 font-bold text-white leading-tight"
           >
-            Home of the World&apos;s
+            Home of the World's
             <br />
             <span className="text-primary-yellow">First Waffle Cone</span>
           </motion.h1>
@@ -110,7 +110,7 @@ export function Hero() {
             variants={heroSubtitle}
             className="text-white/90 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
           >
-            Four generations of family tradition serving Norfolk&apos;s finest ice cream 
+            Four generations of family tradition serving Norfolk's finest ice cream 
             and barbecue. Still making cones on our original 1905 machine.
           </motion.p>
 

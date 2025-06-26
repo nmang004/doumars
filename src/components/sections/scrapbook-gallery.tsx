@@ -35,7 +35,7 @@ const scrapbookData: ScrapbookItem[] = [
     id: 2,
     src: "/images/scrapbook/Scrap2.jpg",
     title: "Coming Home to Norfolk",
-    story: "After the World&apos;s Fair success, Abe brought his cone-making machine to Norfolk in 1907, setting up shop at Ocean View Amusement Park where families would flock for the weekend.",
+    story: "After the World's Fair success, Abe brought his cone-making machine to Norfolk in 1907, setting up shop at Ocean View Amusement Park where families would flock for the weekend.",
     year: "1907",
     decade: "1900s",
     era: "Norfolk Beginnings",
@@ -279,7 +279,7 @@ const scrapbookData: ScrapbookItem[] = [
     id: 26,
     src: "/images/scrapbook/Scrap26.jpg",
     title: "120 Years and Counting",
-    story: "From a single man with a dream at the 1904 World&apos;s Fair to a Norfolk institution serving multiple generations, our story continues to unfold with every cone made and every smile shared.",
+    story: "From a single man with a dream at the 1904 World's Fair to a Norfolk institution serving multiple generations, our story continues to unfold with every cone made and every smile shared.",
     year: "Present",
     decade: "2020s",
     era: "Continuing Story",
@@ -358,8 +358,8 @@ export function ScrapbookGallery() {
             </h1>
             
             <p className="text-lg md:text-xl text-neutral-gray-dark max-w-3xl mx-auto leading-relaxed">
-              Journey through 120+ years of memories, from Abe&apos;s invention of the waffle cone at the 1904 World&apos;s Fair 
-              to our continued legacy as Norfolk&apos;s beloved family restaurant.
+              Journey through 120+ years of memories, from Abe's invention of the waffle cone at the 1904 World's Fair 
+              to our continued legacy as Norfolk's beloved family restaurant.
             </p>
           </motion.div>
         </div>

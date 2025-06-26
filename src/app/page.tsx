@@ -69,7 +69,7 @@ export default function Home() {
                 <h3 className="font-heading text-xl lg:text-2xl font-semibold text-neutral-black mb-6 text-center lg:text-left">Our Heritage Timeline</h3>
                 <div className="space-y-3 lg:space-y-4">
                   {[
-                    { year: "1904", event: "Abe Doumar invents the waffle cone at St. Louis World&apos;s Fair" },
+                    { year: "1904", event: "Abe Doumar invents the waffle cone at St. Louis World's Fair" },
                     { year: "1905", event: "Original cone-making machine installed, still in use today" },
                     { year: "1930s", event: "Second generation takes over, adds famous barbecue" },
                     { year: "Today", event: "Fourth generation continues the family tradition" }

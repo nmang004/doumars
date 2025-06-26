@@ -41,7 +41,7 @@ export function Header() {
               </div>
               <div className="hidden sm:block">
                 <h1 className="font-heading text-2xl font-bold text-neutral-black">
-                  Doumar&apos;s
+                  Doumar's
                 </h1>
                 <p className="text-sm text-neutral-gray-dark">Since 1904</p>
               </div>

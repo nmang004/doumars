@@ -80,13 +80,13 @@ export function Footer() {
                     className="h-14 w-auto object-contain brightness-0 invert"
                   />
                   <div>
-                    <h3 className="font-heading text-2xl font-bold">Doumar&apos;s</h3>
+                    <h3 className="font-heading text-2xl font-bold">Doumar's</h3>
                     <p className="text-sm text-primary-yellow">Since 1904</p>
                   </div>
                 </div>
                 <p className="text-neutral-gray-light text-base leading-relaxed">
-                  Home of the world&apos;s first waffle cone. Four generations of family tradition 
-                  serving Norfolk&apos;s finest ice cream and barbecue.
+                  Home of the world's first waffle cone. Four generations of family tradition 
+                  serving Norfolk's finest ice cream and barbecue.
                 </p>
               </div>
               <div className="flex space-x-4">
@@ -195,7 +195,7 @@ export function Footer() {
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <div className="text-center md:text-left space-y-3">
               <p className="text-sm text-neutral-gray-light">
-                © 2024 Doumar&apos;s Cones and BBQ. All rights reserved. • Family owned & operated since 1904
+                © 2024 Doumar's Cones and BBQ. All rights reserved. • Family owned & operated since 1904
               </p>
               <div className="flex flex-wrap justify-center md:justify-start gap-x-6 gap-y-2">
                 {navigation.legal.map((item, index) => (
