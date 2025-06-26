@@ -10,8 +10,6 @@ const nextConfig: NextConfig = {
     ignoreBuildErrors: true,
   },
   images: {
-    // Increase quality for better resolution
-    quality: 90,
     // Use webp format for better compression and quality
     formats: ['image/avif', 'image/webp'],
     // Device sizes for responsive images

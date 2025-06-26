@@ -10,7 +10,6 @@ import { heroTitle, heroSubtitle, heroButton, fadeInUp } from "@/lib/motion"
 export function Hero() {
   const [isPlaying, setIsPlaying] = useState(true)
   const [isMuted, setIsMuted] = useState(true)
-  const [autoplayFailed, setAutoplayFailed] = useState(false)
   const videoRef = useRef<HTMLVideoElement>(null)
 
   useEffect(() => {
