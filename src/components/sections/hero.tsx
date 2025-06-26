@@ -52,7 +52,7 @@ export function Hero() {
     return () => observer.disconnect()
   }, [])
 
-  // Video event listeners
+  // Video event listeners and autoplay logic
   useEffect(() => {
     const video = videoRef.current
     if (!video || !isInView) return
@@ -60,29 +60,29 @@ export function Hero() {
     const handlePlay = () => setIsPlaying(true)
     const handlePause = () => setIsPlaying(false)
     const handleVolumeChange = () => setIsMuted(video.muted)
-    const handleLoadedData = () => {
+    const handleCanPlay = () => {
       setVideoLoaded(true)
-      // Try auto-play after video is loaded
-      if (video.paused) {
-        video.play().catch((error) => {
-          console.log('Autoplay failed:', error)
-          setAutoplayFailed(true)
-          // On mobile or when autoplay fails, show play button
-        })
-      }
+      // Try autoplay immediately when video can play
+      video.play().catch((error) => {
+        console.log('Autoplay failed:', error)
+        setAutoplayFailed(true)
+      })
     }
+
+    // Force load the video when in view
+    video.load()
 
     // Add event listeners
     video.addEventListener('play', handlePlay)
     video.addEventListener('pause', handlePause)
     video.addEventListener('volumechange', handleVolumeChange)
-    video.addEventListener('loadeddata', handleLoadedData)
+    video.addEventListener('canplay', handleCanPlay)
 
     return () => {
       video.removeEventListener('play', handlePlay)
       video.removeEventListener('pause', handlePause)
       video.removeEventListener('volumechange', handleVolumeChange)
-      video.removeEventListener('loadeddata', handleLoadedData)
+      video.removeEventListener('canplay', handleCanPlay)
     }
   }, [isInView])
 
@@ -150,10 +150,11 @@ export function Hero() {
           <video
             ref={videoRef}
             className="w-full h-full object-cover object-center cursor-pointer"
+            autoPlay
             muted={isMuted}
             loop
             playsInline
-            preload="none"
+            preload="metadata"
             poster="/images/restaurant/cone-machine-operator.jpg"
             onClick={handleVideoClick}
             style={{ 
