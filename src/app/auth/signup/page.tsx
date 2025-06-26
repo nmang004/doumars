@@ -13,7 +13,7 @@ import { Footer } from "@/components/layout/footer"
 import { useAuth } from "@/contexts/auth-context"
 import { fadeInUp } from "@/lib/motion"
 import Link from "next/link"
-import { useRouter } from "next/navigation"
+// import { useRouter } from "next/navigation" // Currently unused
 
 export default function SignUpPage() {
   const { signUp } = useAuth()

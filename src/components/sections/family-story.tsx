@@ -68,11 +68,6 @@ const values = [
   }
 ]
 
-const colorMap = {
-  'primary-red': 'bg-primary-red/10 group-hover:bg-primary-red/20 text-primary-red',
-  'primary-yellow': 'bg-primary-yellow/10 group-hover:bg-primary-yellow/20 text-primary-yellow',
-  'primary-navy': 'bg-primary-navy/10 group-hover:bg-primary-navy/20 text-primary-navy'
-}
 
 export function FamilyStory() {
   return (

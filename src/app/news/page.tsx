@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 import { ImageWithFallback } from "@/components/ui/image-with-fallback"
 import { Metadata } from "next"
 import Link from "next/link"
-import { ExternalLink, Calendar, User, MessageSquare } from "lucide-react"
+import { ExternalLink, User, MessageSquare } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "News & Press - What's Happening at Doumar's | Doumar's Cones and BBQ",
@@ -73,7 +73,7 @@ export default function NewsPage() {
       <section className="py-20 md:py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {newsItems.map((item, index) => (
+            {newsItems.map((item) => (
               <Card key={item.id} className="group overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
                 <div className="aspect-h-3 aspect-w-4 relative">
                   <ImageWithFallback

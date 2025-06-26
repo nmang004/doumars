@@ -51,28 +51,28 @@ const awards = [
   }
 ]
 
-const mediaFeatures = [
-  {
-    outlet: "Food Network",
-    show: "Diners, Drive-Ins and Dives",
-    description: "Featured for our historic significance and amazing barbecue"
-  },
-  {
-    outlet: "The New York Times",
-    show: "Travel Section",
-    description: "Highlighted as a must-visit destination in Norfolk"
-  },
-  {
-    outlet: "Southern Living",
-    show: "Best of the South",
-    description: "Named one of the South's most iconic restaurants"
-  },
-  {
-    outlet: "USA Today",
-    show: "Historic Restaurants",
-    description: "Featured in America's most historic dining establishments"
-  }
-]
+// const mediaFeatures = [
+//   {
+//     outlet: "Food Network",
+//     show: "Diners, Drive-Ins and Dives",
+//     description: "Featured for our historic significance and amazing barbecue"
+//   },
+//   {
+//     outlet: "The New York Times", 
+//     show: "Travel Section",
+//     description: "Highlighted as a must-visit destination in Norfolk"
+//   },
+//   {
+//     outlet: "Southern Living",
+//     show: "Best of the South",
+//     description: "Named one of the South's most iconic restaurants"
+//   },
+//   {
+//     outlet: "USA Today",
+//     show: "Historic Restaurants", 
+//     description: "Featured in America's most historic dining establishments"
+//   }
+// ]
 
 const testimonials = [
   {

@@ -188,7 +188,7 @@ export function MenuDisplay() {
   const [selectedCategory, setSelectedCategory] = useState("all")
   const [searchQuery, setSearchQuery] = useState("")
   const [quantities, setQuantities] = useState<Record<string, number>>({})
-  const { addItem, getItemQuantity } = useCart()
+  const { addItem } = useCart()
 
   // Filter items based on category and search
   const filteredItems = useMemo(() => {
@@ -217,7 +217,7 @@ export function MenuDisplay() {
     }))
   }
 
-  const handleAddToCart = (item: any) => {
+  const handleAddToCart = (item: any) => { // eslint-disable-line @typescript-eslint/no-explicit-any
     const quantity = quantities[item.id] || 0
     if (quantity > 0) {
       const menuItem: MenuItem = {
@@ -442,7 +442,7 @@ export function MenuDisplay() {
               No items found
             </h3>
             <p className="text-gray-500 max-w-md mx-auto">
-              Try adjusting your search query or selecting a different category to find what you're looking for.
+              Try adjusting your search query or selecting a different category to find what you&apos;re looking for.
             </p>
           </motion.div>
         )}

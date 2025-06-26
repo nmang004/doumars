@@ -22,39 +22,33 @@ const config: Config = {
     },
     extend: {
       colors: {
-        // Core Brand Colors
-        'primary': {
-          red: '#A51931',
-          'red-hover': '#8A1527',
-          yellow: '#F9E152',
-          'yellow-hover': '#F0D942',
-          navy: '#003164',
-          'navy-hover': '#002347',
-        },
+        // Core Brand Colors (flat structure for Tailwind)
+        'primary-red': '#A51931',
+        'primary-red-hover': '#8A1527',
+        'primary-yellow': '#F9E152',
+        'primary-yellow-hover': '#F0D942',
+        'primary-navy': '#003164',
+        'primary-navy-hover': '#002347',
         
-        // Neutral Colors
-        'neutral': {
-          'off-white': '#FDFBF7',
-          cream: '#F7F4EE',
-          white: '#FFFFFF',
-          black: '#1A1A1A',
-          'gray-dark': '#4A4A4A',
-          'gray-medium': '#6B6B6B',
-          'gray-light': '#8B8B8B',
-          'gray-lighter': '#E0E0E0',
-        },
+        // Neutral Colors (flat structure for Tailwind)
+        'neutral-off-white': '#FDFBF7',
+        'neutral-cream': '#F7F4EE',
+        'neutral-white': '#FFFFFF',
+        'neutral-black': '#1A1A1A',
+        'neutral-gray-dark': '#4A4A4A',
+        'neutral-gray-medium': '#6B6B6B',
+        'neutral-gray-light': '#8B8B8B',
+        'neutral-gray-lighter': '#E0E0E0',
         
-        // Semantic Colors
-        'semantic': {
-          success: '#0E7C3F',
-          'success-light': '#E8F5E9',
-          error: '#C62828',
-          'error-light': '#FFEBEE',
-          warning: '#F57C00',
-          'warning-light': '#FFF3E0',
-          info: '#0277BD',
-          'info-light': '#E1F5FE',
-        },
+        // Semantic Colors (flat structure for Tailwind)
+        'semantic-success': '#0E7C3F',
+        'semantic-success-light': '#E8F5E9',
+        'semantic-error': '#C62828',
+        'semantic-error-light': '#FFEBEE',
+        'semantic-warning': '#F57C00',
+        'semantic-warning-light': '#FFF3E0',
+        'semantic-info': '#0277BD',
+        'semantic-info-light': '#E1F5FE',
         
         // Legacy mappings for compatibility
         'doumar-red': '#A51931',

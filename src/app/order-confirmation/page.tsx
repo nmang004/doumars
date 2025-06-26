@@ -127,7 +127,7 @@ export default function OrderConfirmationPage() {
                 </CardHeader>
                 <CardContent>
                   <div className="text-lg font-semibold text-doumar-black mb-2">
-                    Doumar's Cones and BBQ
+                    Doumar&apos;s Cones and BBQ
                   </div>
                   <p className="text-gray-600">
                     1919 Monticello Ave<br />
@@ -243,7 +243,7 @@ export default function OrderConfirmationPage() {
                       </div>
                       <h4 className="font-medium mb-2">Order Preparation</h4>
                       <p className="text-sm text-gray-600">
-                        We're preparing your order with care using our time-tested recipes.
+                        We&apos;re preparing your order with care using our time-tested recipes.
                       </p>
                     </div>
                     
@@ -253,7 +253,7 @@ export default function OrderConfirmationPage() {
                       </div>
                       <h4 className="font-medium mb-2">Ready Notification</h4>
                       <p className="text-sm text-gray-600">
-                        We'll notify you when your order is ready for pickup.
+                        We&apos;ll notify you when your order is ready for pickup.
                       </p>
                     </div>
                     
@@ -263,7 +263,7 @@ export default function OrderConfirmationPage() {
                       </div>
                       <h4 className="font-medium mb-2">Enjoy!</h4>
                       <p className="text-sm text-gray-600">
-                        Enjoy your fresh Doumar's favorites made with over 120 years of tradition.
+                        Enjoy your fresh Doumar&apos;s favorites made with over 120 years of tradition.
                       </p>
                     </div>
                   </div>
@@ -297,7 +297,7 @@ export default function OrderConfirmationPage() {
                     <Star className="h-5 w-5 text-primary" />
                   </div>
                   <p className="text-gray-600 mb-3">
-                    Questions about your order? We're here to help!
+                    Questions about your order? We&apos;re here to help!
                   </p>
                   <div className="flex justify-center space-x-6">
                     <a 
