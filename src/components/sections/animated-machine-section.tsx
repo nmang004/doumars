@@ -2,44 +2,11 @@
 
 import { motion } from "framer-motion"
 import { SectionHeading } from "@/components/ui/section-heading"
-import { AnimatedIceCreamCone, AnimatedBBQBurger } from "@/components/animations/animated-food-elements"
 import Image from "next/image"
 
 export function AnimatedMachineSection() {
   return (
     <section className="py-20 md:py-32 bg-doumar-black text-white relative overflow-hidden">
-      {/* Animated cone background elements */}
-      <div className="absolute inset-0 opacity-10">
-        <motion.div
-          className="absolute top-20 left-10"
-          animate={{
-            rotate: [0, 360],
-            scale: [0.8, 1.2, 0.8],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "linear"
-          }}
-        >
-          <AnimatedIceCreamCone delay={0} />
-        </motion.div>
-        <motion.div
-          className="absolute bottom-20 right-16"
-          animate={{
-            rotate: [360, 0],
-            scale: [1, 0.8, 1],
-          }}
-          transition={{
-            duration: 15,
-            repeat: Infinity,
-            ease: "linear"
-          }}
-        >
-          <AnimatedBBQBurger delay={2} />
-        </motion.div>
-      </div>
-      
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <motion.div 
@@ -86,13 +53,13 @@ export function AnimatedMachineSection() {
                   <motion.div 
                     className="text-2xl"
                     animate={{
-                      rotate: [0, 10, -10, 0],
-                      scale: [1, 1.1, 1]
+                      rotate: [0, 8, -8, 0],
+                      scale: [1, 1.05, 1]
                     }}
                     transition={{
-                      duration: 2,
+                      duration: 3,
                       repeat: Infinity,
-                      delay: index * 0.5
+                      delay: index * 0.8
                     }}
                   >
                     {feature.icon}
@@ -110,15 +77,14 @@ export function AnimatedMachineSection() {
           
           <motion.div 
             className="relative h-[500px]"
-            initial={{ opacity: 0, scale: 0.8, rotate: 5 }}
-            whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
-            transition={{ duration: 1, type: "spring", bounce: 0.4 }}
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, type: "spring", bounce: 0.3 }}
             viewport={{ once: true }}
           >
             <motion.div
               whileHover={{ 
                 scale: 1.02,
-                rotate: -2,
                 boxShadow: "0 25px 50px rgba(0,0,0,0.3)"
               }}
               transition={{ duration: 0.3 }}
@@ -135,7 +101,7 @@ export function AnimatedMachineSection() {
             {/* Animated badge */}
             <motion.div 
               className="absolute -bottom-6 -right-6 bg-primary text-white p-6 rounded-2xl shadow-lg text-center"
-              initial={{ scale: 0, rotate: -180 }}
+              initial={{ scale: 0, rotate: -90 }}
               whileInView={{ scale: 1, rotate: 0 }}
               transition={{ 
                 duration: 0.8, 
@@ -145,15 +111,14 @@ export function AnimatedMachineSection() {
               }}
               viewport={{ once: true }}
               whileHover={{
-                scale: 1.1,
-                rotate: 5,
+                scale: 1.05,
                 boxShadow: "0 10px 30px rgba(0,0,0,0.3)"
               }}
             >
               <motion.div 
                 className="text-4xl font-bold font-heading"
                 animate={{
-                  scale: [1, 1.05, 1]
+                  scale: [1, 1.02, 1]
                 }}
                 transition={{
                   duration: 2,
@@ -166,24 +131,24 @@ export function AnimatedMachineSection() {
               <div className="text-sm uppercase tracking-wider">Original Machine</div>
             </motion.div>
             
-            {/* Floating sparkles around the image */}
-            {[...Array(4)].map((_, i) => (
+            {/* Subtle sparkles */}
+            {[...Array(2)].map((_, i) => (
               <motion.div
                 key={i}
-                className="absolute w-2 h-2 bg-yellow-400 rounded-full"
+                className="absolute w-1 h-1 bg-yellow-400 rounded-full opacity-50"
                 style={{
-                  left: `${20 + i * 20}%`,
-                  top: `${10 + i * 25}%`,
+                  left: `${25 + i * 50}%`,
+                  top: `${15 + i * 35}%`,
                 }}
                 animate={{
-                  y: [-10, -25, -10],
-                  opacity: [0, 1, 0],
-                  scale: [0.5, 1.2, 0.5],
+                  y: [-8, -20, -8],
+                  opacity: [0, 0.5, 0],
+                  scale: [0.5, 1, 0.5],
                 }}
                 transition={{
                   duration: 3,
                   repeat: Infinity,
-                  delay: i * 0.5,
+                  delay: i * 1.5,
                   ease: "easeInOut"
                 }}
               />

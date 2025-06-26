@@ -1,7 +1,7 @@
 "use client"
 
+import { useEffect, useRef } from "react"
 import { motion, useAnimation, useInView } from "framer-motion"
-import { useRef, useEffect } from "react"
 
 // Animated Ice Cream Cone Component
 export function AnimatedIceCreamCone({ delay = 0 }: { delay?: number }) {
@@ -128,24 +128,24 @@ export function AnimatedIceCreamCone({ delay = 0 }: { delay?: number }) {
         </div>
       </motion.div>
 
-      {/* Floating sparkles */}
-      {[...Array(3)].map((_, i) => (
+      {/* Subtle floating sparkles - much cleaner */}
+      {[...Array(2)].map((_, i) => (
         <motion.div
           key={i}
-          className="absolute w-1 h-1 bg-yellow-300 rounded-full"
+          className="absolute w-1 h-1 bg-yellow-300 rounded-full opacity-60"
           style={{
-            left: `${20 + i * 30}%`,
-            top: `${10 + i * 15}%`,
+            left: `${30 + i * 40}%`,
+            top: `${15 + i * 20}%`,
           }}
           animate={{
             y: [-5, -15, -5],
-            opacity: [0, 1, 0],
+            opacity: [0, 0.6, 0],
             scale: [0.5, 1, 0.5],
           }}
           transition={{
-            duration: 2,
+            duration: 2.5,
             repeat: Infinity,
-            delay: delay + i * 0.3,
+            delay: delay + i * 0.8,
             ease: "easeInOut"
           }}
         />
@@ -266,24 +266,24 @@ export function AnimatedBBQBurger({ delay = 0 }: { delay?: number }) {
         <div className="absolute inset-0 bg-gradient-to-tr from-amber-400/40 to-transparent rounded-b-full" />
       </motion.div>
 
-      {/* Steam effect */}
-      {[...Array(3)].map((_, i) => (
+      {/* Subtle steam effect - less cluttered */}
+      {[...Array(2)].map((_, i) => (
         <motion.div
           key={i}
-          className="absolute w-1 h-8 bg-gradient-to-t from-white/60 to-transparent rounded-full"
+          className="absolute w-0.5 h-6 bg-gradient-to-t from-white/40 to-transparent rounded-full"
           style={{
-            left: `${35 + i * 15}%`,
-            top: -10,
+            left: `${40 + i * 20}%`,
+            top: -8,
           }}
           animate={{
-            y: [0, -15, -25],
-            opacity: [0, 0.6, 0],
+            y: [0, -15, -20],
+            opacity: [0, 0.4, 0],
             scaleY: [1, 1.5, 0.5],
           }}
           transition={{
             duration: 2.5,
             repeat: Infinity,
-            delay: delay + 1 + i * 0.4,
+            delay: delay + 1 + i * 0.6,
             ease: "easeOut"
           }}
         />
@@ -292,41 +292,31 @@ export function AnimatedBBQBurger({ delay = 0 }: { delay?: number }) {
   )
 }
 
-// Floating Ingredients Animation
+// Much cleaner floating ingredients - barely visible, very subtle
 export function FloatingIngredients({ delay = 0 }: { delay?: number }) {
-  const ingredients = [
-    { emoji: "🍯", name: "honey", color: "text-yellow-500" },
-    { emoji: "🥛", name: "milk", color: "text-blue-100" },
-    { emoji: "🍓", name: "strawberry", color: "text-red-400" },
-    { emoji: "🍫", name: "chocolate", color: "text-amber-700" },
-    { emoji: "🥓", name: "bacon", color: "text-red-600" },
-  ]
-
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {ingredients.map((ingredient, i) => (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-10">
+      {/* Just subtle sparkles, no overwhelming emojis */}
+      {[...Array(4)].map((_, i) => (
         <motion.div
-          key={ingredient.name}
-          className={`absolute text-2xl ${ingredient.color}`}
+          key={i}
+          className="absolute w-1 h-1 bg-yellow-300 rounded-full"
           style={{
-            left: `${15 + i * 20}%`,
+            left: `${10 + i * 25}%`,
             top: `${20 + i * 15}%`,
           }}
           animate={{
-            y: [-20, -40, -20],
-            x: [-10, 10, -10],
-            rotate: [0, 180, 360],
-            scale: [0.8, 1.2, 0.8],
+            y: [-10, -25, -10],
+            opacity: [0, 0.3, 0],
+            scale: [0.5, 1, 0.5],
           }}
           transition={{
-            duration: 4 + i,
+            duration: 4,
             repeat: Infinity,
-            delay: delay + i * 0.5,
+            delay: delay + i * 1,
             ease: "easeInOut"
           }}
-        >
-          {ingredient.emoji}
-        </motion.div>
+        />
       ))}
     </div>
   )
@@ -378,24 +368,24 @@ export function AnimatedLimeade({ delay = 0 }: { delay?: number }) {
             }
           }}
         >
-          {/* Bubbles */}
-          {[...Array(5)].map((_, i) => (
+          {/* Fewer, subtler bubbles */}
+          {[...Array(3)].map((_, i) => (
             <motion.div
               key={i}
-              className="absolute w-1 h-1 bg-white rounded-full opacity-70"
+              className="absolute w-0.5 h-0.5 bg-white rounded-full opacity-60"
               style={{
-                left: `${20 + i * 15}%`,
-                bottom: `${10 + i * 10}%`,
+                left: `${25 + i * 20}%`,
+                bottom: `${15 + i * 15}%`,
               }}
               animate={{
-                y: [-5, -25, -5],
-                opacity: [0.7, 0, 0.7],
-                scale: [0.5, 1.2, 0.5],
+                y: [-3, -15, -3],
+                opacity: [0.6, 0, 0.6],
+                scale: [0.5, 1, 0.5],
               }}
               transition={{
                 duration: 2,
                 repeat: Infinity,
-                delay: delay + 0.5 + i * 0.2,
+                delay: delay + 0.5 + i * 0.3,
                 ease: "easeInOut"
               }}
             />
@@ -423,7 +413,7 @@ export function AnimatedLimeade({ delay = 0 }: { delay?: number }) {
         }}
         className="absolute top-0 right-2 w-1 h-16 bg-gradient-to-b from-red-400 to-red-500 rounded-full"
         animate={{
-          rotate: [15, 20, 15],
+          rotate: [15, 18, 15],
         }}
         transition={{
           duration: 3,
@@ -451,7 +441,7 @@ export function AnimatedLimeade({ delay = 0 }: { delay?: number }) {
         }}
         className="absolute top-2 left-2 w-4 h-4 bg-gradient-to-br from-lime-300 to-lime-500 rounded-full relative"
         animate={{
-          rotate: [0, 10, -10, 0],
+          rotate: [0, 8, -8, 0],
         }}
         transition={{
           duration: 4,

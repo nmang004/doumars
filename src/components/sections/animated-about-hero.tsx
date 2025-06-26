@@ -2,14 +2,11 @@
 
 import { motion } from "framer-motion"
 import { SectionHeading } from "@/components/ui/section-heading"
-import { AnimatedIceCreamCone, AnimatedBBQBurger, FloatingIngredients, AnimatedLimeade } from "@/components/animations/animated-food-elements"
+import { AnimatedIceCreamCone } from "@/components/animations/animated-food-elements"
 
 export function AnimatedAboutHero() {
   return (
     <section className="relative py-24 md:py-32 bg-gradient-to-br from-doumar-cream to-white overflow-hidden">
-      {/* Floating Ingredients Background */}
-      <FloatingIngredients delay={0.5} />
-      
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center space-y-6">
           <motion.div
@@ -25,24 +22,23 @@ export function AnimatedAboutHero() {
             />
           </motion.div>
           
-          {/* Animated Food Icons */}
+          {/* Single Featured Animation - Clean and Focused */}
           <motion.div 
-            className="flex justify-center items-center space-x-8 md:space-x-16 py-8"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.3 }}
+            className="flex justify-center py-8"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.4 }}
           >
             <div className="text-center">
-              <AnimatedIceCreamCone delay={0.5} />
-              <p className="text-sm font-semibold text-gray-600 mt-2">World&apos;s First</p>
-            </div>
-            <div className="text-center">
-              <AnimatedBBQBurger delay={1} />
-              <p className="text-sm font-semibold text-gray-600 mt-2">Famous BBQ</p>
-            </div>
-            <div className="text-center">
-              <AnimatedLimeade delay={1.5} />
-              <p className="text-sm font-semibold text-gray-600 mt-2">Signature Limeade</p>
+              <AnimatedIceCreamCone delay={0.6} />
+              <motion.p 
+                className="text-lg font-semibold text-gray-700 mt-4"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1.2 }}
+              >
+                Birthplace of the Waffle Cone
+              </motion.p>
             </div>
           </motion.div>
           
