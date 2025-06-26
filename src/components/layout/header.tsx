@@ -37,8 +37,12 @@ export function Header() {
           {/* Logo */}
           <div className="flex items-center">
             <Link href="/" className="flex items-center space-x-3 group">
-              <div className="h-12 w-12 rounded-full bg-primary-red flex items-center justify-center transition-transform duration-250 group-hover:scale-105">
-                <span className="text-white font-bold text-xl font-heading">D</span>
+              <div className="h-12 w-auto transition-transform duration-250 group-hover:scale-105">
+                <img 
+                  src="/images/doumarslogo.png" 
+                  alt="Doumar's Logo" 
+                  className="h-12 w-auto object-contain"
+                />
               </div>
               <div className="hidden sm:block">
                 <h1 className="font-heading text-2xl font-bold text-neutral-black">

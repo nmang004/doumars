@@ -47,8 +47,12 @@ export function Footer() {
             {/* Brand Section */}
             <div className="space-y-4 md:col-span-2 lg:col-span-1">
               <div className="flex items-center space-x-3">
-                <div className="h-12 w-12 rounded-full bg-primary-red flex items-center justify-center flex-shrink-0">
-                  <span className="text-white font-bold text-xl font-heading">D</span>
+                <div className="h-12 w-auto flex-shrink-0">
+                  <img 
+                    src="/images/doumarslogo.png" 
+                    alt="Doumar's Logo" 
+                    className="h-12 w-auto object-contain brightness-0 invert"
+                  />
                 </div>
                 <div>
                   <h3 className="font-heading text-2xl font-bold">Doumar&apos;s</h3>

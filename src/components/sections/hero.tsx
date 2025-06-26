@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button"
 import { heroTitle, heroSubtitle, heroButton, fadeInUp } from "@/lib/motion"
 
 export function Hero() {
-  const [isPlaying, setIsPlaying] = useState(false)
+  const [isPlaying, setIsPlaying] = useState(true) // Start with autoplay
   const [isMuted, setIsMuted] = useState(true)
   const videoRef = useRef<HTMLVideoElement>(null)
 
@@ -37,6 +37,7 @@ export function Hero() {
         <video
           ref={videoRef}
           className="w-full h-full object-cover object-center"
+          autoPlay
           muted={isMuted}
           loop
           playsInline
@@ -134,7 +135,7 @@ export function Hero() {
 
       {/* Video Controls */}
       <motion.div
-        className="absolute bottom-8 right-8 z-10 flex space-x-3"
+        className="absolute bottom-4 right-4 md:bottom-8 md:right-8 z-10 flex space-x-2 md:space-x-3"
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 2, duration: 0.6 }}
@@ -142,7 +143,7 @@ export function Hero() {
         {/* Play/Pause Button */}
         <motion.button
           onClick={togglePlay}
-          className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 hover:bg-white/30 transition-all duration-250 group"
+          className="w-10 h-10 md:w-12 md:h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 hover:bg-white/30 transition-all duration-250 group"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
         >
@@ -156,7 +157,7 @@ export function Hero() {
         {/* Mute/Unmute Button */}
         <motion.button
           onClick={toggleMute}
-          className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 hover:bg-white/30 transition-all duration-250 group"
+          className="w-10 h-10 md:w-12 md:h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 hover:bg-white/30 transition-all duration-250 group"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
         >
@@ -170,7 +171,7 @@ export function Hero() {
 
       {/* Scroll Indicator */}
       <motion.div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10"
+        className="absolute bottom-4 md:bottom-8 left-0 right-0 z-10 flex justify-center"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.5, duration: 0.6 }}
@@ -184,10 +185,10 @@ export function Hero() {
             nextSection?.scrollIntoView({ behavior: 'smooth' })
           }}
         >
-          <span className="text-white/70 text-sm uppercase tracking-wider group-hover:text-white transition-colors">
+          <span className="text-white/70 text-xs md:text-sm uppercase tracking-wider group-hover:text-white transition-colors text-center">
             Discover Our Story
           </span>
-          <ChevronDown className="h-6 w-6 text-white/70 group-hover:text-white transition-colors" />
+          <ChevronDown className="h-5 w-5 md:h-6 md:w-6 text-white/70 group-hover:text-white transition-colors" />
         </motion.div>
       </motion.div>
     </section>
