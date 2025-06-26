@@ -70,7 +70,6 @@ export function Hero() {
           loop
           playsInline
           preload="metadata"
-          poster="/images/restaurant/cone-machine-operator.jpg"
         >
           <source src="/videos/doumar-hero-video.mp4" type="video/mp4" />
         </video>
