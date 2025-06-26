@@ -45,8 +45,8 @@ export interface Database {
           status: string
           order_type: string
           total_amount: number
-          items: any
-          customer_info: any
+          items: Record<string, unknown>
+          customer_info: Record<string, unknown>
           created_at: string
           updated_at: string
         }
@@ -57,8 +57,8 @@ export interface Database {
           status?: string
           order_type: string
           total_amount: number
-          items: any
-          customer_info: any
+          items: Record<string, unknown>
+          customer_info: Record<string, unknown>
           created_at?: string
           updated_at?: string
         }
@@ -69,8 +69,8 @@ export interface Database {
           status?: string
           order_type?: string
           total_amount?: number
-          items?: any
-          customer_info?: any
+          items?: Record<string, unknown>
+          customer_info?: Record<string, unknown>
           created_at?: string
           updated_at?: string
         }
