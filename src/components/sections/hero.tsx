@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 import { motion } from "framer-motion"
 import Link from "next/link"
 import { ChevronDown, Play, Pause, Volume2, VolumeX } from "lucide-react"
@@ -12,21 +12,48 @@ export function Hero() {
   const [isMuted, setIsMuted] = useState(true)
   const videoRef = useRef<HTMLVideoElement>(null)
 
-  const togglePlay = () => {
-    if (videoRef.current) {
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video) return
+
+    const handlePlay = () => setIsPlaying(true)
+    const handlePause = () => setIsPlaying(false)
+    const handleVolumeChange = () => setIsMuted(video.muted)
+
+    // Add event listeners to sync state with actual video state
+    video.addEventListener('play', handlePlay)
+    video.addEventListener('pause', handlePause)
+    video.addEventListener('volumechange', handleVolumeChange)
+
+    return () => {
+      video.removeEventListener('play', handlePlay)
+      video.removeEventListener('pause', handlePause)
+      video.removeEventListener('volumechange', handleVolumeChange)
+    }
+  }, [])
+
+  const togglePlay = async () => {
+    if (!videoRef.current) return
+    
+    try {
       if (isPlaying) {
-        videoRef.current.pause()
+        await videoRef.current.pause()
       } else {
-        videoRef.current.play()
+        await videoRef.current.play()
       }
-      setIsPlaying(!isPlaying)
+    } catch (error) {
+      console.log('Video play/pause error:', error)
     }
   }
 
   const toggleMute = () => {
-    if (videoRef.current) {
+    if (!videoRef.current) return
+    
+    try {
       videoRef.current.muted = !isMuted
-      setIsMuted(!isMuted)
+      setIsMuted(videoRef.current.muted)
+    } catch (error) {
+      console.log('Video mute error:', error)
     }
   }
 
@@ -143,9 +170,14 @@ export function Hero() {
         {/* Play/Pause Button */}
         <motion.button
           onClick={togglePlay}
-          className="w-10 h-10 md:w-12 md:h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 hover:bg-white/30 transition-all duration-250 group"
+          onTouchEnd={(e) => {
+            e.preventDefault()
+            togglePlay()
+          }}
+          className="w-10 h-10 md:w-12 md:h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 hover:bg-white/30 transition-all duration-250 group touch-manipulation"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
+          style={{ touchAction: 'manipulation' }}
         >
           {isPlaying ? (
             <Pause className="h-5 w-5 text-white group-hover:text-primary-yellow transition-colors" />
@@ -157,9 +189,14 @@ export function Hero() {
         {/* Mute/Unmute Button */}
         <motion.button
           onClick={toggleMute}
-          className="w-10 h-10 md:w-12 md:h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 hover:bg-white/30 transition-all duration-250 group"
+          onTouchEnd={(e) => {
+            e.preventDefault()
+            toggleMute()
+          }}
+          className="w-10 h-10 md:w-12 md:h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 hover:bg-white/30 transition-all duration-250 group touch-manipulation"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
+          style={{ touchAction: 'manipulation' }}
         >
           {isMuted ? (
             <VolumeX className="h-5 w-5 text-white group-hover:text-primary-yellow transition-colors" />
