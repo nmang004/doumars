@@ -7,11 +7,21 @@ import { Card, CardContent } from "@/components/ui/card"
 import { OptimizedPhotoGallery } from "@/components/sections/optimized-photo-gallery"
 import { Awards } from "@/components/sections/awards"
 import Link from "next/link"
+import Head from "next/head"
 
 export default function Home() {
   return (
-    <Layout>
-      <Hero />
+    <>
+      <Head>
+        <link 
+          rel="preload" 
+          as="image" 
+          href="/images/restaurant/cone-machine-operator.jpg"
+          fetchPriority="high"
+        />
+      </Head>
+      <Layout>
+        <Hero />
       
       {/* Our Story Preview Section */}
       <section id="our-story" className="py-20 md:py-32 bg-neutral-off-white">
@@ -304,6 +314,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-    </Layout>
+      </Layout>
+    </>
   )
 }

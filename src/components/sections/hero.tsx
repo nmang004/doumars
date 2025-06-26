@@ -8,29 +8,71 @@ import { Button } from "@/components/ui/button"
 import { heroTitle, heroSubtitle, heroButton, fadeInUp } from "@/lib/motion"
 
 export function Hero() {
-  const [isPlaying, setIsPlaying] = useState(true) // Start with autoplay
+  const [isPlaying, setIsPlaying] = useState(false) // Start paused to improve LCP
   const [isMuted, setIsMuted] = useState(true)
+  const [videoLoaded, setVideoLoaded] = useState(false)
+  const [isInView, setIsInView] = useState(false)
+  const [imageLoaded, setImageLoaded] = useState(false)
   const videoRef = useRef<HTMLVideoElement>(null)
+  const sectionRef = useRef<HTMLElement>(null)
 
+  // Preload the hero image for better LCP
+  useEffect(() => {
+    const img = new Image()
+    img.onload = () => setImageLoaded(true)
+    img.src = '/images/restaurant/cone-machine-operator.jpg'
+  }, [])
+
+  // Intersection Observer for lazy loading
+  useEffect(() => {
+    const section = sectionRef.current
+    if (!section) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true)
+          observer.disconnect()
+        }
+      },
+      { threshold: 0.1 }
+    )
+
+    observer.observe(section)
+    return () => observer.disconnect()
+  }, [])
+
+  // Video event listeners
   useEffect(() => {
     const video = videoRef.current
-    if (!video) return
+    if (!video || !isInView) return
 
     const handlePlay = () => setIsPlaying(true)
     const handlePause = () => setIsPlaying(false)
     const handleVolumeChange = () => setIsMuted(video.muted)
+    const handleLoadedData = () => {
+      setVideoLoaded(true)
+      // Auto-play after video is loaded
+      if (video.paused) {
+        video.play().catch(() => {
+          // Auto-play failed, user interaction required
+        })
+      }
+    }
 
-    // Add event listeners to sync state with actual video state
+    // Add event listeners
     video.addEventListener('play', handlePlay)
     video.addEventListener('pause', handlePause)
     video.addEventListener('volumechange', handleVolumeChange)
+    video.addEventListener('loadeddata', handleLoadedData)
 
     return () => {
       video.removeEventListener('play', handlePlay)
       video.removeEventListener('pause', handlePause)
       video.removeEventListener('volumechange', handleVolumeChange)
+      video.removeEventListener('loadeddata', handleLoadedData)
     }
-  }, [])
+  }, [isInView])
 
   const togglePlay = async () => {
     if (!videoRef.current) return
@@ -58,21 +100,42 @@ export function Hero() {
   }
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section 
+      ref={sectionRef}
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+    >
       {/* Background Video */}
       <div className="absolute inset-0 z-0">
-        <video
-          ref={videoRef}
-          className="w-full h-full object-cover object-center"
-          autoPlay
-          muted={isMuted}
-          loop
-          playsInline
-          preload="metadata"
-          poster="/images/restaurant/cone-machine-operator.jpg"
-        >
-          <source src="/videos/doumar-hero-video.mp4" type="video/mp4" />
-        </video>
+        {/* Optimized background image that loads immediately */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ 
+            backgroundImage: imageLoaded ? `url('/images/restaurant/cone-machine-operator.jpg')` : '',
+            backgroundColor: imageLoaded ? 'transparent' : '#1a1a1a',
+            opacity: videoLoaded ? 0 : 1,
+            transition: 'opacity 0.5s ease-in-out'
+          }}
+        />
+        
+        {/* Video loads only when in view */}
+        {isInView && (
+          <video
+            ref={videoRef}
+            className="w-full h-full object-cover object-center"
+            muted={isMuted}
+            loop
+            playsInline
+            preload="none"
+            poster="/images/restaurant/cone-machine-operator.jpg"
+            style={{ 
+              opacity: videoLoaded ? 1 : 0,
+              transition: 'opacity 0.5s ease-in-out'
+            }}
+          >
+            <source src="/videos/doumar-hero-video.mp4" type="video/mp4" />
+          </video>
+        )}
+        
         {/* Overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-black/30" />
       </div>
@@ -160,13 +223,15 @@ export function Hero() {
         </motion.div>
       </div>
 
-      {/* Video Controls */}
-      <motion.div
-        className="absolute bottom-4 right-4 md:bottom-8 md:right-8 z-10 flex space-x-2 md:space-x-3"
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 2, duration: 0.6 }}
-      >
+      {/* Video Controls - Only show when video is loaded */}
+      {videoLoaded && (
+        <motion.div
+          className="absolute bottom-4 right-4 md:bottom-8 md:right-8 z-10 flex space-x-2 md:space-x-3"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.5, duration: 0.6 }}
+        >
+      )}
         {/* Play/Pause Button */}
         <motion.button
           onClick={togglePlay}
@@ -204,7 +269,8 @@ export function Hero() {
             <Volume2 className="h-5 w-5 text-white group-hover:text-primary-yellow transition-colors" />
           )}
         </motion.button>
-      </motion.div>
+        </motion.div>
+      )}
 
       {/* Scroll Indicator */}
       <motion.div
