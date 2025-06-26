@@ -13,8 +13,18 @@ export function Hero() {
   const [videoLoaded, setVideoLoaded] = useState(false)
   const [isInView, setIsInView] = useState(false)
   const [imageLoaded, setImageLoaded] = useState(false)
+  const [autoplayFailed, setAutoplayFailed] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
   const videoRef = useRef<HTMLVideoElement>(null)
   const sectionRef = useRef<HTMLElement>(null)
+
+  // Detect mobile device
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))
+    }
+    checkMobile()
+  }, [])
 
   // Preload the hero image for better LCP
   useEffect(() => {
@@ -52,10 +62,12 @@ export function Hero() {
     const handleVolumeChange = () => setIsMuted(video.muted)
     const handleLoadedData = () => {
       setVideoLoaded(true)
-      // Auto-play after video is loaded
+      // Try auto-play after video is loaded
       if (video.paused) {
-        video.play().catch(() => {
-          // Auto-play failed, user interaction required
+        video.play().catch((error) => {
+          console.log('Autoplay failed:', error)
+          setAutoplayFailed(true)
+          // On mobile or when autoplay fails, show play button
         })
       }
     }
@@ -82,9 +94,25 @@ export function Hero() {
         await videoRef.current.pause()
       } else {
         await videoRef.current.play()
+        setAutoplayFailed(false) // Hide the big play button after successful play
       }
     } catch (error) {
       console.log('Video play/pause error:', error)
+    }
+  }
+
+  const handleVideoClick = async () => {
+    if (!videoRef.current) return
+    
+    try {
+      if (videoRef.current.paused) {
+        await videoRef.current.play()
+        setAutoplayFailed(false)
+      } else {
+        await videoRef.current.pause()
+      }
+    } catch (error) {
+      console.log('Video click error:', error)
     }
   }
 
@@ -121,12 +149,13 @@ export function Hero() {
         {isInView && (
           <video
             ref={videoRef}
-            className="w-full h-full object-cover object-center"
+            className="w-full h-full object-cover object-center cursor-pointer"
             muted={isMuted}
             loop
             playsInline
             preload="none"
             poster="/images/restaurant/cone-machine-operator.jpg"
+            onClick={handleVideoClick}
             style={{ 
               opacity: videoLoaded ? 1 : 0,
               transition: 'opacity 0.5s ease-in-out'
@@ -223,6 +252,29 @@ export function Hero() {
         </motion.div>
       </div>
 
+      {/* Large Play Button Overlay - Shows when autoplay fails (especially on mobile) */}
+      {videoLoaded && (autoplayFailed || (isMobile && !isPlaying)) && (
+        <motion.div
+          className="absolute inset-0 z-20 flex items-center justify-center"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.8 }}
+          transition={{ duration: 0.3 }}
+        >
+          <motion.button
+            onClick={handleVideoClick}
+            className="w-20 h-20 md:w-24 md:h-24 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border-2 border-white/40 hover:bg-white/30 hover:border-white/60 transition-all duration-300 group"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <Play className="h-8 w-8 md:h-10 md:w-10 text-white ml-1 group-hover:text-primary-yellow transition-colors" />
+          </motion.button>
+          <div className="absolute bottom-[-60px] text-center">
+            <p className="text-white/80 text-sm font-medium">Tap to play video</p>
+          </div>
+        </motion.div>
+      )}
+
       {/* Video Controls - Only show when video is loaded */}
       {videoLoaded && (
         <motion.div
@@ -231,8 +283,7 @@ export function Hero() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.5, duration: 0.6 }}
         >
-      )}
-        {/* Play/Pause Button */}
+          {/* Play/Pause Button */}
         <motion.button
           onClick={togglePlay}
           onTouchEnd={(e) => {
