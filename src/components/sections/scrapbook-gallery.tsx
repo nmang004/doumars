@@ -504,7 +504,7 @@ export function ScrapbookGallery() {
 
       {/* Lightbox */}
       <Dialog open={lightboxOpen} onOpenChange={setLightboxOpen}>
-        <DialogContent className="max-w-6xl w-[95vw] p-0 bg-gradient-to-br from-amber-50 to-orange-50 border-amber-200 rounded-2xl">
+        <DialogContent className="max-w-7xl w-[98vw] p-0 bg-gradient-to-br from-amber-50 to-orange-50 border-amber-200 rounded-2xl max-h-[95vh] overflow-y-auto">
           <motion.div
             variants={scaleIn}
             initial="initial"
@@ -518,79 +518,81 @@ export function ScrapbookGallery() {
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="absolute top-4 right-4 z-20 bg-white/80 hover:bg-white text-neutral-charcoal rounded-full shadow-lg"
+                  className="absolute top-2 sm:top-4 right-2 sm:right-4 z-30 bg-white/90 hover:bg-white text-neutral-charcoal rounded-full shadow-xl border border-neutral-gray-lighter"
                   onClick={closeLightbox}
                 >
-                  <X className="w-6 h-6" />
+                  <X className="w-5 h-5 sm:w-6 sm:h-6" />
                 </Button>
 
                 {/* Navigation Buttons */}
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 bg-white/80 hover:bg-white text-neutral-charcoal rounded-full shadow-lg"
+                  className="absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/90 hover:bg-white text-neutral-charcoal rounded-full shadow-xl border border-neutral-gray-lighter"
                   onClick={() => navigateImage('prev')}
                 >
-                  <ChevronLeft className="w-6 h-6" />
+                  <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
                 </Button>
 
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 bg-white/80 hover:bg-white text-neutral-charcoal rounded-full shadow-lg"
+                  className="absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/90 hover:bg-white text-neutral-charcoal rounded-full shadow-xl border border-neutral-gray-lighter"
                   onClick={() => navigateImage('next')}
                 >
-                  <ChevronRight className="w-6 h-6" />
+                  <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
                 </Button>
 
                 {/* Content */}
-                <div className="flex flex-col lg:flex-row">
+                <div className="flex flex-col xl:flex-row min-h-[70vh]">
                   {/* Image */}
-                  <div className="lg:w-2/3 p-6">
-                    <div className="bg-white p-6 shadow-xl rounded-xl">
+                  <div className="xl:w-3/5 p-4 sm:p-6">
+                    <div className="bg-white p-4 sm:p-6 shadow-xl rounded-xl h-full flex items-center justify-center">
                       <img
                         src={currentImage.src}
                         alt={currentImage.title}
-                        className="w-full h-auto object-contain rounded-lg max-h-[60vh]"
+                        className="w-full h-auto object-contain rounded-lg max-h-[65vh]"
                       />
                     </div>
                   </div>
                   
                   {/* Story Content */}
-                  <div className="lg:w-1/3 p-6 flex flex-col justify-center">
-                    <div className="bg-white/80 backdrop-blur-sm p-6 rounded-xl shadow-lg">
-                      <div className="flex items-center space-x-2 mb-4">
-                        <span className="bg-primary-red text-white text-xs px-3 py-1 rounded-full font-medium">
+                  <div className="xl:w-2/5 p-4 sm:p-6 flex flex-col justify-start">
+                    <div className="bg-white/90 backdrop-blur-sm p-6 sm:p-8 rounded-xl shadow-lg h-full">
+                      <div className="flex flex-wrap items-center gap-2 mb-6">
+                        <span className="bg-primary-red text-white text-xs sm:text-sm px-3 py-1.5 rounded-full font-medium">
                           {currentImage.category}
                         </span>
-                        <span className="bg-primary-yellow text-neutral-charcoal text-xs px-3 py-1 rounded-full font-medium">
+                        <span className="bg-primary-yellow text-neutral-charcoal text-xs sm:text-sm px-3 py-1.5 rounded-full font-medium">
                           {currentImage.decade}
                         </span>
                       </div>
                       
-                      <h3 className="text-2xl font-heading font-bold text-neutral-charcoal mb-2">
+                      <h3 className="text-2xl sm:text-3xl xl:text-4xl font-heading font-bold text-neutral-charcoal mb-4 leading-tight">
                         {currentImage.title}
                       </h3>
                       
-                      <div className="flex items-center space-x-4 mb-4 text-sm text-neutral-gray">
-                        <div className="flex items-center space-x-1">
-                          <Clock className="w-4 h-4" />
-                          <span>{currentImage.year}</span>
+                      <div className="flex flex-wrap items-center gap-4 mb-6 text-sm sm:text-base text-neutral-gray">
+                        <div className="flex items-center space-x-2">
+                          <Clock className="w-4 h-4 sm:w-5 sm:h-5" />
+                          <span className="font-medium">{currentImage.year}</span>
                         </div>
                         {currentImage.location && (
-                          <div className="flex items-center space-x-1">
-                            <MapPin className="w-4 h-4" />
-                            <span>{currentImage.location}</span>
+                          <div className="flex items-center space-x-2">
+                            <MapPin className="w-4 h-4 sm:w-5 sm:h-5" />
+                            <span className="font-medium">{currentImage.location}</span>
                           </div>
                         )}
                       </div>
                       
-                      <p className="text-neutral-gray-dark leading-relaxed font-handwriting text-lg">
-                        {currentImage.story}
-                      </p>
+                      <div className="flex-1 overflow-y-auto">
+                        <p className="text-neutral-gray-dark leading-relaxed text-base sm:text-lg xl:text-xl font-sans">
+                          {currentImage.story}
+                        </p>
+                      </div>
                       
-                      <div className="mt-6 pt-4 border-t border-amber-200">
-                        <p className="text-sm text-neutral-gray italic">
+                      <div className="mt-8 pt-6 border-t border-amber-200">
+                        <p className="text-sm sm:text-base text-neutral-gray italic font-medium">
                           &ldquo;{currentImage.era}&rdquo;
                         </p>
                       </div>
