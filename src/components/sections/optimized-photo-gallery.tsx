@@ -71,9 +71,11 @@ interface LazyImageProps {
   className?: string
   priority?: boolean
   onLoad?: () => void
+  sizes?: string
+  quality?: number
 }
 
-function LazyImage({ src, alt, className, priority = false, onLoad }: LazyImageProps) {
+function LazyImage({ src, alt, className, priority = false, onLoad, sizes, quality = 90 }: LazyImageProps) {
   const [isLoaded, setIsLoaded] = useState(false)
   const [isInView, setIsInView] = useState(false)
   const imgRef = useRef<HTMLDivElement>(null)
@@ -110,8 +112,9 @@ function LazyImage({ src, alt, className, priority = false, onLoad }: LazyImageP
           }`}
           onLoad={handleLoad}
           priority={priority}
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, (max-width: 1280px) 70vw, 1200px"
-          quality={90}
+          sizes={sizes || "(max-width: 640px) 100vw, (max-width: 1024px) 80vw, (max-width: 1280px) 70vw, 1200px"}
+          quality={quality}
+          loading={priority ? "eager" : "lazy"}
         />
       )}
       
@@ -237,8 +240,10 @@ export function OptimizedPhotoGallery() {
                     src={featuredImages[currentSlide].src}
                     alt={featuredImages[currentSlide].title}
                     className="w-full h-full"
-                    priority={currentSlide === 0}
+                    priority={true}
                     onLoad={handleImageLoad}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1600px"
+                    quality={95}
                   />
                   
                   {/* Gradient overlay */}
