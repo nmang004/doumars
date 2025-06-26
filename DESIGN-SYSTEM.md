@@ -13,7 +13,7 @@
 ### Primary Palette
 ```css
 /* Core Brand Colors */
---color-primary-red: #A51931;        /* Doumars Heritage Red */
+--color-primary-red: #97111f;        /* Doumars Heritage Red */
 --color-primary-yellow: #F9E152;     /* Waffle Cone Yellow */
 --color-primary-navy: #003164;       /* Vintage Navy */
 
@@ -53,7 +53,7 @@
 ### Interactive States
 ```css
 /* Hover & Focus States */
---color-hover-red: #8A1527;          /* Darker Red for Hover */
+--color-hover-red: #7a0e19;          /* Darker Red for Hover */
 --color-hover-yellow: #F0D942;       /* Darker Yellow for Hover */
 --color-hover-navy: #002347;         /* Darker Navy for Hover */
 --color-focus-ring: #F9E152;         /* Yellow Focus Ring */
@@ -61,7 +61,7 @@
 ```
 
 ### Contrast Ratios
-- Primary Red on White: 7.42:1 ✓
+- Primary Red on White: 8.12:1 ✓
 - Navy on White: 12.63:1 ✓
 - Text Primary on Background: 11.58:1 ✓
 - Yellow on Navy: 9.87:1 ✓
@@ -183,7 +183,7 @@
 .btn-primary:hover {
   background: var(--color-hover-red);
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(165, 25, 49, 0.25);
+  box-shadow: 0 4px 12px rgba(151, 17, 31, 0.25);
 }
 
 .btn-primary:focus-visible {
@@ -311,7 +311,7 @@
 .input-field:focus {
   outline: none;
   border-color: var(--color-primary-red);
-  box-shadow: 0 0 0 3px rgba(165, 25, 49, 0.1);
+  box-shadow: 0 0 0 3px rgba(151, 17, 31, 0.1);
 }
 
 .input-error {

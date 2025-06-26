@@ -23,8 +23,8 @@ const config: Config = {
     extend: {
       colors: {
         // Core Brand Colors (Tailwind v3 syntax with hardcoded values)
-        'primary-red': '#A51931',
-        'primary-red-hover': '#8A1527',
+        'primary-red': '#97111f',
+        'primary-red-hover': '#7a0e19',
         'primary-yellow': '#F9E152', 
         'primary-yellow-hover': '#F0D942',
         'primary-navy': '#003164',
@@ -51,7 +51,7 @@ const config: Config = {
         'semantic-info-light': '#E1F5FE',
         
         // Legacy mappings for compatibility
-        'doumar-red': '#A51931',
+        'doumar-red': '#97111f',
         'doumar-cream': '#FDFBF7',
         'doumar-blue': '#003164',
         'doumar-black': '#1A1A1A',
@@ -62,7 +62,7 @@ const config: Config = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "#A51931",
+          DEFAULT: "#97111f",
           foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {

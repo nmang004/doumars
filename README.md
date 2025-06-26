@@ -39,7 +39,7 @@ This is a complete rebuild of the Doumar's website, featuring:
 ## 🎨 Design System
 
 ### Brand Colors
-- **Doumar's Red**: `#A51931` (Primary brand color)
+- **Doumar's Red**: `#97111f` (Primary brand color)
 - **Classic White**: `#FFFFFF`
 - **Doumar's Black**: `#1a1a1a` (Text)
 - **Doumar's Cream**: `#FDFBF7` (Background)

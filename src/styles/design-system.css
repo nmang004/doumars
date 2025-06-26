@@ -2,8 +2,8 @@
 
 :root {
   /* Core Brand Colors */
-  --color-primary-red: #A51931;
-  --color-primary-red-hover: #8A1527;
+  --color-primary-red: #97111f;
+  --color-primary-red-hover: #7a0e19;
   --color-primary-yellow: #F9E152;
   --color-primary-yellow-hover: #F0D942;
   --color-primary-navy: #003164;
@@ -221,7 +221,7 @@
 /* High Contrast Mode Support */
 @media (prefers-contrast: high) {
   :root {
-    --color-primary-red: #8B0020;
+    --color-primary-red: #7a0e19;
     --color-primary-yellow: #FFD700;
     --color-text-primary: #000000;
     --color-bg-primary: #FFFFFF;
