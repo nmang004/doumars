@@ -66,19 +66,19 @@ const values = [
 
 export function FamilyStory() {
   return (
-    <section className="py-24 bg-gradient-to-br from-doumar-cream to-white">
+    <section className="py-20 md:py-32 bg-gradient-to-br from-doumar-cream to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
           subtitle="Four Generations Strong"
           title="A Family Legacy Built on Love and Innovation"
-          description="Meet the generations of Doumars who have kept the tradition alive while constantly innovating for the future"
+          description="Meet the generations of Doumars who have kept the tradition alive while constantly innovating for the future."
           centered
           className="mb-16"
         />
 
         {/* Family Generations */}
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20"
+          className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-20"
           variants={staggerContainer}
           initial="initial"
           whileInView="animate"
@@ -89,8 +89,8 @@ export function FamilyStory() {
               key={index}
               variants={staggerItem}
             >
-              <Card className="overflow-hidden h-full hover:shadow-lg transition-shadow duration-300">
-                <div className="aspect-video">
+              <Card className="overflow-hidden h-full hover:shadow-xl transition-shadow duration-300 rounded-lg border-gray-100">
+                <div className="aspect-w-16 aspect-h-9">
                   <img
                     src={member.image}
                     alt={member.name}
@@ -112,7 +112,7 @@ export function FamilyStory() {
                     <p className="text-gray-600 leading-relaxed">
                       {member.description}
                     </p>
-                    <div className="pt-2 border-t border-gray-100">
+                    <div className="pt-3 border-t border-gray-100">
                       <div className="text-xs text-primary font-medium uppercase tracking-wider mb-1">
                         Key Achievement
                       </div>
@@ -145,7 +145,7 @@ export function FamilyStory() {
           </div>
 
           <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
             variants={staggerContainer}
             initial="initial"
             whileInView="animate"
@@ -155,7 +155,7 @@ export function FamilyStory() {
               <motion.div
                 key={index}
                 variants={staggerItem}
-                className="text-center group"
+                className="text-center group p-6 bg-white/50 rounded-lg shadow-sm hover:shadow-lg transition-shadow"
               >
                 <div className="mx-auto w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors duration-300">
                   <value.icon className="w-8 h-8 text-primary" />
@@ -169,27 +169,6 @@ export function FamilyStory() {
               </motion.div>
             ))}
           </motion.div>
-        </motion.div>
-
-        {/* Quote Section */}
-        <motion.div
-          className="mt-20 text-center"
-          variants={fadeInUp}
-          initial="initial"
-          whileInView="animate"
-          viewport={{ once: true }}
-        >
-          <div className="bg-white rounded-lg shadow-lg p-8 md:p-12 max-w-4xl mx-auto">
-            <div className="text-4xl text-primary opacity-30 mb-4">"</div>
-            <blockquote className="text-xl md:text-2xl font-heading text-doumar-black leading-relaxed mb-6">
-              What started as one young man's innovation has become four generations 
-              of family dedication. We're not just preserving recipes – we're preserving 
-              the spirit of innovation and family values that built America.
-            </blockquote>
-            <footer className="text-gray-600">
-              <cite className="font-medium">— The Doumar Family Legacy</cite>
-            </footer>
-          </div>
         </motion.div>
       </div>
     </section>

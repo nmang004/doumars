@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { motion } from "framer-motion"
 import { CheckCircle, Clock, MapPin, Phone, Mail, Star } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -9,7 +9,7 @@ import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
 import { SectionHeading } from "@/components/ui/section-heading"
 import { formatPrice } from "@/lib/utils"
-import { fadeInUp, staggerContainer, staggerItem } from "@/lib/motion"
+import { staggerContainer, staggerItem } from "@/lib/motion"
 import Link from "next/link"
 import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
@@ -81,7 +81,7 @@ export default function OrderConfirmationPage() {
               <SectionHeading
                 subtitle="Order Confirmed!"
                 title="Thank you for your order"
-                description="We've received your order and will have it ready soon"
+                description="We&apos;ve received your order and will have it ready soon"
                 centered
               />
               
@@ -220,7 +220,7 @@ export default function OrderConfirmationPage() {
 
                   <div className="pt-4 border-t border-gray-200">
                     <p className="text-sm text-gray-600">
-                      We'll send you updates about your order via email and text message.
+                      We&apos;ll send you updates about your order via email and text message.
                     </p>
                   </div>
                 </CardContent>
@@ -233,7 +233,7 @@ export default function OrderConfirmationPage() {
             >
               <Card>
                 <CardHeader>
-                  <CardTitle>What's Next?</CardTitle>
+                  <CardTitle>What&apos;s Next?</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="grid md:grid-cols-3 gap-6">

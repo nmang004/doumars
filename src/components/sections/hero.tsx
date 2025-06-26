@@ -5,7 +5,6 @@ import { motion } from "framer-motion"
 import Link from "next/link"
 import { ChevronDown, Play, Pause, Volume2, VolumeX } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { ImageWithFallback } from "@/components/ui/image-with-fallback"
 import { heroTitle, heroSubtitle, heroButton, fadeInUp } from "@/lib/motion"
 
 export function Hero() {
@@ -62,21 +61,21 @@ export function Hero() {
             variants={heroSubtitle}
             className="flex items-center justify-center space-x-3"
           >
-            <div className="h-px w-12 bg-white/60" />
-            <span className="text-white/90 text-base uppercase tracking-wider font-medium">
+            <div className="h-px w-12 bg-primary-yellow/60" />
+            <span className="text-white/90 text-sm uppercase tracking-wider font-semibold">
               Since 1904
             </span>
-            <div className="h-px w-12 bg-white/60" />
+            <div className="h-px w-12 bg-primary-yellow/60" />
           </motion.div>
 
           {/* Main Title */}
           <motion.h1
             variants={heroTitle}
-            className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight"
+            className="font-heading text-h1 font-bold text-white leading-tight"
           >
-            Home of the World's
+            Home of the World&apos;s
             <br />
-            <span className="text-primary">First Waffle Cone</span>
+            <span className="text-primary-yellow">First Waffle Cone</span>
           </motion.h1>
 
           {/* Description */}
@@ -84,7 +83,7 @@ export function Hero() {
             variants={heroSubtitle}
             className="text-white/90 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
           >
-            Four generations of family tradition serving Norfolk's finest ice cream 
+            Four generations of family tradition serving Norfolk&apos;s finest ice cream 
             and barbecue. Still making cones on our original 1905 machine.
           </motion.p>
 
@@ -96,10 +95,11 @@ export function Hero() {
             <motion.div variants={heroButton}>
               <Button
                 asChild
+                variant="accent"
                 size="lg"
-                className="w-full sm:w-auto"
+                className="w-full sm:w-auto min-w-[180px]"
               >
-                <Link href="/order">Order Online</Link>
+                <Link href="/menu">Order Online</Link>
               </Button>
             </motion.div>
             
@@ -108,7 +108,7 @@ export function Hero() {
                 asChild
                 variant="outline"
                 size="lg"
-                className="w-full sm:w-auto border-white text-white hover:bg-white hover:text-doumar-black"
+                className="w-full sm:w-auto min-w-[180px] border-white text-white hover:bg-white hover:text-neutral-black"
               >
                 <Link href="/menu">View Menu</Link>
               </Button>
@@ -121,10 +121,10 @@ export function Hero() {
             className="pt-8"
           >
             <div className="inline-flex items-center space-x-3 bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 border border-white/20">
-              <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+              <div className="w-10 h-10 bg-primary-red rounded-full flex items-center justify-center">
                 <span className="text-white font-bold text-lg">🏆</span>
               </div>
-              <span className="text-white text-base font-medium">
+              <span className="text-white text-sm font-medium uppercase tracking-wide">
                 James Beard Award Winner
               </span>
             </div>
@@ -142,28 +142,28 @@ export function Hero() {
         {/* Play/Pause Button */}
         <motion.button
           onClick={togglePlay}
-          className="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 hover:bg-white/30 transition-all duration-200 group"
+          className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 hover:bg-white/30 transition-all duration-250 group"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
         >
           {isPlaying ? (
-            <Pause className="h-5 w-5 text-white group-hover:text-primary transition-colors" />
+            <Pause className="h-5 w-5 text-white group-hover:text-primary-yellow transition-colors" />
           ) : (
-            <Play className="h-5 w-5 text-white ml-0.5 group-hover:text-primary transition-colors" />
+            <Play className="h-5 w-5 text-white ml-0.5 group-hover:text-primary-yellow transition-colors" />
           )}
         </motion.button>
 
         {/* Mute/Unmute Button */}
         <motion.button
           onClick={toggleMute}
-          className="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 hover:bg-white/30 transition-all duration-200 group"
+          className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 hover:bg-white/30 transition-all duration-250 group"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
         >
           {isMuted ? (
-            <VolumeX className="h-5 w-5 text-white group-hover:text-primary transition-colors" />
+            <VolumeX className="h-5 w-5 text-white group-hover:text-primary-yellow transition-colors" />
           ) : (
-            <Volume2 className="h-5 w-5 text-white group-hover:text-primary transition-colors" />
+            <Volume2 className="h-5 w-5 text-white group-hover:text-primary-yellow transition-colors" />
           )}
         </motion.button>
       </motion.div>

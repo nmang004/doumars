@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from "react"
 import { motion } from "framer-motion"
-import { Search, Star, ShoppingCart, Filter, Plus, Minus, Heart } from "lucide-react"
+import { Search, Star, ShoppingCart, Plus, Minus, Heart } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -13,6 +13,8 @@ import { Footer } from "@/components/layout/footer"
 import { useCart } from "@/contexts/cart-context"
 import { formatPrice } from "@/lib/utils"
 import { fadeInUp, staggerContainer, staggerItem } from "@/lib/motion"
+
+import Image from "next/image"
 
 interface MerchandiseItem {
   id: string
@@ -302,9 +304,11 @@ export default function MerchandisePage() {
                 {merchandiseData.filter(item => item.featured).map((item) => (
                   <Card key={item.id} className="overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
                     <div className="relative">
-                      <img
+                      <Image
                         src={item.images[0]}
                         alt={item.name}
+                        width={400}
+                        height={400}
                         className="w-full h-48 object-cover"
                       />
                       <Badge className="absolute top-3 left-3 bg-primary text-white">
@@ -347,9 +351,11 @@ export default function MerchandisePage() {
                 <Card className="overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 bg-white">
                   {/* Image */}
                   <div className="relative aspect-square">
-                    <img
+                    <Image
                       src={item.images[0]}
                       alt={item.name}
+                      width={400}
+                      height={400}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                     

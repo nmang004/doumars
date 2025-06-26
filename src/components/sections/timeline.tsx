@@ -61,12 +61,12 @@ const timelineEvents = [
 
 export function Timeline() {
   return (
-    <section className="py-24 bg-white">
+    <section className="py-20 md:py-32 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
           subtitle="Our Journey"
           title="120+ Years of Innovation and Tradition"
-          description="From a teenage entrepreneur's bright idea to a four-generation family legacy"
+          description="From a teenage entrepreneur's bright idea to a four-generation family legacy."
           centered
           className="mb-16"
         />
@@ -79,59 +79,39 @@ export function Timeline() {
           viewport={{ once: true }}
         >
           {/* Timeline Line */}
-          <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-primary/50 to-primary transform md:-translate-x-0.5" />
+          <div className="absolute left-5 md:left-1/2 top-0 bottom-0 w-0.5 bg-gray-200" />
 
-          <div className="space-y-12">
+          <div className="space-y-16">
             {timelineEvents.map((event, index) => (
               <motion.div
                 key={index}
                 variants={staggerItem}
-                className={`relative flex items-center ${
-                  index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-                }`}
-              >
+                className={`relative flex items-start md:items-center ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
+                
                 {/* Timeline Icon */}
-                <div className="absolute left-6 md:left-1/2 transform md:-translate-x-1/2 z-10">
-                  <div className={`w-6 h-6 rounded-full border-4 border-white ${
-                    event.highlight ? 'bg-primary' : 'bg-gray-400'
-                  } shadow-lg flex items-center justify-center`}>
-                    <event.icon className="w-3 h-3 text-white" />
+                <div className="absolute left-0 md:left-1/2 transform -translate-x-1/2 z-10">
+                  <div className={`w-10 h-10 rounded-full border-4 border-white ${event.highlight ? 'bg-primary' : 'bg-gray-400'} shadow-lg flex items-center justify-center`}>
+                    <event.icon className="w-5 h-5 text-white" />
                   </div>
                 </div>
 
                 {/* Content Card */}
-                <div className={`w-full md:w-5/12 ml-16 md:ml-0 ${
-                  index % 2 === 0 ? 'md:mr-auto md:pr-8' : 'md:ml-auto md:pl-8'
-                }`}>
+                <div className={`w-full md:w-5/12 ml-16 md:ml-0 ${index % 2 === 0 ? 'md:mr-auto md:pr-8' : 'md:ml-auto md:pl-8'}`}>
                   <motion.div
-                    className={`bg-white rounded-lg shadow-lg overflow-hidden border ${
-                      event.highlight ? 'border-primary/20 shadow-primary/10' : 'border-gray-100'
-                    }`}
-                    whileHover={{ 
-                      scale: 1.02,
-                      shadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1)"
-                    }}
+                    className={`bg-white rounded-lg shadow-lg overflow-hidden border ${event.highlight ? 'border-primary/20 shadow-primary/10' : 'border-gray-100'}`}
+                    whileHover={{ scale: 1.02, shadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1)" }}
                     transition={{ duration: 0.2 }}
                   >
-                    {/* Image */}
-                    <div className="aspect-video">
-                      <img
-                        src={event.image}
-                        alt={event.title}
-                        className="w-full h-full object-cover"
-                      />
+                    <div className="aspect-w-16 aspect-h-9">
+                      <img src={event.image} alt={event.title} className="w-full h-full object-cover" />
                     </div>
-
-                    {/* Content */}
                     <div className="p-6">
-                      <div className="flex items-center space-x-2 mb-3">
-                        <span className={`text-2xl font-bold font-heading ${
-                          event.highlight ? 'text-primary' : 'text-gray-600'
-                        }`}>
+                      <div className="flex items-center space-x-3 mb-3">
+                        <span className={`text-2xl font-bold font-heading ${event.highlight ? 'text-primary' : 'text-gray-600'}`}>
                           {event.year}
                         </span>
                         {event.highlight && (
-                          <div className="bg-primary text-white text-xs px-2 py-1 rounded-full">
+                          <div className="bg-primary text-white text-xs px-2 py-1 rounded-full font-semibold">
                             Milestone
                           </div>
                         )}
@@ -142,25 +122,6 @@ export function Timeline() {
                       <p className="text-gray-600 leading-relaxed">
                         {event.description}
                       </p>
-                    </div>
-                  </motion.div>
-                </div>
-
-                {/* Year Badge for Desktop */}
-                <div className={`hidden md:block w-5/12 ${
-                  index % 2 === 0 ? 'text-right pr-8' : 'text-left pl-8'
-                }`}>
-                  <motion.div
-                    className="inline-block"
-                    initial={{ opacity: 0, x: index % 2 === 0 ? 20 : -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.2 }}
-                    viewport={{ once: true }}
-                  >
-                    <div className={`text-4xl md:text-6xl font-bold font-heading ${
-                      event.highlight ? 'text-primary' : 'text-gray-200'
-                    }`}>
-                      {event.year}
                     </div>
                   </motion.div>
                 </div>

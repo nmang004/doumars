@@ -271,13 +271,13 @@ export function MenuDisplay() {
         >
           {/* Search Bar */}
           <div className="relative max-w-md mx-auto">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
             <Input
               type="text"
               placeholder="Search menu items..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-10 bg-white shadow-md"
+              className="pl-12 h-12 bg-white shadow-md text-base"
             />
           </div>
 
@@ -287,6 +287,7 @@ export function MenuDisplay() {
               variant={selectedCategory === "all" ? "default" : "outline"}
               onClick={() => setSelectedCategory("all")}
               className="transition-all duration-200"
+              size="sm"
             >
               All Items
             </Button>
@@ -296,6 +297,7 @@ export function MenuDisplay() {
                 variant={selectedCategory === category.id ? "default" : "outline"}
                 onClick={() => setSelectedCategory(category.id)}
                 className="transition-all duration-200"
+                size="sm"
               >
                 {category.name}
               </Button>
@@ -305,7 +307,7 @@ export function MenuDisplay() {
 
         {/* Menu Items Grid */}
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8"
           variants={staggerContainer}
           initial="initial"
           whileInView="animate"
@@ -317,7 +319,7 @@ export function MenuDisplay() {
               variants={staggerItem}
               className="group"
             >
-              <Card className="overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 bg-white border-gray-100">
+              <Card className="overflow-hidden h-full flex flex-col shadow-lg hover:shadow-xl transition-all duration-300 bg-white border-gray-100 rounded-lg">
                 {/* Image */}
                 <div className="relative aspect-video">
                   <img
@@ -329,28 +331,28 @@ export function MenuDisplay() {
                   {/* Badges */}
                   <div className="absolute top-3 left-3 flex gap-2">
                     {item.popular && (
-                      <Badge className="bg-primary text-white">
-                        <Star className="w-3 h-3 mr-1" />
+                      <Badge className="bg-primary text-white border border-white/50">
+                        <Star className="w-3 h-3 mr-1.5" />
                         Popular
                       </Badge>
                     )}
-                    <Badge variant="secondary" className="bg-black/70 text-white">
-                      {item.categoryName}
-                    </Badge>
                   </div>
 
                   {/* Price Badge */}
                   <div className="absolute top-3 right-3">
-                    <Badge className="bg-white text-doumar-black font-bold text-lg">
+                    <Badge className="bg-white text-doumar-black font-bold text-lg shadow-md">
                       {formatPrice(item.price)}
                     </Badge>
                   </div>
                 </div>
 
-                <CardContent className="p-6">
-                  <div className="space-y-4">
+                <CardContent className="p-6 flex flex-col flex-grow">
+                  <div className="space-y-4 flex flex-col flex-grow">
                     {/* Item Info */}
-                    <div>
+                    <div className="flex-grow">
+                      <Badge variant="secondary" className="mb-2 bg-primary/10 text-primary">
+                        {item.categoryName}
+                      </Badge>
                       <h3 className="text-xl font-heading font-semibold text-doumar-black mb-2 group-hover:text-primary transition-colors">
                         {item.name}
                       </h3>
@@ -360,12 +362,12 @@ export function MenuDisplay() {
 
                       {/* Allergens */}
                       {item.allergens && item.allergens.length > 0 && (
-                        <div className="flex flex-wrap gap-1 mb-3">
+                        <div className="flex flex-wrap gap-1.5 mb-3">
                           {item.allergens.map((allergen) => (
                             <Badge
                               key={allergen}
                               variant="secondary"
-                              className={`text-xs ${allergenColors[allergen as keyof typeof allergenColors]}`}
+                              className={`text-xs font-medium ${allergenColors[allergen as keyof typeof allergenColors]}`}
                             >
                               {allergen}
                             </Badge>
@@ -375,26 +377,26 @@ export function MenuDisplay() {
                     </div>
 
                     {/* Quantity Controls */}
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center space-x-3">
+                    <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+                      <div className="flex items-center space-x-2">
                         <Button
                           variant="outline"
                           size="icon"
-                          className="h-8 w-8"
+                          className="h-10 w-10 rounded-full"
                           onClick={() => updateQuantity(item.id, -1)}
                           disabled={!quantities[item.id]}
                         >
                           <Minus className="w-4 h-4" />
                         </Button>
                         
-                        <span className="font-semibold text-lg min-w-[2rem] text-center">
+                        <span className="font-semibold text-xl min-w-[2.5rem] text-center">
                           {quantities[item.id] || 0}
                         </span>
                         
                         <Button
                           variant="outline"
                           size="icon"
-                          className="h-8 w-8"
+                          className="h-10 w-10 rounded-full"
                           onClick={() => updateQuantity(item.id, 1)}
                         >
                           <Plus className="w-4 h-4" />
@@ -402,7 +404,7 @@ export function MenuDisplay() {
                       </div>
 
                       <Button
-                        className="bg-primary hover:bg-primary/90 text-white"
+                        size="sm"
                         disabled={!quantities[item.id]}
                         onClick={() => handleAddToCart(item)}
                       >
@@ -412,8 +414,8 @@ export function MenuDisplay() {
 
                     {/* Customizations Preview */}
                     {item.customizations && item.customizations.length > 0 && (
-                      <div className="text-xs text-gray-500 pt-2 border-t border-gray-100">
-                        <Clock className="w-3 h-3 inline mr-1" />
+                      <div className="text-xs text-gray-500 pt-3 mt-3 border-t border-gray-100">
+                        <Clock className="w-3 h-3 inline mr-1.5" />
                         Customization options available
                       </div>
                     )}
@@ -427,42 +429,21 @@ export function MenuDisplay() {
         {/* No Results */}
         {filteredItems.length === 0 && (
           <motion.div
-            className="text-center py-12"
+            className="text-center py-16"
             variants={fadeInUp}
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
           >
             <div className="text-gray-400 mb-4">
-              <Search className="w-12 h-12 mx-auto" />
+              <Search className="w-16 h-16 mx-auto" />
             </div>
-            <h3 className="text-xl font-semibold text-gray-600 mb-2">
+            <h3 className="text-2xl font-semibold text-gray-600 mb-2">
               No items found
             </h3>
-            <p className="text-gray-500">
-              Try adjusting your search or category filter
+            <p className="text-gray-500 max-w-md mx-auto">
+              Try adjusting your search query or selecting a different category to find what you're looking for.
             </p>
-          </motion.div>
-        )}
-
-        {/* Order Summary */}
-        {Object.values(quantities).some(q => q > 0) && (
-          <motion.div
-            className="fixed bottom-6 right-6 bg-primary text-white p-4 rounded-lg shadow-lg"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            <div className="text-sm font-medium mb-2">
-              {Object.values(quantities).reduce((sum, q) => sum + q, 0)} items in cart
-            </div>
-            <Button
-              variant="secondary"
-              size="sm"
-              className="w-full"
-            >
-              View Cart
-            </Button>
           </motion.div>
         )}
       </div>

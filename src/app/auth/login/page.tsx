@@ -44,7 +44,7 @@ export default function LoginPage() {
       } else {
         router.push('/') // Redirect to home page after successful login
       }
-    } catch (err) {
+    } catch {
       setError('An unexpected error occurred')
     } finally {
       setIsLoading(false)
@@ -158,7 +158,7 @@ export default function LoginPage() {
 
                 <div className="mt-6 text-center">
                   <p className="text-sm text-gray-600">
-                    Don't have an account?{' '}
+                    Don&apos;t have an account?{' '}
                     <Link 
                       href="/auth/signup"
                       className="text-primary hover:text-primary/80 font-semibold"

@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { motion } from "framer-motion"
-import { ArrowLeft, MapPin, Clock, CreditCard, User, Phone, Mail, MessageSquare } from "lucide-react"
+import { ArrowLeft, MapPin, Clock, User, MessageSquare } from "lucide-react"
 import { StripePaymentForm } from "@/components/payment/stripe-payment-form"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -18,6 +18,8 @@ import { fadeInUp } from "@/lib/motion"
 import Link from "next/link"
 import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
+
+import Image from "next/image"
 
 export default function CheckoutPage() {
   const { items, subtotal, tax, total, itemCount } = useCart()
@@ -297,9 +299,11 @@ export default function CheckoutPage() {
                 <CardContent className="space-y-4">
                   {items.map((item, index) => (
                     <div key={`${item.id}-${index}`} className="flex space-x-3">
-                      <img
-                        src={item.image}
+                      <Image
+                        src={item.image || ''}
                         alt={item.name}
+                        width={48}
+                        height={48}
                         className="w-12 h-12 object-cover rounded-lg flex-shrink-0"
                       />
                       <div className="flex-1 min-w-0">

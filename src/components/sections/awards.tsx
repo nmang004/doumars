@@ -94,19 +94,19 @@ const testimonials = [
 
 export function Awards() {
   return (
-    <section className="py-24 bg-gradient-to-br from-doumar-black to-gray-900 text-white">
+    <section className="py-20 md:py-32 bg-gradient-to-br from-doumar-black to-gray-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
           subtitle="Recognition & Awards"
           title="Nationally Recognized Excellence"
-          description="Our commitment to quality and tradition has earned recognition from culinary experts and media across the nation"
+          description="Our commitment to quality and tradition has earned recognition from culinary experts and media across the nation."
           centered
           className="mb-16 text-white [&_span]:text-primary [&_h2]:text-white [&_p]:text-gray-300"
         />
 
         {/* Awards Grid */}
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-20"
           variants={staggerContainer}
           initial="initial"
           whileInView="animate"
@@ -118,7 +118,7 @@ export function Awards() {
               variants={staggerItem}
               className="group"
             >
-              <Card className="bg-white/5 border-white/10 hover:bg-white/10 transition-all duration-300 h-full">
+              <Card className="bg-white/5 border-white/10 hover:bg-white/10 hover:border-primary/30 transition-all duration-300 h-full">
                 <CardContent className="p-6">
                   <div className="flex items-start space-x-4">
                     <div className={`p-3 rounded-lg ${award.color} flex-shrink-0`}>
@@ -144,46 +144,6 @@ export function Awards() {
           ))}
         </motion.div>
 
-        {/* Media Features */}
-        <motion.div
-          className="mb-20"
-          variants={staggerContainer}
-          initial="initial"
-          whileInView="animate"
-          viewport={{ once: true }}
-        >
-          <div className="text-center mb-12">
-            <h3 className="text-3xl font-heading font-bold text-white mb-4">
-              Featured In National Media
-            </h3>
-            <p className="text-gray-300 max-w-2xl mx-auto">
-              Our story has been shared across major television networks, 
-              newspapers, and magazines nationwide.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {mediaFeatures.map((feature, index) => (
-              <motion.div
-                key={index}
-                variants={staggerItem}
-                className="bg-white/5 rounded-lg p-6 border border-white/10 hover:bg-white/10 transition-all duration-300"
-              >
-                <div className="flex items-center space-x-3 mb-3">
-                  <Tv className="w-5 h-5 text-primary" />
-                  <div>
-                    <h4 className="font-semibold text-white">{feature.outlet}</h4>
-                    <div className="text-primary text-sm">{feature.show}</div>
-                  </div>
-                </div>
-                <p className="text-gray-300 text-sm">
-                  {feature.description}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-
         {/* Testimonials */}
         <motion.div
           variants={staggerContainer}
@@ -207,9 +167,9 @@ export function Awards() {
                 variants={staggerItem}
                 className="text-center"
               >
-                <div className="bg-white/5 rounded-lg p-6 border border-white/10">
-                  <div className="text-4xl text-primary opacity-30 mb-4">"</div>
-                  <blockquote className="text-gray-300 mb-6 leading-relaxed">
+                <div className="bg-white/5 rounded-lg p-8 border border-white/10 h-full flex flex-col justify-center">
+                  <div className="text-5xl text-primary opacity-30 mb-4">"</div>
+                  <blockquote className="text-gray-300 mb-6 leading-relaxed flex-grow">
                     {testimonial.text}
                   </blockquote>
                   <footer>
@@ -219,43 +179,6 @@ export function Awards() {
                 </div>
               </motion.div>
             ))}
-          </div>
-        </motion.div>
-
-        {/* Call to Action */}
-        <motion.div
-          className="text-center mt-16"
-          variants={staggerItem}
-          initial="initial"
-          whileInView="animate"
-          viewport={{ once: true }}
-        >
-          <div className="bg-primary/10 rounded-lg p-8 border border-primary/20">
-            <h3 className="text-2xl font-heading font-bold text-white mb-4">
-              Experience Award-Winning Quality
-            </h3>
-            <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
-              Come taste what food critics and culinary experts have been raving about for decades. 
-              Experience the quality that has earned us national recognition.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <motion.a
-                href="/menu"
-                className="bg-primary hover:bg-primary/90 text-white font-semibold px-6 py-3 rounded-lg transition-colors inline-block"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                View Our Menu
-              </motion.a>
-              <motion.a
-                href="/order"
-                className="border border-primary text-primary hover:bg-primary hover:text-white font-semibold px-6 py-3 rounded-lg transition-colors inline-block"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Order Online
-              </motion.a>
-            </div>
           </div>
         </motion.div>
       </div>

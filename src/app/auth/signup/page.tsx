@@ -16,7 +16,6 @@ import Link from "next/link"
 import { useRouter } from "next/navigation"
 
 export default function SignUpPage() {
-  const router = useRouter()
   const { signUp } = useAuth()
   const [formData, setFormData] = useState({
     fullName: '',
@@ -67,7 +66,7 @@ export default function SignUpPage() {
       } else {
         setSuccess(true)
       }
-    } catch (err) {
+    } catch {
       setError('An unexpected error occurred')
     } finally {
       setIsLoading(false)
@@ -96,7 +95,7 @@ export default function SignUpPage() {
                     Check Your Email
                   </h2>
                   <p className="text-gray-600 mb-6">
-                    We've sent a confirmation link to <strong>{formData.email}</strong>. 
+                    We&apos;ve sent a confirmation link to <strong>{formData.email}</strong>. 
                     Please check your email and click the link to verify your account.
                   </p>
                   <Button asChild className="bg-primary hover:bg-primary/90">

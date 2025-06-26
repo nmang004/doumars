@@ -31,50 +31,46 @@ export function Header() {
   }
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-neutral-white/95 backdrop-blur-md border-b border-neutral-gray-lighter shadow-sm">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
+        <div className="flex h-20 items-center justify-between">
           {/* Logo */}
           <div className="flex items-center">
-            <Link href="/" className="flex items-center space-x-2">
-              <div className="h-10 w-10 rounded-full bg-primary flex items-center justify-center">
-                <span className="text-white font-bold text-lg">D</span>
+            <Link href="/" className="flex items-center space-x-3 group">
+              <div className="h-12 w-12 rounded-full bg-primary-red flex items-center justify-center transition-transform duration-250 group-hover:scale-105">
+                <span className="text-white font-bold text-xl font-heading">D</span>
               </div>
               <div className="hidden sm:block">
-                <h1 className="font-heading text-xl font-bold text-doumar-black">
-                  Doumar's
+                <h1 className="font-heading text-2xl font-bold text-neutral-black">
+                  Doumar&apos;s
                 </h1>
-                <p className="text-xs text-gray-600">Since 1904</p>
+                <p className="text-sm text-neutral-gray-dark">Since 1904</p>
               </div>
             </Link>
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden lg:flex items-center space-x-8">
             {navigation.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-sm font-medium text-doumar-black hover:text-primary transition-colors duration-200 relative group"
+                className="text-base font-medium text-neutral-black hover:text-primary-red transition-colors duration-250 relative group"
               >
                 {item.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary-red group-hover:w-full transition-all duration-300 ease-out"></span>
               </Link>
             ))}
           </nav>
 
           {/* Actions */}
-          <div className="flex items-center space-x-4">
-            {/* Phone Number */}
-            <div className="hidden lg:flex items-center space-x-2 text-sm text-gray-600">
-              <Phone className="h-4 w-4" />
-              <span>(757) 627-4163</span>
-            </div>
-
+          <div className="flex items-center space-x-2 md:space-x-4">
             {/* Order Online Button */}
             <Button 
               asChild
-              className="bg-primary hover:bg-primary/90 text-white font-semibold px-6 py-2 rounded-full transition-all duration-200 hover:scale-105"
+              variant="accent"
+              size="default"
+              className="hidden sm:inline-flex"
             >
               <Link href="/menu">Order Online</Link>
             </Button>
@@ -85,7 +81,7 @@ export function Header() {
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="relative hover:bg-gray-100"
+                  className="hover:bg-neutral-off-white"
                   onClick={() => setUserMenuOpen(!userMenuOpen)}
                 >
                   <User className="h-5 w-5" />
@@ -97,33 +93,33 @@ export function Header() {
                       initial={{ opacity: 0, y: -10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
-                      className="absolute right-0 top-full mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg py-2"
+                      className="absolute right-0 top-full mt-2 w-56 bg-neutral-white border border-neutral-gray-lighter rounded-lg shadow-lg py-2"
                     >
-                      <div className="px-4 py-2 border-b border-gray-100">
-                        <p className="text-sm font-medium text-gray-900">
+                      <div className="px-4 py-2 border-b border-neutral-gray-lighter">
+                        <p className="text-base font-medium text-neutral-black">
                           {user.user_metadata?.full_name || user.email}
                         </p>
-                        <p className="text-xs text-gray-500">{user.email}</p>
+                        <p className="text-sm text-neutral-gray-medium">{user.email}</p>
                       </div>
                       <Link
                         href="/account/orders"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        className="block px-4 py-3 text-base text-neutral-gray-dark hover:bg-neutral-off-white transition-colors duration-250"
                         onClick={() => setUserMenuOpen(false)}
                       >
                         Order History
                       </Link>
                       <Link
                         href="/account/profile"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        className="block px-4 py-3 text-base text-neutral-gray-dark hover:bg-neutral-off-white transition-colors duration-250"
                         onClick={() => setUserMenuOpen(false)}
                       >
                         Profile Settings
                       </Link>
                       <button
                         onClick={handleSignOut}
-                        className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center"
+                        className="w-full text-left px-4 py-3 text-base text-neutral-gray-dark hover:bg-neutral-off-white transition-colors duration-250 flex items-center"
                       >
-                        <LogOut className="h-4 w-4 mr-2" />
+                        <LogOut className="h-5 w-5 mr-2" />
                         Sign Out
                       </button>
                     </motion.div>
@@ -133,8 +129,9 @@ export function Header() {
             ) : (
               <Button 
                 asChild
-                variant="outline"
-                className="hidden sm:flex"
+                variant="secondary"
+                size="sm"
+                className="hidden md:inline-flex"
               >
                 <Link href="/auth/login">Sign In</Link>
               </Button>
@@ -144,7 +141,7 @@ export function Header() {
             <Button
               variant="ghost"
               size="icon"
-              className="relative hover:bg-gray-100"
+              className="relative hover:bg-neutral-off-white"
               onClick={() => setCartOpen(true)}
             >
               <ShoppingCart className="h-5 w-5" />
@@ -152,7 +149,7 @@ export function Header() {
                 <motion.span
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
-                  className="absolute -top-1 -right-1 h-5 w-5 bg-primary text-white text-xs rounded-full flex items-center justify-center font-semibold"
+                  className="absolute -top-1 -right-1 h-5 w-5 bg-primary-red text-white text-xs rounded-full flex items-center justify-center font-semibold"
                 >
                   {itemCount > 99 ? '99+' : itemCount}
                 </motion.span>
@@ -163,7 +160,7 @@ export function Header() {
             <Button
               variant="ghost"
               size="icon"
-              className="md:hidden"
+              className="lg:hidden"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
               {mobileMenuOpen ? (
@@ -184,22 +181,30 @@ export function Header() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden border-t border-gray-200 bg-white"
+            className="lg:hidden border-t border-neutral-gray-lighter bg-neutral-white"
           >
             <div className="px-4 py-4 space-y-2">
               {navigation.map((item) => (
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="block px-3 py-2 text-base font-medium text-doumar-black hover:text-primary hover:bg-gray-50 rounded-md transition-colors duration-200"
+                  className="block px-3 py-3 text-lg font-medium text-neutral-black hover:text-primary-red hover:bg-neutral-off-white rounded-lg transition-colors duration-250"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {item.name}
                 </Link>
               ))}
-              <div className="pt-4 border-t border-gray-200">
-                <div className="flex items-center space-x-2 px-3 py-2 text-sm text-gray-600">
-                  <Phone className="h-4 w-4" />
+              <div className="pt-4 mt-4 border-t border-neutral-gray-lighter">
+                <Button 
+                  asChild
+                  variant="accent"
+                  size="default"
+                  className="w-full sm:hidden"
+                >
+                  <Link href="/menu">Order Online</Link>
+                </Button>
+                <div className="flex items-center space-x-2 px-3 py-4 text-base text-neutral-gray-dark">
+                  <Phone className="h-5 w-5" />
                   <span>(757) 627-4163</span>
                 </div>
               </div>
