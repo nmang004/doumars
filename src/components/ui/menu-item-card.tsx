@@ -18,15 +18,17 @@ export const MenuItemCard = memo(function MenuItemCard({ item }: MenuItemCardPro
       transition={{ duration: 0.2, ease: "easeOut" }}
     >
       <Card className="overflow-hidden h-full flex flex-col shadow-md hover:shadow-xl transition-all duration-300 bg-white border-gray-100 rounded-lg focus-within:ring-2 focus-within:ring-primary-red focus-within:ring-offset-2">
-        {/* Image */}
-        <div className="relative aspect-video">
-          <img
-            src={item.imageUrl}
-            alt={item.name}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-            loading="lazy"
-          />
-        </div>
+        {/* Conditional Image */}
+        {item.imageUrl && (
+          <div className="relative aspect-video">
+            <img
+              src={item.imageUrl}
+              alt={item.name}
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              loading="lazy"
+            />
+          </div>
+        )}
 
         <CardContent className="p-6 flex flex-col flex-grow">
           <div className="space-y-4 flex flex-col flex-grow">

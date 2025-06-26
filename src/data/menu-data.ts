@@ -6,7 +6,6 @@ export const menuData: MenuItem[] = [
     id: 'french-fries',
     category: 'Sandwiches',
     name: 'French Fries',
-    imageUrl: '/images/food/bbq-sandwich.jpg',
     price: 2.25
   },
   {
@@ -26,7 +25,6 @@ export const menuData: MenuItem[] = [
     id: 'hamburger',
     category: 'Sandwiches',
     name: 'Hamburger',
-    imageUrl: '/images/food/bbq-sandwich.jpg',
     description: 'We grind our own beef on the premises',
     variations: [
       { name: 'With mustard, relish, and/or onions', price: 3.50 },
@@ -37,7 +35,6 @@ export const menuData: MenuItem[] = [
     id: 'cheeseburger',
     category: 'Sandwiches',
     name: 'Cheeseburger',
-    imageUrl: '/images/food/bbq-sandwich.jpg',
     description: 'With cheese on both sides',
     variations: [
       { name: 'Plain (a specialty with us)', price: 4.00 },
@@ -49,7 +46,6 @@ export const menuData: MenuItem[] = [
     id: 'hot-dog',
     category: 'Sandwiches',
     name: 'Hot Dog',
-    imageUrl: '/images/food/bbq-sandwich.jpg',
     description: 'Split and grilled on a hamburger roll',
     variations: [
       { name: 'With mustard, Relish, and/or Onions', price: 2.30 },
@@ -61,7 +57,6 @@ export const menuData: MenuItem[] = [
     id: 'baked-ham',
     category: 'Sandwiches',
     name: 'Ham - Baked, Smoked Ham on Toast',
-    imageUrl: '/images/food/bbq-sandwich.jpg',
     variations: [
       { name: 'With lettuce, tomato, and mayonnaise', price: 5.00 },
       { name: 'With cheese, lettuce, tomato, and mayonnaise', price: 5.40 }
@@ -71,7 +66,6 @@ export const menuData: MenuItem[] = [
     id: 'fried-ham',
     category: 'Sandwiches',
     name: 'Fried Ham',
-    imageUrl: '/images/food/bbq-sandwich.jpg',
     variations: [
       { name: 'With lettuce, tomato, and mayonnaise', price: 5.00 },
       { name: 'With cheese, lettuce, tomato, and mayonnaise', price: 5.40 }
@@ -81,7 +75,6 @@ export const menuData: MenuItem[] = [
     id: 'steak',
     category: 'Sandwiches',
     name: 'Steak',
-    imageUrl: '/images/food/bbq-sandwich.jpg',
     description: 'Thin, grilled, sliced ribeye on a roll. With lettuce, tomato, and mayonnaise.',
     price: 6.20
   },
@@ -89,7 +82,6 @@ export const menuData: MenuItem[] = [
     id: 'taylor-pork-roll',
     category: 'Sandwiches',
     name: 'Taylor Pork Roll',
-    imageUrl: '/images/food/bbq-sandwich.jpg',
     description: 'Gourmet processed pork, sliced and grilled. With lettuce, tomato, and mayonnaise.',
     price: 6.00
   },
@@ -97,7 +89,6 @@ export const menuData: MenuItem[] = [
     id: 'blt',
     category: 'Sandwiches',
     name: 'Bacon, Lettuce and Tomato',
-    imageUrl: '/images/food/bbq-sandwich.jpg',
     description: 'On toast with mayonnaise.',
     price: 6.25
   },
@@ -105,7 +96,6 @@ export const menuData: MenuItem[] = [
     id: 'lettuce-tomato',
     category: 'Sandwiches',
     name: 'Lettuce and Tomato',
-    imageUrl: '/images/food/bbq-sandwich.jpg',
     description: 'On toast with mayonnaise.',
     price: 4.00
   },
@@ -113,7 +103,6 @@ export const menuData: MenuItem[] = [
     id: 'tuna-fish',
     category: 'Sandwiches',
     name: 'Tuna Fish Salad',
-    imageUrl: '/images/food/bbq-sandwich.jpg',
     description: 'On toast with lettuce, tomato, and mayonnaise.',
     price: 5.90
   },
@@ -121,42 +110,36 @@ export const menuData: MenuItem[] = [
     id: 'bacon-egg',
     category: 'Sandwiches',
     name: 'Bacon and Egg on Toast',
-    imageUrl: '/images/food/bbq-sandwich.jpg',
     price: 5.10
   },
   {
     id: 'ham-egg',
     category: 'Sandwiches',
     name: 'Ham and Egg on Toast',
-    imageUrl: '/images/food/bbq-sandwich.jpg',
     price: 5.10
   },
   {
     id: 'steak-egg',
     category: 'Sandwiches',
     name: 'Steak and Egg on Toast',
-    imageUrl: '/images/food/bbq-sandwich.jpg',
     price: 7.50
   },
   {
     id: 'fried-egg',
     category: 'Sandwiches',
     name: 'Fried Egg on Toast',
-    imageUrl: '/images/food/bbq-sandwich.jpg',
     price: 3.00
   },
   {
     id: 'fried-egg-cheese',
     category: 'Sandwiches',
     name: 'Fried Egg on Toast with Cheese',
-    imageUrl: '/images/food/bbq-sandwich.jpg',
     price: 3.40
   },
   {
     id: 'egg-o-doumar',
     category: 'Sandwiches',
     name: 'Egg-O-Doumar',
-    imageUrl: '/images/food/bbq-sandwich.jpg',
     description: 'Fried ham and egg, With cheese on a roll.',
     price: 5.50
   },
@@ -164,21 +147,18 @@ export const menuData: MenuItem[] = [
     id: 'grilled-cheese',
     category: 'Sandwiches',
     name: 'Grilled Cheese - Plain',
-    imageUrl: '/images/food/bbq-sandwich.jpg',
     price: 4.10
   },
   {
     id: 'grilled-cheese-bacon',
     category: 'Sandwiches',
     name: 'Grilled Cheese with Bacon',
-    imageUrl: '/images/food/bbq-sandwich.jpg',
     price: 6.20
   },
   {
     id: 'grilled-cheese-ham',
     category: 'Sandwiches',
     name: 'Grilled Cheese with Ham',
-    imageUrl: '/images/food/bbq-sandwich.jpg',
     price: 6.20
   },
 
@@ -187,7 +167,6 @@ export const menuData: MenuItem[] = [
     id: 'coleslaw',
     category: 'Sides',
     name: 'Slaw',
-    imageUrl: '/images/food/bbq-sandwich.jpg',
     description: 'Especially made to go with our barbeque',
     variations: [
       { name: '14 oz', price: 2.00 },
@@ -198,7 +177,6 @@ export const menuData: MenuItem[] = [
     id: 'rolls',
     category: 'Sides',
     name: 'Rolls',
-    imageUrl: '/images/food/bbq-sandwich.jpg',
     description: 'Trays are available for larger orders',
     variations: [
       { name: 'Each', price: 0.50 },
@@ -211,7 +189,6 @@ export const menuData: MenuItem[] = [
     id: 'coke',
     category: 'Drinks',
     name: 'Coca-Cola',
-    imageUrl: '/images/restaurant/ice-cream-glass.jpg',
     variations: [
       { name: 'Small', price: 1.70 },
       { name: 'Large', price: 2.40 }
@@ -221,7 +198,6 @@ export const menuData: MenuItem[] = [
     id: 'root-beer',
     category: 'Drinks',
     name: 'Root Beer',
-    imageUrl: '/images/restaurant/ice-cream-glass.jpg',
     variations: [
       { name: 'Small', price: 1.70 },
       { name: 'Large', price: 2.40 }
@@ -231,7 +207,6 @@ export const menuData: MenuItem[] = [
     id: 'limeade',
     category: 'Drinks',
     name: 'Famous Limeade',
-    imageUrl: '/images/restaurant/ice-cream-glass.jpg',
     description: 'Our signature refreshing drink',
     variations: [
       { name: 'Small', price: 1.70 },
@@ -242,7 +217,6 @@ export const menuData: MenuItem[] = [
     id: 'orangeade',
     category: 'Drinks',
     name: 'Fresh Orangeade',
-    imageUrl: '/images/restaurant/ice-cream-glass.jpg',
     variations: [
       { name: 'Small', price: 2.25 },
       { name: 'Large', price: 3.25 }
@@ -252,7 +226,6 @@ export const menuData: MenuItem[] = [
     id: 'diet-coke',
     category: 'Drinks',
     name: 'Diet Coke',
-    imageUrl: '/images/restaurant/ice-cream-glass.jpg',
     variations: [
       { name: 'Small', price: 1.70 },
       { name: 'Large', price: 2.40 }
@@ -262,7 +235,6 @@ export const menuData: MenuItem[] = [
     id: 'cherry-coke',
     category: 'Drinks',
     name: 'Cherry Coke',
-    imageUrl: '/images/restaurant/ice-cream-glass.jpg',
     variations: [
       { name: 'Small', price: 1.70 },
       { name: 'Large', price: 2.40 }
@@ -272,7 +244,6 @@ export const menuData: MenuItem[] = [
     id: 'hot-coffee',
     category: 'Drinks',
     name: 'Hot Coffee',
-    imageUrl: '/images/restaurant/ice-cream-glass.jpg',
     variations: [
       { name: 'Small', price: 1.70 },
       { name: 'Large', price: 2.40 }
@@ -282,7 +253,6 @@ export const menuData: MenuItem[] = [
     id: 'tea',
     category: 'Drinks',
     name: 'Hot or Iced Tea',
-    imageUrl: '/images/restaurant/ice-cream-glass.jpg',
     variations: [
       { name: 'Small', price: 1.70 },
       { name: 'Large', price: 2.40 }
@@ -292,7 +262,6 @@ export const menuData: MenuItem[] = [
     id: 'milk',
     category: 'Drinks',
     name: 'Milk',
-    imageUrl: '/images/restaurant/ice-cream-glass.jpg',
     variations: [
       { name: 'Small', price: 1.95 },
       { name: 'Large', price: 2.75 }
@@ -302,7 +271,6 @@ export const menuData: MenuItem[] = [
     id: 'chocolate-milk',
     category: 'Drinks',
     name: 'Chocolate Milk',
-    imageUrl: '/images/restaurant/ice-cream-glass.jpg',
     variations: [
       { name: 'Small', price: 2.25 },
       { name: 'Large', price: 3.25 }
@@ -322,7 +290,6 @@ export const menuData: MenuItem[] = [
     id: 'cheesecake-shake',
     category: 'Shakes & Floats',
     name: 'Cheesecake Shake - Seasonal',
-    imageUrl: '/images/restaurant/ice-cream-glass.jpg',
     description: 'This is a seasonal shake topped with cone chips and whipped cream.',
     price: 5.45
   },
@@ -330,7 +297,6 @@ export const menuData: MenuItem[] = [
     id: 'cookies-cream-shake',
     category: 'Shakes & Floats',
     name: 'Cookies & Cream Shake - Seasonal',
-    imageUrl: '/images/restaurant/ice-cream-glass.jpg',
     description: 'This is a seasonal shake made by adding crumbled chocolate wafer cookies with vanilla cream to our classic vanilla shake.',
     price: 5.45
   },
@@ -361,7 +327,6 @@ export const menuData: MenuItem[] = [
     id: 'hawaiian-sunset',
     category: 'Desserts',
     name: 'Hawaiian Sunset',
-    imageUrl: '/images/restaurant/ice-cream-sundae.jpg',
     description: 'Made with pineapple, ice cream, and nuts.',
     price: 6.00
   },
@@ -369,7 +334,6 @@ export const menuData: MenuItem[] = [
     id: 'coed-sundae',
     category: 'Desserts',
     name: 'Coed Sundae Pride of the House',
-    imageUrl: '/images/restaurant/ice-cream-sundae.jpg',
     description: 'Made with hot fudge, ice cream, and sliced bananas.',
     price: 6.00
   },
@@ -377,7 +341,6 @@ export const menuData: MenuItem[] = [
     id: 'ringo',
     category: 'Desserts',
     name: 'Ringo',
-    imageUrl: '/images/restaurant/ice-cream-sundae.jpg',
     description: 'Made with crushed cone chips.',
     price: 6.00
   },
@@ -385,7 +348,6 @@ export const menuData: MenuItem[] = [
     id: 'hot-fudge-cake',
     category: 'Desserts',
     name: 'Hot Fudge Cake',
-    imageUrl: '/images/restaurant/ice-cream-sundae.jpg',
     description: 'Made with yellow cake.',
     price: 6.00
   },
@@ -393,7 +355,6 @@ export const menuData: MenuItem[] = [
     id: 'banana-fudge-cake',
     category: 'Desserts',
     name: 'Banana Fudge Cake',
-    imageUrl: '/images/restaurant/ice-cream-sundae.jpg',
     description: 'Made with yellow cake.',
     price: 7.00
   },
@@ -401,7 +362,6 @@ export const menuData: MenuItem[] = [
     id: 'shortcake',
     category: 'Desserts',
     name: 'Strawberry or Banana Shortcake',
-    imageUrl: '/images/restaurant/ice-cream-sundae.jpg',
     description: 'Made with yellow cake.',
     price: 6.00
   },
@@ -409,7 +369,6 @@ export const menuData: MenuItem[] = [
     id: 'banana-split',
     category: 'Desserts',
     name: 'Banana Split ~ Eternal Masterpiece',
-    imageUrl: '/images/restaurant/ice-cream-sundae.jpg',
     price: 8.00
   },
   {
@@ -442,14 +401,12 @@ export const menuData: MenuItem[] = [
     id: 'hot-sauce-bottle',
     category: 'Bulk Items',
     name: 'Bottle of Hot Sauce',
-    imageUrl: '/images/food/bbq-sandwich.jpg',
     price: 7.50
   },
   {
     id: 'barbeque-bulk',
     category: 'Bulk Items',
     name: 'Barbeque',
-    imageUrl: '/images/food/bbq-sandwich.jpg',
     description: 'Trays are available for larger orders.',
     variations: [
       { name: 'Half Pint', price: 6.00 },
