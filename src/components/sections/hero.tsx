@@ -32,7 +32,7 @@ export function Hero() {
   }
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center lg:justify-start overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Video */}
       <div className="absolute inset-0 z-0">
         <video
@@ -47,31 +47,32 @@ export function Hero() {
           <source src="/videos/doumar-hero-video.mp4" type="video/mp4" />
         </video>
         {/* Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-black/20 lg:bg-gradient-to-r lg:from-black/70 lg:to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-black/30" />
       </div>
 
       {/* Hero Content */}
-      <div className="relative z-10 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 text-center lg:text-left">
+      <div className="relative z-10 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.div
-          className="space-y-6 lg:max-w-2xl"
+          className="space-y-6 max-w-4xl mx-auto"
           initial="initial"
           animate="animate"
         >
           {/* Subtitle */}
           <motion.div
             variants={heroSubtitle}
-            className="flex items-center justify-center lg:justify-start space-x-3"
+            className="flex items-center justify-center space-x-3"
           >
             <div className="h-px w-12 bg-white/60" />
             <span className="text-white/90 text-base uppercase tracking-wider font-medium">
               Since 1904
             </span>
+            <div className="h-px w-12 bg-white/60" />
           </motion.div>
 
           {/* Main Title */}
           <motion.h1
             variants={heroTitle}
-            className="font-heading text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white leading-tight"
+            className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight"
           >
             Home of the World's
             <br />
@@ -81,7 +82,7 @@ export function Hero() {
           {/* Description */}
           <motion.p
             variants={heroSubtitle}
-            className="text-white/90 text-lg md:text-xl max-w-xl mx-auto lg:mx-0 leading-relaxed"
+            className="text-white/90 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
           >
             Four generations of family tradition serving Norfolk's finest ice cream 
             and barbecue. Still making cones on our original 1905 machine.
@@ -90,7 +91,7 @@ export function Hero() {
           {/* Call to Action Buttons */}
           <motion.div
             variants={fadeInUp}
-            className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4"
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4"
           >
             <motion.div variants={heroButton}>
               <Button
@@ -133,7 +134,7 @@ export function Hero() {
 
       {/* Video Controls */}
       <motion.div
-        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 flex space-x-4"
+        className="absolute bottom-8 right-8 z-10 flex space-x-3"
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 2, duration: 0.6 }}
@@ -141,35 +142,35 @@ export function Hero() {
         {/* Play/Pause Button */}
         <motion.button
           onClick={togglePlay}
-          className="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 hover:bg-white/30 transition-all duration-200 group"
+          className="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 hover:bg-white/30 transition-all duration-200 group"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
         >
           {isPlaying ? (
-            <Pause className="h-8 w-8 text-white group-hover:text-primary transition-colors" />
+            <Pause className="h-5 w-5 text-white group-hover:text-primary transition-colors" />
           ) : (
-            <Play className="h-8 w-8 text-white ml-1 group-hover:text-primary transition-colors" />
+            <Play className="h-5 w-5 text-white ml-0.5 group-hover:text-primary transition-colors" />
           )}
         </motion.button>
 
         {/* Mute/Unmute Button */}
         <motion.button
           onClick={toggleMute}
-          className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 hover:bg-white/30 transition-all duration-200 group"
+          className="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 hover:bg-white/30 transition-all duration-200 group"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
         >
           {isMuted ? (
-            <VolumeX className="h-6 w-6 text-white group-hover:text-primary transition-colors" />
+            <VolumeX className="h-5 w-5 text-white group-hover:text-primary transition-colors" />
           ) : (
-            <Volume2 className="h-6 w-6 text-white group-hover:text-primary transition-colors" />
+            <Volume2 className="h-5 w-5 text-white group-hover:text-primary transition-colors" />
           )}
         </motion.button>
       </motion.div>
 
       {/* Scroll Indicator */}
       <motion.div
-        className="absolute bottom-8 left-1/2 lg:left-auto lg:right-8 transform -translate-x-1/2 lg:translate-x-0 z-10"
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.5, duration: 0.6 }}
