@@ -366,7 +366,7 @@ export function ScrapbookGallery() {
       </section>
 
       {/* Filters */}
-      <section className="py-8 bg-white/80 backdrop-blur-sm sticky top-0 z-10 border-b border-amber-200">
+      <section className="py-8 bg-white/80 backdrop-blur-sm fixed top-0 left-0 right-0 z-50 border-b border-amber-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row gap-6 items-center justify-center">
             {/* Category Filter */}
@@ -411,7 +411,7 @@ export function ScrapbookGallery() {
       </section>
 
       {/* Scrapbook Gallery */}
-      <section className="py-12 md:py-20">
+      <section className="py-12 md:py-20 pt-32 md:pt-36">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             className="columns-1 md:columns-2 lg:columns-3 xl:columns-4 gap-6 space-y-6"
