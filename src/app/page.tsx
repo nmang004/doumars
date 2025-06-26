@@ -58,7 +58,7 @@ export default function Home() {
                   <Link href="/about">Discover Our Full Story</Link>
                 </Button>
                 <Button asChild variant="outline" size="lg" className="flex-1 sm:flex-none border-primary-red text-primary-red hover:bg-primary-red hover:text-white">
-                  <Link href="/gallery">View Historic Photos</Link>
+                  <Link href="/our-scrapbook">View Our Family Scrapbook</Link>
                 </Button>
               </div>
             </div>
