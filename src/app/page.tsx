@@ -26,39 +26,90 @@ export default function Home() {
       {/* Our Story Preview Section */}
       <section id="our-story" className="py-20 md:py-32 bg-neutral-off-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <div className="space-y-6 text-center lg:text-left">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-start">
+            <div className="lg:col-span-3 space-y-6 text-center lg:text-left">
               <SectionHeading 
                 subtitle="Our Legacy"
                 title="Four Generations of Family Tradition"
                 description="It all started at the 1904 World's Fair in St. Louis, where Abe Doumar invented the world's first waffle cone. Today, we're still making cones on that very same machine, serving up the same quality and tradition that has made us a Norfolk institution."
               />
               
-              <div className="grid grid-cols-2 gap-6 max-w-sm mx-auto lg:mx-0">
-                <div className="text-center bg-gradient-to-br from-primary-red/5 to-primary-yellow/5 border border-primary-red/20 p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-250">
-                  <div className="text-h3 font-heading font-bold text-primary-red">1904</div>
-                  <div className="text-sm text-neutral-gray-dark font-semibold uppercase tracking-wider">Founded</div>
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 max-w-2xl mx-auto lg:mx-0">
+                <div className="text-center bg-gradient-to-br from-primary-red/5 to-primary-yellow/5 border border-primary-red/20 p-4 lg:p-6 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 group">
+                  <div className="text-3xl lg:text-h3 font-heading font-bold text-primary-red group-hover:scale-110 transition-transform duration-300">1904</div>
+                  <div className="text-xs lg:text-sm text-neutral-gray-dark font-semibold uppercase tracking-wider">Founded</div>
                 </div>
-                <div className="text-center bg-gradient-to-br from-primary-yellow/5 to-primary-navy/5 border border-primary-navy/20 p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-250">
-                  <div className="text-h3 font-heading font-bold text-primary-navy">4</div>
-                  <div className="text-sm text-neutral-gray-dark font-semibold uppercase tracking-wider">Generations</div>
+                <div className="text-center bg-gradient-to-br from-primary-yellow/5 to-primary-navy/5 border border-primary-navy/20 p-4 lg:p-6 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 group">
+                  <div className="text-3xl lg:text-h3 font-heading font-bold text-primary-navy group-hover:scale-110 transition-transform duration-300">4</div>
+                  <div className="text-xs lg:text-sm text-neutral-gray-dark font-semibold uppercase tracking-wider">Generations</div>
+                </div>
+                <div className="text-center bg-gradient-to-br from-primary-navy/5 to-primary-red/5 border border-primary-red/20 p-4 lg:p-6 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 group">
+                  <div className="text-3xl lg:text-h3 font-heading font-bold text-primary-red group-hover:scale-110 transition-transform duration-300">120+</div>
+                  <div className="text-xs lg:text-sm text-neutral-gray-dark font-semibold uppercase tracking-wider">Years</div>
+                </div>
+                <div className="text-center bg-gradient-to-br from-primary-yellow/5 to-primary-navy/5 border border-primary-yellow/20 p-4 lg:p-6 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 group">
+                  <div className="text-3xl lg:text-h3 font-heading font-bold text-primary-yellow group-hover:scale-110 transition-transform duration-300">1M+</div>
+                  <div className="text-xs lg:text-sm text-neutral-gray-dark font-semibold uppercase tracking-wider">Cones Made</div>
                 </div>
               </div>
 
-              <div className="pt-4">
-                <Button asChild variant="default" size="lg">
+              <div className="pt-6 flex flex-col sm:flex-row gap-4">
+                <Button asChild variant="default" size="lg" className="flex-1 sm:flex-none">
                   <Link href="/about">Discover Our Full Story</Link>
                 </Button>
+                <Button asChild variant="outline" size="lg" className="flex-1 sm:flex-none border-primary-red text-primary-red hover:bg-primary-red hover:text-white">
+                  <Link href="/gallery">View Historic Photos</Link>
+                </Button>
+              </div>
+              
+              {/* Norfolk Institution Badge */}
+              <div className="pt-4">
+                <div className="inline-flex items-center space-x-3 bg-primary-navy/10 backdrop-blur-sm rounded-full px-6 py-3 border border-primary-navy/20">
+                  <div className="w-8 h-8 bg-primary-navy rounded-full flex items-center justify-center">
+                    <span className="text-white font-bold text-sm">🏛️</span>
+                  </div>
+                  <span className="text-primary-navy text-sm font-semibold uppercase tracking-wide">
+                    Norfolk Historic Institution
+                  </span>
+                </div>
               </div>
             </div>
             
-            <div className="relative h-[500px] lg:h-auto lg:aspect-square">
-              <ImageWithFallback
-                src="/images/historical/1904-worlds-fair.jpg"
-                alt="1904 World's Fair - The Birth of the Waffle Cone"
-                fill
-                className="object-cover rounded-xl shadow-2xl rotate-[-2deg] hover:rotate-0 transition-transform duration-350 ease-out"
-              />
+            <div className="lg:col-span-2 space-y-8">
+              {/* Heritage Timeline */}
+              <div className="bg-gradient-to-br from-neutral-white to-primary-yellow/5 border border-primary-yellow/20 rounded-xl p-6 lg:p-8 shadow-lg">
+                <h3 className="font-heading text-xl lg:text-2xl font-semibold text-neutral-black mb-6 text-center lg:text-left">Our Heritage Timeline</h3>
+                <div className="space-y-4">
+                  {[
+                    { year: "1904", event: "Abe Doumar invents the waffle cone at St. Louis World&apos;s Fair" },
+                    { year: "1905", event: "Original cone-making machine installed, still in use today" },
+                    { year: "1930s", event: "Second generation takes over, adds famous barbecue" },
+                    { year: "Today", event: "Fourth generation continues the family tradition" }
+                  ].map((item, index) => (
+                    <div key={index} className="flex items-start space-x-4 group">
+                      <div className="flex-shrink-0 w-16 h-16 bg-primary-red rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                        <span className="text-white font-bold text-sm">{item.year}</span>
+                      </div>
+                      <div className="flex-1 pt-2">
+                        <p className="text-neutral-gray-dark leading-relaxed group-hover:text-neutral-black transition-colors duration-300">{item.event}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              
+              {/* Heritage Image */}
+              <div className="relative h-[300px] lg:h-[350px]">
+                <ImageWithFallback
+                  src="/images/historical/1904-worlds-fair.jpg"
+                  alt="1904 World's Fair - The Birth of the Waffle Cone"
+                  fill
+                  className="object-cover rounded-xl shadow-2xl rotate-[-1deg] hover:rotate-0 transition-transform duration-350 ease-out"
+                />
+                <div className="absolute bottom-4 left-4 bg-black/70 backdrop-blur-sm text-white px-3 py-2 rounded-lg text-sm">
+                  1904 World&apos;s Fair
+                </div>
+              </div>
             </div>
           </div>
         </div>
