@@ -110,7 +110,8 @@ function LazyImage({ src, alt, className, priority = false, onLoad }: LazyImageP
           }`}
           onLoad={handleLoad}
           priority={priority}
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, (max-width: 1280px) 70vw, 1200px"
+          quality={90}
         />
       )}
       
