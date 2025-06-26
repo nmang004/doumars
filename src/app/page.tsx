@@ -98,18 +98,6 @@ export default function Home() {
                 </div>
               </div>
               
-              {/* Heritage Image - Hidden on mobile to reduce clutter */}
-              <div className="hidden lg:block relative h-[300px] lg:h-[320px]">
-                <ImageWithFallback
-                  src="/images/historical/1904-worlds-fair.jpg"
-                  alt="1904 World&apos;s Fair - The Birth of the Waffle Cone"
-                  fill
-                  className="object-cover rounded-xl shadow-2xl rotate-[-1deg] hover:rotate-0 transition-transform duration-350 ease-out"
-                />
-                <div className="absolute bottom-4 left-4 bg-black/70 backdrop-blur-sm text-white px-3 py-2 rounded-lg text-sm">
-                  1904 World&apos;s Fair
-                </div>
-              </div>
             </div>
           </div>
         </div>
