@@ -106,7 +106,7 @@ export function PhotoGallery() {
   const currentImage = selectedImage ? galleryImages.find(img => img.id === selectedImage) : null
 
   return (
-    <section className="py-20 md:py-32 bg-white">
+    <section className="py-20 md:py-32 bg-gradient-to-br from-primary-yellow/10 via-neutral-white to-primary-red/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
           subtitle="Our Memories"
@@ -130,7 +130,7 @@ export function PhotoGallery() {
                 variant={selectedCategory === category ? "default" : "outline"}
                 size="sm"
                 onClick={() => setSelectedCategory(category)}
-                className="transition-all duration-200"
+                className={`transition-all duration-250 ${selectedCategory !== category ? 'hover:bg-neutral-off-white' : ''}`}
               >
                 {category}
               </Button>
@@ -161,15 +161,15 @@ export function PhotoGallery() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
               >
-                <div className="relative aspect-w-1 aspect-h-1 rounded-lg overflow-hidden shadow-lg group-hover:shadow-xl transition-shadow duration-300">
+                <div className="relative aspect-w-1 aspect-h-1 rounded-lg overflow-hidden shadow-sm group-hover:shadow-lg transition-shadow duration-250">
                   <img
                     src={image.src}
                     alt={image.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-350 ease-out"
                   />
                   
                   {/* Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-250 flex items-end">
                     <div className="p-4 text-white">
                       <h3 className="text-base font-heading font-semibold mb-1 line-clamp-2">
                         {image.title}
@@ -178,8 +178,8 @@ export function PhotoGallery() {
                   </div>
 
                   {/* View Icon */}
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-250">
+                    <div className="w-12 h-12 bg-primary-yellow/20 backdrop-blur-sm rounded-full flex items-center justify-center">
                       <Camera className="w-6 h-6 text-white" />
                     </div>
                   </div>
@@ -197,7 +197,7 @@ export function PhotoGallery() {
           whileInView="animate"
           viewport={{ once: true }}
         >
-          <p className="text-gray-600">
+          <p className="text-neutral-gray-dark">
             Showing {filteredImages.length} of {galleryImages.length} photos
             {selectedCategory !== "All" && ` in ${selectedCategory}`}
           </p>
@@ -257,7 +257,7 @@ export function PhotoGallery() {
                   <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 sm:p-6">
                     <div className="text-white max-w-3xl mx-auto text-center sm:text-left">
                       <div className="flex items-center justify-center sm:justify-start space-x-3 mb-2">
-                        <span className="bg-primary text-white text-xs px-2 py-1 rounded-full font-semibold">
+                        <span className="bg-primary-red text-white text-xs px-2 py-1 rounded-full font-semibold">
                           {currentImage.category}
                         </span>
                         <div className="flex items-center space-x-2">
@@ -268,7 +268,7 @@ export function PhotoGallery() {
                       <h3 className="text-xl sm:text-2xl font-heading font-semibold mb-1">
                         {currentImage.title}
                       </h3>
-                      <p className="text-gray-300 text-sm sm:text-base">
+                      <p className="text-neutral-gray-light text-sm sm:text-base">
                         {currentImage.description}
                       </p>
                     </div>

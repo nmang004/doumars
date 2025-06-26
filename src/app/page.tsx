@@ -12,7 +12,7 @@ export default function Home() {
       <Hero />
       
       {/* Our Story Preview Section */}
-      <section id="our-story" className="py-20 md:py-32 bg-neutral-off-white">
+      <section id="our-story" className="py-20 md:py-32 bg-gradient-to-br from-primary-yellow/5 via-neutral-off-white to-primary-red/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div className="space-y-6 text-center lg:text-left">
@@ -23,12 +23,12 @@ export default function Home() {
               />
               
               <div className="grid grid-cols-2 gap-6 max-w-sm mx-auto lg:mx-0">
-                <div className="text-center bg-neutral-white/80 p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-250">
+                <div className="text-center bg-gradient-to-br from-primary-red/5 to-primary-yellow/5 border border-primary-red/20 p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-250">
                   <div className="text-h3 font-heading font-bold text-primary-red">1904</div>
                   <div className="text-sm text-neutral-gray-dark font-semibold uppercase tracking-wider">Founded</div>
                 </div>
-                <div className="text-center bg-neutral-white/80 p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-250">
-                  <div className="text-h3 font-heading font-bold text-primary-red">4</div>
+                <div className="text-center bg-gradient-to-br from-primary-yellow/5 to-primary-navy/5 border border-primary-navy/20 p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-250">
+                  <div className="text-h3 font-heading font-bold text-primary-navy">4</div>
                   <div className="text-sm text-neutral-gray-dark font-semibold uppercase tracking-wider">Generations</div>
                 </div>
               </div>
@@ -53,7 +53,7 @@ export default function Home() {
       </section>
 
       {/* Featured Menu Items */}
-      <section className="py-20 md:py-32">
+      <section className="py-20 md:py-32 bg-gradient-to-br from-neutral-white via-primary-navy/5 to-neutral-off-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading 
             subtitle="Signature Items"
@@ -84,7 +84,7 @@ export default function Home() {
                 image: "/images/restaurant/ice-cream-glass.jpg"
               }
             ].map((item, index) => (
-              <Card key={index} className="group overflow-hidden rounded-lg shadow-sm hover:shadow-lg transition-all duration-250 bg-neutral-white">
+              <Card key={index} className="group overflow-hidden rounded-lg shadow-sm hover:shadow-lg transition-all duration-250 bg-neutral-white border border-neutral-gray-lighter hover:border-primary-red/20">
                 <div className="aspect-h-3 aspect-w-4 relative overflow-hidden">
                   <ImageWithFallback
                     src={item.image}

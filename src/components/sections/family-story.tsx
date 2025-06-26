@@ -45,28 +45,38 @@ const values = [
   {
     icon: Heart,
     title: "Family First",
-    description: "Every decision is made with family values at the core, treating customers like family."
+    description: "Every decision is made with family values at the core, treating customers like family.",
+    color: "primary-red"
   },
   {
     icon: Clock,
     title: "Time-Honored Tradition",
-    description: "We've maintained the same recipes and methods for over 120 years."
+    description: "We've maintained the same recipes and methods for over 120 years.",
+    color: "primary-yellow"
   },
   {
     icon: Users,
     title: "Community Connection", 
-    description: "Deeply rooted in Norfolk, we're proud to be part of this community's story."
+    description: "Deeply rooted in Norfolk, we're proud to be part of this community's story.",
+    color: "primary-navy"
   },
   {
     icon: Award,
     title: "Quality Excellence",
-    description: "Never compromising on quality, every item is made with pride and care."
+    description: "Never compromising on quality, every item is made with pride and care.",
+    color: "primary-red"
   }
 ]
 
+const colorMap = {
+  'primary-red': 'bg-primary-red/10 group-hover:bg-primary-red/20 text-primary-red',
+  'primary-yellow': 'bg-primary-yellow/10 group-hover:bg-primary-yellow/20 text-primary-yellow',
+  'primary-navy': 'bg-primary-navy/10 group-hover:bg-primary-navy/20 text-primary-navy'
+}
+
 export function FamilyStory() {
   return (
-    <section className="py-20 md:py-32 bg-gradient-to-br from-doumar-cream to-white">
+    <section className="py-20 md:py-32 bg-gradient-to-br from-primary-red/5 via-neutral-off-white to-primary-yellow/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
           subtitle="Four Generations Strong"
@@ -89,7 +99,7 @@ export function FamilyStory() {
               key={index}
               variants={staggerItem}
             >
-              <Card className="overflow-hidden h-full hover:shadow-xl transition-shadow duration-300 rounded-lg border-gray-100">
+              <Card className="overflow-hidden h-full hover:shadow-lg transition-shadow duration-250 rounded-lg border-neutral-gray-lighter bg-neutral-white hover:border-primary-red/20">
                 <div className="aspect-w-16 aspect-h-9">
                   <img
                     src={member.image}
@@ -100,23 +110,23 @@ export function FamilyStory() {
                 <CardContent className="p-6">
                   <div className="space-y-3">
                     <div>
-                      <h3 className="text-xl font-heading font-semibold text-doumar-black">
+                      <h3 className="text-xl font-heading font-semibold text-neutral-black">
                         {member.name}
                       </h3>
                       <div className="flex items-center space-x-2 text-sm">
-                        <span className="text-primary font-medium">{member.generation}</span>
-                        <span className="text-gray-400">•</span>
-                        <span className="text-gray-600">{member.period}</span>
+                        <span className="text-primary-red font-medium">{member.generation}</span>
+                        <span className="text-neutral-gray-light">•</span>
+                        <span className="text-neutral-gray-dark">{member.period}</span>
                       </div>
                     </div>
-                    <p className="text-gray-600 leading-relaxed">
+                    <p className="text-neutral-gray-dark leading-relaxed">
                       {member.description}
                     </p>
-                    <div className="pt-3 border-t border-gray-100">
-                      <div className="text-xs text-primary font-medium uppercase tracking-wider mb-1">
+                    <div className="pt-3 border-t border-neutral-gray-lighter">
+                      <div className="text-xs text-primary-red font-medium uppercase tracking-wider mb-1">
                         Key Achievement
                       </div>
-                      <div className="text-sm text-doumar-black font-medium">
+                      <div className="text-sm text-neutral-black font-medium">
                         {member.achievement}
                       </div>
                     </div>
@@ -135,10 +145,10 @@ export function FamilyStory() {
           viewport={{ once: true }}
         >
           <div className="text-center mb-12">
-            <h3 className="text-3xl font-heading font-bold text-doumar-black mb-4">
+            <h3 className="text-3xl font-heading font-bold text-neutral-black mb-4">
               Our Family Values
             </h3>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <p className="text-neutral-gray-dark max-w-2xl mx-auto">
               These core values have guided every generation of the Doumar family 
               and continue to shape how we serve our community today.
             </p>
@@ -155,15 +165,25 @@ export function FamilyStory() {
               <motion.div
                 key={index}
                 variants={staggerItem}
-                className="text-center group p-6 bg-white/50 rounded-lg shadow-sm hover:shadow-lg transition-shadow"
+                className="text-center group p-6 bg-neutral-white/80 rounded-lg shadow-sm hover:shadow-lg transition-all duration-250 hover:bg-primary-yellow/5"
               >
-                <div className="mx-auto w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors duration-300">
-                  <value.icon className="w-8 h-8 text-primary" />
+                <div className={`mx-auto w-16 h-16 rounded-full flex items-center justify-center mb-4 transition-colors duration-250 ${
+                  value.color === 'primary-red' ? 'bg-primary-red/10 group-hover:bg-primary-red/20' :
+                  value.color === 'primary-yellow' ? 'bg-primary-yellow/10 group-hover:bg-primary-yellow/20' :
+                  value.color === 'primary-navy' ? 'bg-primary-navy/10 group-hover:bg-primary-navy/20' :
+                  'bg-primary-red/10 group-hover:bg-primary-red/20'
+                }`}>
+                  <value.icon className={`w-8 h-8 ${
+                    value.color === 'primary-red' ? 'text-primary-red' :
+                    value.color === 'primary-yellow' ? 'text-primary-yellow' :
+                    value.color === 'primary-navy' ? 'text-primary-navy' :
+                    'text-primary-red'
+                  }`} />
                 </div>
-                <h4 className="text-lg font-heading font-semibold text-doumar-black mb-2">
+                <h4 className="text-lg font-heading font-semibold text-neutral-black mb-2">
                   {value.title}
                 </h4>
-                <p className="text-gray-600 text-sm leading-relaxed">
+                <p className="text-neutral-gray-dark text-sm leading-relaxed">
                   {value.description}
                 </p>
               </motion.div>

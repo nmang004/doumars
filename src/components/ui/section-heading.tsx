@@ -33,21 +33,21 @@ export function SectionHeading({
     >
       {subtitle && (
         <motion.span 
-          className="text-primary font-medium text-sm uppercase tracking-wider"
+          className="text-primary-red font-semibold text-sm uppercase tracking-wider"
           variants={fadeInUp}
         >
           {subtitle}
         </motion.span>
       )}
       <motion.h2 
-        className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-doumar-black"
+        className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-black"
         variants={fadeInUp}
       >
         {title}
       </motion.h2>
       {description && (
         <motion.p 
-          className="text-gray-600 text-lg max-w-2xl"
+          className="text-neutral-gray-dark text-lg max-w-2xl"
           variants={fadeInUp}
         >
           {description}

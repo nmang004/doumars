@@ -178,10 +178,10 @@ const menuData = {
 }
 
 const allergenColors = {
-  dairy: "bg-blue-100 text-blue-800",
-  gluten: "bg-yellow-100 text-yellow-800", 
-  nuts: "bg-orange-100 text-orange-800",
-  soy: "bg-green-100 text-green-800"
+  dairy: "bg-semantic-info-light text-semantic-info",
+  gluten: "bg-primary-yellow/20 text-primary-navy", 
+  nuts: "bg-semantic-warning-light text-semantic-warning",
+  soy: "bg-semantic-success-light text-semantic-success"
 }
 
 export function MenuDisplay() {
@@ -239,9 +239,9 @@ export function MenuDisplay() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-doumar-cream to-white">
+    <div className="min-h-screen bg-gradient-to-br from-primary-yellow/5 via-neutral-off-white to-primary-red/5">
       {/* Hero Section */}
-      <section className="pt-32 pb-16 bg-gradient-to-r from-doumar-black to-gray-800 text-white">
+      <section className="pt-32 pb-16 bg-gradient-to-r from-neutral-black to-neutral-gray-dark text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             className="text-center"
@@ -254,7 +254,7 @@ export function MenuDisplay() {
               title="World Famous Flavors Since 1904"
               description="From our original waffle cones to slow-cooked barbecue, every item is made with the same care and quality we've maintained for over 120 years"
               centered
-              className="text-white [&_span]:text-primary [&_h2]:text-white [&_p]:text-gray-300"
+              className="text-white [&_span]:text-primary-yellow [&_h2]:text-white [&_p]:text-neutral-gray-light"
             />
           </motion.div>
         </div>

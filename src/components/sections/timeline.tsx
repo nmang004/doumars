@@ -61,7 +61,7 @@ const timelineEvents = [
 
 export function Timeline() {
   return (
-    <section className="py-20 md:py-32 bg-white">
+    <section className="py-20 md:py-32 bg-gradient-to-br from-primary-navy/5 via-neutral-white to-primary-yellow/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
           subtitle="Our Journey"
@@ -79,7 +79,7 @@ export function Timeline() {
           viewport={{ once: true }}
         >
           {/* Timeline Line */}
-          <div className="absolute left-5 md:left-1/2 top-0 bottom-0 w-0.5 bg-gray-200" />
+          <div className="absolute left-5 md:left-1/2 top-0 bottom-0 w-0.5 bg-neutral-gray-lighter" />
 
           <div className="space-y-16">
             {timelineEvents.map((event, index) => (
@@ -90,7 +90,7 @@ export function Timeline() {
                 
                 {/* Timeline Icon */}
                 <div className="absolute left-0 md:left-1/2 transform -translate-x-1/2 z-10">
-                  <div className={`w-10 h-10 rounded-full border-4 border-white ${event.highlight ? 'bg-primary' : 'bg-gray-400'} shadow-lg flex items-center justify-center`}>
+                  <div className={`w-10 h-10 rounded-full border-4 border-neutral-white ${event.highlight ? 'bg-primary-red' : 'bg-neutral-gray-medium'} shadow-lg flex items-center justify-center`}>
                     <event.icon className="w-5 h-5 text-white" />
                   </div>
                 </div>
@@ -98,28 +98,28 @@ export function Timeline() {
                 {/* Content Card */}
                 <div className={`w-full md:w-5/12 ml-16 md:ml-0 ${index % 2 === 0 ? 'md:mr-auto md:pr-8' : 'md:ml-auto md:pl-8'}`}>
                   <motion.div
-                    className={`bg-white rounded-lg shadow-lg overflow-hidden border ${event.highlight ? 'border-primary/20 shadow-primary/10' : 'border-gray-100'}`}
-                    whileHover={{ scale: 1.02, shadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1)" }}
-                    transition={{ duration: 0.2 }}
+                    className={`bg-neutral-white rounded-lg shadow-sm hover:shadow-lg overflow-hidden border ${event.highlight ? 'border-primary-red/20 shadow-primary-red/10' : 'border-neutral-gray-lighter'}`}
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ duration: 0.25 }}
                   >
                     <div className="aspect-w-16 aspect-h-9">
                       <img src={event.image} alt={event.title} className="w-full h-full object-cover" />
                     </div>
                     <div className="p-6">
                       <div className="flex items-center space-x-3 mb-3">
-                        <span className={`text-2xl font-bold font-heading ${event.highlight ? 'text-primary' : 'text-gray-600'}`}>
+                        <span className={`text-2xl font-bold font-heading ${event.highlight ? 'text-primary-red' : 'text-neutral-gray-dark'}`}>
                           {event.year}
                         </span>
                         {event.highlight && (
-                          <div className="bg-primary text-white text-xs px-2 py-1 rounded-full font-semibold">
+                          <div className="bg-primary-red text-white text-xs px-2 py-1 rounded-full font-semibold uppercase tracking-wide">
                             Milestone
                           </div>
                         )}
                       </div>
-                      <h3 className="text-xl font-heading font-semibold text-doumar-black mb-3">
+                      <h3 className="text-xl font-heading font-semibold text-neutral-black mb-3">
                         {event.title}
                       </h3>
-                      <p className="text-gray-600 leading-relaxed">
+                      <p className="text-neutral-gray-dark leading-relaxed">
                         {event.description}
                       </p>
                     </div>
