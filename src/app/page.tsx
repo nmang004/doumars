@@ -24,9 +24,9 @@ export default function Home() {
         <Hero />
       
       {/* Our Story Preview Section */}
-      <section id="our-story" className="py-20 md:py-32 bg-neutral-off-white">
+      <section id="our-story" className="py-16 md:py-24 bg-neutral-off-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 items-start">
             <div className="lg:col-span-3 space-y-6 text-center lg:text-left">
               <SectionHeading 
                 subtitle="Our Legacy"
@@ -34,7 +34,7 @@ export default function Home() {
                 description="It all started at the 1904 World's Fair in St. Louis, where Abe Doumar invented the world's first waffle cone. Today, we're still making cones on that very same machine, serving up the same quality and tradition that has made us a Norfolk institution."
               />
               
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 max-w-2xl mx-auto lg:mx-0">
+              <div className="grid grid-cols-2 gap-4 lg:grid-cols-4 lg:gap-6 max-w-2xl mx-auto lg:mx-0">
                 <div className="text-center bg-gradient-to-br from-primary-red/5 to-primary-yellow/5 border border-primary-red/20 p-4 lg:p-6 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 group">
                   <div className="text-3xl lg:text-h3 font-heading font-bold text-primary-red group-hover:scale-110 transition-transform duration-300">1904</div>
                   <div className="text-xs lg:text-sm text-neutral-gray-dark font-semibold uppercase tracking-wider">Founded</div>
@@ -61,48 +61,48 @@ export default function Home() {
                   <Link href="/gallery">View Historic Photos</Link>
                 </Button>
               </div>
-              
-              {/* Norfolk Institution Badge */}
-              <div className="pt-4">
-                <div className="inline-flex items-center space-x-3 bg-primary-navy/10 backdrop-blur-sm rounded-full px-6 py-3 border border-primary-navy/20">
-                  <div className="w-8 h-8 bg-primary-navy rounded-full flex items-center justify-center">
-                    <span className="text-white font-bold text-sm">🏛️</span>
-                  </div>
-                  <span className="text-primary-navy text-sm font-semibold uppercase tracking-wide">
-                    Norfolk Historic Institution
-                  </span>
-                </div>
-              </div>
             </div>
             
-            <div className="lg:col-span-2 space-y-8">
+            <div className="lg:col-span-2 space-y-6">
               {/* Heritage Timeline */}
               <div className="bg-gradient-to-br from-neutral-white to-primary-yellow/5 border border-primary-yellow/20 rounded-xl p-6 lg:p-8 shadow-lg">
                 <h3 className="font-heading text-xl lg:text-2xl font-semibold text-neutral-black mb-6 text-center lg:text-left">Our Heritage Timeline</h3>
-                <div className="space-y-4">
+                <div className="space-y-3 lg:space-y-4">
                   {[
                     { year: "1904", event: "Abe Doumar invents the waffle cone at St. Louis World&apos;s Fair" },
                     { year: "1905", event: "Original cone-making machine installed, still in use today" },
                     { year: "1930s", event: "Second generation takes over, adds famous barbecue" },
                     { year: "Today", event: "Fourth generation continues the family tradition" }
                   ].map((item, index) => (
-                    <div key={index} className="flex items-start space-x-4 group">
-                      <div className="flex-shrink-0 w-16 h-16 bg-primary-red rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                        <span className="text-white font-bold text-sm">{item.year}</span>
+                    <div key={index} className="flex items-start space-x-3 lg:space-x-4 group">
+                      <div className="flex-shrink-0 w-12 h-12 lg:w-16 lg:h-16 bg-primary-red rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                        <span className="text-white font-bold text-xs lg:text-sm">{item.year}</span>
                       </div>
-                      <div className="flex-1 pt-2">
-                        <p className="text-neutral-gray-dark leading-relaxed group-hover:text-neutral-black transition-colors duration-300">{item.event}</p>
+                      <div className="flex-1 pt-1 lg:pt-2">
+                        <p className="text-neutral-gray-dark text-sm lg:text-base leading-relaxed group-hover:text-neutral-black transition-colors duration-300">{item.event}</p>
                       </div>
                     </div>
                   ))}
                 </div>
               </div>
               
-              {/* Heritage Image */}
-              <div className="relative h-[300px] lg:h-[350px]">
+              {/* Norfolk Institution Badge */}
+              <div className="flex justify-center lg:justify-start">
+                <div className="inline-flex items-center space-x-3 bg-primary-navy/10 backdrop-blur-sm rounded-full px-4 lg:px-6 py-2 lg:py-3 border border-primary-navy/20">
+                  <div className="w-6 h-6 lg:w-8 lg:h-8 bg-primary-navy rounded-full flex items-center justify-center">
+                    <span className="text-white font-bold text-xs lg:text-sm">🏛️</span>
+                  </div>
+                  <span className="text-primary-navy text-xs lg:text-sm font-semibold uppercase tracking-wide">
+                    Norfolk Historic Institution
+                  </span>
+                </div>
+              </div>
+              
+              {/* Heritage Image - Hidden on mobile to reduce clutter */}
+              <div className="hidden lg:block relative h-[300px] lg:h-[320px]">
                 <ImageWithFallback
                   src="/images/historical/1904-worlds-fair.jpg"
-                  alt="1904 World's Fair - The Birth of the Waffle Cone"
+                  alt="1904 World&apos;s Fair - The Birth of the Waffle Cone"
                   fill
                   className="object-cover rounded-xl shadow-2xl rotate-[-1deg] hover:rotate-0 transition-transform duration-350 ease-out"
                 />
@@ -116,7 +116,7 @@ export default function Home() {
       </section>
 
       {/* Featured Menu Items */}
-      <section className="py-20 md:py-32 bg-gradient-to-br from-neutral-white via-primary-navy/5 to-neutral-off-white">
+      <section className="py-16 md:py-24 bg-gradient-to-br from-neutral-white via-primary-navy/5 to-neutral-off-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading 
             subtitle="Signature Items"

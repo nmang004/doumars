@@ -64,18 +64,8 @@ export function Header() {
 
           {/* Actions */}
           <div className="flex items-center space-x-2 md:space-x-4">
-            {/* Order Online Button */}
-            <Button 
-              asChild
-              variant="accent"
-              size="default"
-              className="hidden sm:inline-flex"
-            >
-              <a href="https://order.toasttab.com/online/doumars-cones-barbecue-1919-monticello-ave" target="_blank" rel="noopener noreferrer">Order Online</a>
-            </Button>
-
-            {/* User Authentication */}
-            {user ? (
+            {/* User Authentication - Only show if user is logged in */}
+            {user && (
               <div className="relative">
                 <Button
                   variant="ghost"
@@ -125,16 +115,17 @@ export function Header() {
                   )}
                 </AnimatePresence>
               </div>
-            ) : (
-              <Button 
-                asChild
-                variant="secondary"
-                size="sm"
-                className="hidden md:inline-flex"
-              >
-                <Link href="/auth/login">Sign In</Link>
-              </Button>
             )}
+
+            {/* Order Online Button - Now positioned at far right */}
+            <Button 
+              asChild
+              variant="accent"
+              size="default"
+              className="hidden sm:inline-flex"
+            >
+              <a href="https://order.toasttab.com/online/doumars-cones-barbecue-1919-monticello-ave" target="_blank" rel="noopener noreferrer">Order Online</a>
+            </Button>
 
 
             {/* Mobile menu button */}
