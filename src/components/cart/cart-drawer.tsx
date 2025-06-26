@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+// import { useState } from "react" // Currently unused
 import { motion, AnimatePresence } from "framer-motion"
 import { X, Minus, Plus, ShoppingBag, Trash2, ShoppingCart } from "lucide-react"
 import { Button } from "@/components/ui/button"

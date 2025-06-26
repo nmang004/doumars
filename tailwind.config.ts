@@ -22,39 +22,39 @@ const config: Config = {
     },
     extend: {
       colors: {
-        // Core Brand Colors (using CSS custom properties for Tailwind v4)
-        'primary-red': 'var(--color-primary-red)',
-        'primary-red-hover': 'var(--color-primary-red-hover)', 
-        'primary-yellow': 'var(--color-primary-yellow)',
-        'primary-yellow-hover': 'var(--color-primary-yellow-hover)',
-        'primary-navy': 'var(--color-primary-navy)',
-        'primary-navy-hover': 'var(--color-primary-navy-hover)',
+        // Core Brand Colors (Tailwind v3 syntax with hardcoded values)
+        'primary-red': '#A51931',
+        'primary-red-hover': '#8A1527',
+        'primary-yellow': '#F9E152', 
+        'primary-yellow-hover': '#F0D942',
+        'primary-navy': '#003164',
+        'primary-navy-hover': '#002347',
         
-        // Neutral Colors (using CSS custom properties)
-        'neutral-off-white': 'var(--color-bg-primary)',
-        'neutral-cream': 'var(--color-bg-secondary)',
-        'neutral-white': 'var(--color-bg-tertiary)',
-        'neutral-black': 'var(--color-text-primary)',
-        'neutral-gray-dark': 'var(--color-text-secondary)',
-        'neutral-gray-medium': 'var(--color-text-tertiary)',
-        'neutral-gray-light': 'var(--color-text-muted)',
-        'neutral-gray-lighter': 'var(--color-border)',
+        // Neutral Colors
+        'neutral-off-white': '#FDFBF7',
+        'neutral-cream': '#F7F4EE',
+        'neutral-white': '#FFFFFF',
+        'neutral-black': '#1A1A1A',
+        'neutral-gray-dark': '#4A4A4A',
+        'neutral-gray-medium': '#6B6B6B',
+        'neutral-gray-light': '#8B8B8B',
+        'neutral-gray-lighter': '#E0E0E0',
         
-        // Semantic Colors (using CSS custom properties)
-        'semantic-success': 'var(--color-success)',
-        'semantic-success-light': 'var(--color-success-light)',
-        'semantic-error': 'var(--color-error)',
-        'semantic-error-light': 'var(--color-error-light)',
-        'semantic-warning': 'var(--color-warning)',
-        'semantic-warning-light': 'var(--color-warning-light)',
-        'semantic-info': 'var(--color-info)',
-        'semantic-info-light': 'var(--color-info-light)',
+        // Semantic Colors
+        'semantic-success': '#0E7C3F',
+        'semantic-success-light': '#E8F5E9',
+        'semantic-error': '#C62828',
+        'semantic-error-light': '#FFEBEE',
+        'semantic-warning': '#F57C00',
+        'semantic-warning-light': '#FFF3E0',
+        'semantic-info': '#0277BD',
+        'semantic-info-light': '#E1F5FE',
         
         // Legacy mappings for compatibility
-        'doumar-red': 'var(--color-primary-red)',
-        'doumar-cream': 'var(--color-bg-primary)',
-        'doumar-blue': 'var(--color-primary-navy)',
-        'doumar-black': 'var(--color-text-primary)',
+        'doumar-red': '#A51931',
+        'doumar-cream': '#FDFBF7',
+        'doumar-blue': '#003164',
+        'doumar-black': '#1A1A1A',
         
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -62,11 +62,11 @@ const config: Config = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "var(--color-primary-red)",
+          DEFAULT: "#A51931",
           foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {
-          DEFAULT: "var(--color-primary-navy)",
+          DEFAULT: "#003164",
           foreground: "hsl(var(--secondary-foreground))",
         },
         destructive: {
@@ -74,12 +74,12 @@ const config: Config = {
           foreground: "hsl(var(--destructive-foreground))",
         },
         muted: {
-          DEFAULT: "var(--color-bg-primary)",
+          DEFAULT: "#FDFBF7",
           foreground: "hsl(var(--muted-foreground))",
         },
         accent: {
-          DEFAULT: "var(--color-primary-yellow)",
-          foreground: "var(--color-text-primary)",
+          DEFAULT: "#F9E152",
+          foreground: "#1A1A1A",
         },
         popover: {
           DEFAULT: "hsl(var(--popover))",

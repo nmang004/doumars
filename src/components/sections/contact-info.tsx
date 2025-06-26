@@ -257,7 +257,7 @@ export function ContactInfo() {
               What Makes Us Special
             </h3>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              More than just a restaurant – we're a Norfolk institution with unique features 
+              More than just a restaurant – we&apos;re a Norfolk institution with unique features 
               that have delighted visitors for generations.
             </p>
           </div>
@@ -297,7 +297,7 @@ export function ContactInfo() {
             </h3>
             <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
               Come visit us at our Norfolk location and taste what food critics have been 
-              raving about for over 120 years. We can't wait to serve you!
+              raving about for over 120 years. We can&apos;t wait to serve you!
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
