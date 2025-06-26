@@ -313,7 +313,7 @@ export function ContactInfo() {
                 size="lg"
                 className="border-primary text-primary hover:bg-primary hover:text-white font-semibold px-8 py-3 rounded-lg"
               >
-                <a href="/order">Order Online</a>
+                <a href="https://order.toasttab.com/online/doumars-cones-barbecue-1919-monticello-ave" target="_blank" rel="noopener noreferrer">Order Online</a>
               </Button>
             </div>
           </div>

@@ -3,26 +3,21 @@
 import { useState } from "react"
 import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
-import { Menu, X, ShoppingCart, Phone, User, LogOut } from "lucide-react"
+import { Menu, X, Phone, User, LogOut } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { useCart } from "@/contexts/cart-context"
 import { useAuth } from "@/contexts/auth-context"
-import { CartDrawer } from "@/components/cart/cart-drawer"
 
 const navigation = [
   { name: "Home", href: "/" },
   { name: "Menu", href: "/menu" },
   { name: "About", href: "/about" },
   { name: "News", href: "/news" },
-  { name: "Merchandise", href: "/merchandise" },
   { name: "Contact", href: "/contact" },
 ]
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [cartOpen, setCartOpen] = useState(false)
   const [userMenuOpen, setUserMenuOpen] = useState(false)
-  const { itemCount } = useCart()
   const { user, signOut } = useAuth()
 
   const handleSignOut = async () => {
@@ -76,7 +71,7 @@ export function Header() {
               size="default"
               className="hidden sm:inline-flex"
             >
-              <Link href="/menu">Order Online</Link>
+              <a href="https://order.toasttab.com/online/doumars-cones-barbecue-1919-monticello-ave" target="_blank" rel="noopener noreferrer">Order Online</a>
             </Button>
 
             {/* User Authentication */}
@@ -141,24 +136,6 @@ export function Header() {
               </Button>
             )}
 
-            {/* Cart Icon */}
-            <Button
-              variant="ghost"
-              size="icon"
-              className="relative hover:bg-neutral-off-white"
-              onClick={() => setCartOpen(true)}
-            >
-              <ShoppingCart className="h-5 w-5" />
-              {itemCount > 0 && (
-                <motion.span
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  className="absolute -top-1 -right-1 h-5 w-5 bg-primary-red text-white text-xs rounded-full flex items-center justify-center font-semibold"
-                >
-                  {itemCount > 99 ? '99+' : itemCount}
-                </motion.span>
-              )}
-            </Button>
 
             {/* Mobile menu button */}
             <Button
@@ -205,7 +182,7 @@ export function Header() {
                   size="default"
                   className="w-full sm:hidden"
                 >
-                  <Link href="/menu">Order Online</Link>
+                  <a href="https://order.toasttab.com/online/doumars-cones-barbecue-1919-monticello-ave" target="_blank" rel="noopener noreferrer">Order Online</a>
                 </Button>
                 <div className="flex items-center space-x-2 px-3 py-4 text-base text-neutral-gray-dark">
                   <Phone className="h-5 w-5" />
@@ -217,11 +194,6 @@ export function Header() {
         )}
       </AnimatePresence>
 
-      {/* Cart Drawer */}
-      <CartDrawer 
-        isOpen={cartOpen} 
-        onClose={() => setCartOpen(false)} 
-      />
     </header>
   )
 }

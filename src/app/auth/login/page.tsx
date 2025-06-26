@@ -80,7 +80,7 @@ export default function LoginPage() {
               <SectionHeading
                 subtitle="Welcome Back"
                 title="Sign In to Your Account"
-                description="Access your order history and save your preferences"
+                description="Access your account and save your preferences"
                 centered
               />
             </div>
@@ -177,19 +177,19 @@ export default function LoginPage() {
                 <ul className="space-y-2 text-sm text-gray-600">
                   <li className="flex items-center">
                     <div className="w-2 h-2 bg-primary rounded-full mr-3"></div>
-                    Save your favorite orders for quick reordering
+                    Save your favorite menu items
                   </li>
                   <li className="flex items-center">
                     <div className="w-2 h-2 bg-primary rounded-full mr-3"></div>
-                    Track your order history and receipts
+                    Get exclusive offers and news updates
                   </li>
                   <li className="flex items-center">
                     <div className="w-2 h-2 bg-primary rounded-full mr-3"></div>
-                    Get exclusive offers and early access to new items
+                    Access members-only content
                   </li>
                   <li className="flex items-center">
                     <div className="w-2 h-2 bg-primary rounded-full mr-3"></div>
-                    Faster checkout with saved information
+                    Personalized restaurant experience
                   </li>
                 </ul>
               </CardContent>

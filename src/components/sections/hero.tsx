@@ -127,7 +127,7 @@ export function Hero() {
                 size="lg"
                 className="w-full sm:w-auto min-w-[180px]"
               >
-                <Link href="/menu">Order Online</Link>
+                <a href="https://order.toasttab.com/online/doumars-cones-barbecue-1919-monticello-ave" target="_blank" rel="noopener noreferrer">Order Online</a>
               </Button>
             </motion.div>
             

@@ -10,7 +10,6 @@ const navigation = {
     { name: "Menu", href: "/menu" },
     { name: "About Us", href: "/about" },
     { name: "News", href: "/news" },
-    { name: "Merchandise", href: "/merchandise" },
     { name: "Contact", href: "/contact" },
   ],
   legal: [

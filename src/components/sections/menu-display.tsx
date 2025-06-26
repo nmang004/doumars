@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from "react"
 import { motion } from "framer-motion"
-import { Search, Star, Clock, Plus, Minus } from "lucide-react"
+import { Search, Star, Clock } from "lucide-react"
 import { SectionHeading } from "@/components/ui/section-heading"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
@@ -10,8 +10,6 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { staggerContainer, staggerItem, fadeInUp } from "@/lib/motion"
 import { formatPrice } from "@/lib/utils"
-import { useCart } from "@/contexts/cart-context"
-import { MenuItem } from "@/types/menu"
 
 // Sample menu data - this would normally come from Supabase
 const menuData = {
@@ -187,8 +185,6 @@ const allergenColors = {
 export function MenuDisplay() {
   const [selectedCategory, setSelectedCategory] = useState("all")
   const [searchQuery, setSearchQuery] = useState("")
-  const [quantities, setQuantities] = useState<Record<string, number>>({})
-  const { addItem } = useCart()
 
   // Filter items based on category and search
   const filteredItems = useMemo(() => {
@@ -210,33 +206,6 @@ export function MenuDisplay() {
     return items
   }, [selectedCategory, searchQuery])
 
-  const updateQuantity = (itemId: string, change: number) => {
-    setQuantities(prev => ({
-      ...prev,
-      [itemId]: Math.max(0, (prev[itemId] || 0) + change)
-    }))
-  }
-
-  const handleAddToCart = (item: any) => { // eslint-disable-line @typescript-eslint/no-explicit-any
-    const quantity = quantities[item.id] || 0
-    if (quantity > 0) {
-      const menuItem: MenuItem = {
-        id: item.id,
-        name: item.name,
-        description: item.description,
-        price: item.price,
-        image: item.image,
-        popular: item.popular,
-        allergens: item.allergens,
-        customizations: item.customizations,
-        categoryId: item.categoryId,
-        categoryName: item.categoryName
-      }
-      addItem(menuItem, quantity)
-      // Reset local quantity after adding to cart
-      setQuantities(prev => ({ ...prev, [item.id]: 0 }))
-    }
-  }
 
   return (
     <div className="min-h-screen bg-neutral-off-white">
@@ -376,39 +345,15 @@ export function MenuDisplay() {
                       )}
                     </div>
 
-                    {/* Quantity Controls */}
-                    <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-                      <div className="flex items-center space-x-2">
-                        <Button
-                          variant="outline"
-                          size="icon"
-                          className="h-10 w-10 rounded-full"
-                          onClick={() => updateQuantity(item.id, -1)}
-                          disabled={!quantities[item.id]}
-                        >
-                          <Minus className="w-4 h-4" />
-                        </Button>
-                        
-                        <span className="font-semibold text-xl min-w-[2.5rem] text-center">
-                          {quantities[item.id] || 0}
-                        </span>
-                        
-                        <Button
-                          variant="outline"
-                          size="icon"
-                          className="h-10 w-10 rounded-full"
-                          onClick={() => updateQuantity(item.id, 1)}
-                        >
-                          <Plus className="w-4 h-4" />
-                        </Button>
-                      </div>
-
+                    {/* View Details Button */}
+                    <div className="flex justify-center pt-4 border-t border-gray-100">
                       <Button
+                        variant="outline"
                         size="sm"
-                        disabled={!quantities[item.id]}
-                        onClick={() => handleAddToCart(item)}
+                        className="w-full"
+                        disabled
                       >
-                        Add to Cart
+                        View Details
                       </Button>
                     </div>
 

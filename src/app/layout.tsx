@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
-import { CartProvider } from "@/contexts/cart-context";
 import { AuthProvider } from "@/contexts/auth-context";
 import "./globals.css";
 
@@ -46,9 +45,7 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${playfairDisplay.variable}`}>
       <body className="antialiased font-sans">
         <AuthProvider>
-          <CartProvider>
-            {children}
-          </CartProvider>
+          {children}
         </AuthProvider>
       </body>
     </html>
