@@ -106,7 +106,7 @@ export function PhotoGallery() {
   const currentImage = selectedImage ? galleryImages.find(img => img.id === selectedImage) : null
 
   return (
-    <section className="py-20 md:py-32 bg-gradient-to-br from-primary-yellow/10 via-neutral-white to-primary-red/10">
+    <section className="py-20 md:py-32 bg-neutral-off-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
           subtitle="Our Memories"

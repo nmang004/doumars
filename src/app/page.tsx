@@ -12,7 +12,7 @@ export default function Home() {
       <Hero />
       
       {/* Our Story Preview Section */}
-      <section id="our-story" className="py-20 md:py-32 bg-gradient-to-br from-primary-yellow/5 via-neutral-off-white to-primary-red/5">
+      <section id="our-story" className="py-20 md:py-32 bg-neutral-off-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div className="space-y-6 text-center lg:text-left">

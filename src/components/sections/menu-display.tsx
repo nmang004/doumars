@@ -239,7 +239,7 @@ export function MenuDisplay() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary-yellow/5 via-neutral-off-white to-primary-red/5">
+    <div className="min-h-screen bg-neutral-off-white">
       {/* Hero Section */}
       <section className="pt-32 pb-16 bg-gradient-to-r from-neutral-black to-neutral-gray-dark text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

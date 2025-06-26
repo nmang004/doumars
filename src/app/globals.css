@@ -54,7 +54,7 @@
 }
 
 body {
-  background-color: hsl(var(--background));
+  background-color: #FFFFFF;
   color: hsl(var(--foreground));
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   line-height: 1.6;

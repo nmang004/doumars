@@ -61,7 +61,7 @@ const timelineEvents = [
 
 export function Timeline() {
   return (
-    <section className="py-20 md:py-32 bg-gradient-to-br from-primary-navy/5 via-neutral-white to-primary-yellow/10">
+    <section className="py-20 md:py-32 bg-neutral-off-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
           subtitle="Our Journey"
