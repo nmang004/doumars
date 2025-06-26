@@ -104,83 +104,150 @@ export default function Home() {
       </section>
 
       {/* Featured Menu Items */}
-      <section className="py-16 md:py-24 bg-gradient-to-br from-neutral-white via-primary-navy/5 to-neutral-off-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 md:py-32 bg-gradient-to-br from-neutral-white via-primary-navy/5 to-neutral-off-white relative overflow-hidden">
+        {/* Background decorative elements */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-primary-red rounded-full blur-3xl transform translate-x-48 -translate-y-48" />
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary-yellow rounded-full blur-3xl transform -translate-x-48 translate-y-48" />
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <SectionHeading 
             subtitle="Signature Items"
             title="Taste the Tradition"
             description="From our world-famous waffle cones to our slow-cooked barbecue, every item is made with the same care and quality we've maintained for over 120 years."
             centered
-            className="mb-12 md:mb-16"
+            className="mb-16 md:mb-20"
           />
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+          {/* Enhanced grid layout with better spacing */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
             {[
               {
                 name: "Original Waffle Cone",
                 description: "Made fresh on our original 1905 machine - the world's first!",
                 price: "$4.50",
                 image: "/images/restaurant/cone-machine-operator.jpg",
-                badge: "Original"
+                badge: "Original Since 1904",
+                color: "bg-primary-yellow",
+                highlight: true
               },
               {
                 name: "BBQ Pork Sandwich",
                 description: "Slow-cooked perfection on a fresh bun with our secret sauce.",
                 price: "$8.95", 
                 image: "/images/food/bbq-sandwich.jpg",
-                badge: "Popular"
+                badge: "Best Seller",
+                color: "bg-primary-red"
               },
               {
                 name: "Famous Limeade",
                 description: "Our signature ice-cold, refreshing drink made fresh daily.",
                 price: "$3.50",
                 image: "/images/restaurant/ice-cream-glass.jpg",
-                badge: "Signature"
+                badge: "House Specialty",
+                color: "bg-green-600"
               },
               {
                 name: "Ice Cream Sundae",
                 description: "Premium ice cream with fresh toppings and whipped cream.",
                 price: "$6.95",
                 image: "/images/restaurant/ice-cream-sundae.jpg",
-                badge: "Classic"
+                badge: "Classic Favorite",
+                color: "bg-primary-navy"
               }
             ].map((item, index) => (
-              <Card key={index} className="group overflow-hidden rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 bg-neutral-white border border-neutral-gray-lighter hover:border-primary-red/30 hover:-translate-y-1">
-                <div className="aspect-h-3 aspect-w-4 relative overflow-hidden">
+              <Card 
+                key={index} 
+                className={`group overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 bg-neutral-white border-2 ${
+                  item.highlight 
+                    ? 'border-primary-yellow ring-2 ring-primary-yellow/20 lg:scale-105' 
+                    : 'border-neutral-gray-lighter hover:border-primary-red/40'
+                } hover:-translate-y-2 transform`}
+              >
+                <div className="relative h-48 sm:h-56 lg:h-64 overflow-hidden">
                   <ImageWithFallback
                     src={item.image}
                     alt={item.name}
                     fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-500 ease-out"
+                    className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
                   />
-                  {/* Badge */}
-                  <div className="absolute top-3 left-3">
-                    <span className="bg-primary-red/90 backdrop-blur-sm text-white text-xs px-2 py-1 rounded-full font-semibold">
+                  {/* Enhanced gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent" />
+                  
+                  {/* Badge with better positioning */}
+                  <div className="absolute top-4 left-4">
+                    <span className={`${item.color} backdrop-blur-sm text-white text-xs sm:text-sm px-3 py-1.5 rounded-full font-semibold shadow-lg`}>
                       {item.badge}
                     </span>
                   </div>
-                  {/* Hover overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </div>
-                <CardContent className="p-5">
-                  <div className="flex justify-between items-start gap-3 mb-3">
-                    <h3 className="font-heading text-lg font-semibold text-neutral-black group-hover:text-primary-red transition-colors duration-250 leading-tight">
-                      {item.name}
-                    </h3>
-                    <span className="text-primary-red font-mono font-bold text-xl whitespace-nowrap">
-                      {item.price}
-                    </span>
+                  
+                  {/* Price tag in corner */}
+                  <div className="absolute bottom-4 right-4">
+                    <div className="bg-white/95 backdrop-blur-sm rounded-lg px-3 py-2 shadow-lg">
+                      <span className="text-primary-red font-mono font-bold text-xl sm:text-2xl">
+                        {item.price}
+                      </span>
+                    </div>
                   </div>
-                  <p className="text-neutral-gray-dark text-sm leading-relaxed">{item.description}</p>
+                </div>
+                
+                <CardContent className="p-6">
+                  <h3 className="font-heading text-xl sm:text-2xl font-bold text-neutral-black group-hover:text-primary-red transition-colors duration-300 mb-3">
+                    {item.name}
+                  </h3>
+                  <p className="text-neutral-gray-dark text-sm sm:text-base leading-relaxed">
+                    {item.description}
+                  </p>
+                  
+                  {/* Add to order quick action */}
+                  <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <Button 
+                      asChild 
+                      size="sm" 
+                      variant="outline" 
+                      className="w-full border-primary-red text-primary-red hover:bg-primary-red hover:text-white"
+                    >
+                      <Link href="/menu">Order Now</Link>
+                    </Button>
+                  </div>
                 </CardContent>
               </Card>
             ))}
           </div>
 
-          <div className="text-center mt-16">
-            <Button asChild size="lg" variant="secondary">
-              <Link href="/menu">View Full Menu</Link>
-            </Button>
+          {/* Enhanced CTA section */}
+          <div className="mt-16 md:mt-20 text-center">
+            <div className="inline-flex flex-col sm:flex-row gap-4 items-center">
+              <Button asChild size="lg" variant="default" className="min-w-[200px]">
+                <Link href="/menu">View Full Menu</Link>
+              </Button>
+              <Button asChild size="lg" variant="outline" className="min-w-[200px] border-primary-red text-primary-red hover:bg-primary-red hover:text-white">
+                <Link href="/gallery">See Our Process</Link>
+              </Button>
+            </div>
+            
+            {/* Trust indicators */}
+            <div className="mt-8 flex flex-wrap justify-center gap-6 text-sm text-neutral-gray-dark">
+              <div className="flex items-center gap-2">
+                <svg className="w-5 h-5 text-primary-red" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" />
+                </svg>
+                <span>Made Fresh Daily</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <svg className="w-5 h-5 text-primary-red" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" />
+                </svg>
+                <span>Family Recipes Since 1904</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <svg className="w-5 h-5 text-primary-red" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" />
+                </svg>
+                <span>Norfolk's #1 Historic Restaurant</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
