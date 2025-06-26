@@ -47,7 +47,10 @@ export function SectionHeading({
       </motion.h2>
       {description && (
         <motion.p 
-          className="text-neutral-gray-dark text-lg max-w-2xl"
+          className={cn(
+            "text-neutral-gray-dark text-lg max-w-2xl",
+            centered && "mx-auto"
+          )}
           variants={fadeInUp}
         >
           {description}
