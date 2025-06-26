@@ -504,7 +504,7 @@ export function ScrapbookGallery() {
 
       {/* Lightbox */}
       <Dialog open={lightboxOpen} onOpenChange={setLightboxOpen}>
-        <DialogContent className="max-w-7xl w-[98vw] p-0 bg-gradient-to-br from-amber-50 to-orange-50 border-amber-200 rounded-2xl max-h-[95vh] overflow-y-auto">
+        <DialogContent className="max-w-[95vw] w-[95vw] h-[90vh] p-0 bg-gradient-to-br from-amber-50 to-orange-50 border-amber-200 rounded-2xl overflow-hidden">
           <motion.div
             variants={scaleIn}
             initial="initial"
@@ -544,55 +544,55 @@ export function ScrapbookGallery() {
                 </Button>
 
                 {/* Content */}
-                <div className="flex flex-col xl:flex-row min-h-[70vh]">
+                <div className="flex flex-col lg:flex-row h-full">
                   {/* Image */}
-                  <div className="xl:w-3/5 p-4 sm:p-6">
-                    <div className="bg-white p-4 sm:p-6 shadow-xl rounded-xl h-full flex items-center justify-center">
+                  <div className="lg:w-1/2 p-6 flex items-center justify-center">
+                    <div className="bg-white p-6 shadow-xl rounded-xl max-w-full max-h-full flex items-center justify-center">
                       <img
                         src={currentImage.src}
                         alt={currentImage.title}
-                        className="w-full h-auto object-contain rounded-lg max-h-[65vh]"
+                        className="max-w-full max-h-[70vh] object-contain rounded-lg"
                       />
                     </div>
                   </div>
                   
                   {/* Story Content */}
-                  <div className="xl:w-2/5 p-4 sm:p-6 flex flex-col justify-start">
-                    <div className="bg-white/90 backdrop-blur-sm p-6 sm:p-8 rounded-xl shadow-lg h-full">
-                      <div className="flex flex-wrap items-center gap-2 mb-6">
-                        <span className="bg-primary-red text-white text-xs sm:text-sm px-3 py-1.5 rounded-full font-medium">
+                  <div className="lg:w-1/2 p-6 flex flex-col">
+                    <div className="bg-white/95 backdrop-blur-sm p-8 rounded-xl shadow-lg h-full flex flex-col overflow-hidden">
+                      <div className="flex flex-wrap items-center gap-3 mb-6">
+                        <span className="bg-primary-red text-white text-sm px-4 py-2 rounded-full font-medium">
                           {currentImage.category}
                         </span>
-                        <span className="bg-primary-yellow text-neutral-charcoal text-xs sm:text-sm px-3 py-1.5 rounded-full font-medium">
+                        <span className="bg-primary-yellow text-neutral-charcoal text-sm px-4 py-2 rounded-full font-medium">
                           {currentImage.decade}
                         </span>
                       </div>
                       
-                      <h3 className="text-2xl sm:text-3xl xl:text-4xl font-heading font-bold text-neutral-charcoal mb-4 leading-tight">
+                      <h3 className="text-3xl lg:text-4xl font-heading font-bold text-neutral-charcoal mb-6 leading-tight">
                         {currentImage.title}
                       </h3>
                       
-                      <div className="flex flex-wrap items-center gap-4 mb-6 text-sm sm:text-base text-neutral-gray">
-                        <div className="flex items-center space-x-2">
-                          <Clock className="w-4 h-4 sm:w-5 sm:h-5" />
+                      <div className="flex flex-wrap items-center gap-6 mb-8 text-base text-neutral-gray">
+                        <div className="flex items-center space-x-3">
+                          <Clock className="w-5 h-5" />
                           <span className="font-medium">{currentImage.year}</span>
                         </div>
                         {currentImage.location && (
-                          <div className="flex items-center space-x-2">
-                            <MapPin className="w-4 h-4 sm:w-5 sm:h-5" />
+                          <div className="flex items-center space-x-3">
+                            <MapPin className="w-5 h-5" />
                             <span className="font-medium">{currentImage.location}</span>
                           </div>
                         )}
                       </div>
                       
-                      <div className="flex-1 overflow-y-auto">
-                        <p className="text-neutral-gray-dark leading-relaxed text-base sm:text-lg xl:text-xl font-sans">
+                      <div className="flex-1 overflow-y-auto pr-2">
+                        <p className="text-neutral-gray-dark leading-relaxed text-lg font-sans">
                           {currentImage.story}
                         </p>
                       </div>
                       
-                      <div className="mt-8 pt-6 border-t border-amber-200">
-                        <p className="text-sm sm:text-base text-neutral-gray italic font-medium">
+                      <div className="mt-8 pt-6 border-t border-amber-200 flex-shrink-0">
+                        <p className="text-base text-neutral-gray italic font-medium">
                           &ldquo;{currentImage.era}&rdquo;
                         </p>
                       </div>
