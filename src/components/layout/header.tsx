@@ -10,7 +10,14 @@ import { useAuth } from "@/contexts/auth-context"
 const navigation = [
   { name: "Home", href: "/" },
   { name: "Menu", href: "/menu" },
-  { name: "About", href: "/about" },
+  { 
+    name: "About", 
+    href: "/about",
+    subItems: [
+      { name: "History", href: "/history" },
+      { name: "Scrapbook", href: "/our-scrapbook" },
+    ]
+  },
   { name: "News", href: "/news" },
   { name: "Contact", href: "/contact" },
 ]
@@ -18,6 +25,7 @@ const navigation = [
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [userMenuOpen, setUserMenuOpen] = useState(false)
+  const [aboutDropdownOpen, setAboutDropdownOpen] = useState(false)
   const { user, signOut } = useAuth()
 
   const handleSignOut = async () => {
@@ -41,7 +49,7 @@ export function Header() {
               </div>
               <div className="hidden sm:block">
                 <h1 className="font-heading text-2xl font-bold text-neutral-black">
-                  Doumar's
+                  Doumar&apos;s
                 </h1>
                 <p className="text-sm text-neutral-gray-dark">Since 1904</p>
               </div>
@@ -51,14 +59,52 @@ export function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8">
             {navigation.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className="text-base font-medium text-neutral-black hover:text-primary-red transition-colors duration-250 relative group"
-              >
-                {item.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary-red group-hover:w-full transition-all duration-300 ease-out"></span>
-              </Link>
+              <div key={item.name} className="relative">
+                {item.subItems ? (
+                  <div
+                    className="relative"
+                    onMouseEnter={() => setAboutDropdownOpen(true)}
+                    onMouseLeave={() => setAboutDropdownOpen(false)}
+                  >
+                    <Link
+                      href={item.href}
+                      className="text-base font-medium text-neutral-black hover:text-primary-red transition-colors duration-250 relative group"
+                    >
+                      {item.name}
+                      <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary-red group-hover:w-full transition-all duration-300 ease-out"></span>
+                    </Link>
+                    
+                    <AnimatePresence>
+                      {aboutDropdownOpen && (
+                        <motion.div
+                          initial={{ opacity: 0, y: -10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -10 }}
+                          className="absolute top-full mt-2 w-40 bg-neutral-white border border-neutral-gray-lighter rounded-lg shadow-lg py-2"
+                        >
+                          {item.subItems.map((subItem) => (
+                            <Link
+                              key={subItem.name}
+                              href={subItem.href}
+                              className="block px-4 py-3 text-base text-neutral-gray-dark hover:bg-neutral-off-white hover:text-primary-red transition-colors duration-250"
+                            >
+                              {subItem.name}
+                            </Link>
+                          ))}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                ) : (
+                  <Link
+                    href={item.href}
+                    className="text-base font-medium text-neutral-black hover:text-primary-red transition-colors duration-250 relative group"
+                  >
+                    {item.name}
+                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary-red group-hover:w-full transition-all duration-300 ease-out"></span>
+                  </Link>
+                )}
+              </div>
             ))}
           </nav>
 
@@ -157,14 +203,39 @@ export function Header() {
           >
             <div className="px-4 py-4 space-y-2">
               {navigation.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className="block px-3 py-3 text-lg font-medium text-neutral-black hover:text-primary-red hover:bg-neutral-off-white rounded-lg transition-colors duration-250"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  {item.name}
-                </Link>
+                <div key={item.name}>
+                  {item.subItems ? (
+                    <div>
+                      <Link
+                        href={item.href}
+                        className="block px-3 py-3 text-lg font-medium text-neutral-black hover:text-primary-red hover:bg-neutral-off-white rounded-lg transition-colors duration-250"
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        {item.name}
+                      </Link>
+                      <div className="ml-4 mt-2 space-y-1">
+                        {item.subItems.map((subItem) => (
+                          <Link
+                            key={subItem.name}
+                            href={subItem.href}
+                            className="block px-3 py-2 text-base text-neutral-gray-dark hover:text-primary-red hover:bg-neutral-off-white rounded-lg transition-colors duration-250"
+                            onClick={() => setMobileMenuOpen(false)}
+                          >
+                            {subItem.name}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  ) : (
+                    <Link
+                      href={item.href}
+                      className="block px-3 py-3 text-lg font-medium text-neutral-black hover:text-primary-red hover:bg-neutral-off-white rounded-lg transition-colors duration-250"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      {item.name}
+                    </Link>
+                  )}
+                </div>
               ))}
               <div className="pt-4 mt-4 border-t border-neutral-gray-lighter">
                 <Button 

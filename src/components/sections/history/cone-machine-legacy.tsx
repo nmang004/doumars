@@ -94,7 +94,7 @@ export function ConeMachineLegacy() {
 
           {/* Stats Grid */}
           <motion.div
-            className="grid grid-cols-2 gap-6"
+            className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -111,7 +111,7 @@ export function ConeMachineLegacy() {
                 onHoverStart={() => setHoveredStat(index)}
                 onHoverEnd={() => setHoveredStat(null)}
               >
-                <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-300 h-full border border-gray-100">
+                <div className="bg-white rounded-xl p-4 md:p-6 shadow-md hover:shadow-xl transition-all duration-300 h-full border border-gray-100">
                   <motion.div
                     className="inline-flex items-center justify-center w-12 h-12 bg-primary/10 rounded-full mb-4"
                     animate={{ rotate: hoveredStat === index ? 360 : 0 }}
@@ -123,16 +123,16 @@ export function ConeMachineLegacy() {
                   <div className="space-y-1">
                     <div className="flex items-baseline gap-1">
                       <motion.span
-                        className="text-3xl font-bold text-gray-900"
+                        className="text-2xl md:text-3xl font-bold text-gray-900"
                         animate={{ scale: hoveredStat === index ? 1.1 : 1 }}
                         transition={{ type: "spring", bounce: 0.5 }}
                       >
                         {stat.value}
                       </motion.span>
-                      <span className="text-sm text-gray-500">{stat.unit}</span>
+                      <span className="text-xs md:text-sm text-gray-500">{stat.unit}</span>
                     </div>
-                    <p className="font-semibold text-gray-700">{stat.label}</p>
-                    <p className="text-sm text-gray-500 mt-2">{stat.description}</p>
+                    <p className="text-sm md:text-base font-semibold text-gray-700">{stat.label}</p>
+                    <p className="text-xs md:text-sm text-gray-500 mt-1 md:mt-2 leading-tight">{stat.description}</p>
                   </div>
                 </div>
               </motion.div>
@@ -142,23 +142,23 @@ export function ConeMachineLegacy() {
 
         {/* Story Section */}
         <motion.div
-          className="mt-20 bg-white rounded-2xl shadow-lg p-8 md:p-12"
+          className="mt-16 md:mt-20 bg-white rounded-2xl shadow-lg p-6 md:p-8 lg:p-12"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
           <div className="max-w-4xl mx-auto text-center">
-            <h3 className="text-2xl font-heading font-bold text-gray-900 mb-6">
+            <h3 className="text-xl md:text-2xl font-heading font-bold text-gray-900 mb-4 md:mb-6">
               A Revolution in Four Irons
             </h3>
-            <p className="text-gray-600 leading-relaxed mb-6">
+            <p className="text-sm md:text-base text-gray-600 leading-relaxed mb-4 md:mb-6">
               While other vendors struggled with single-iron waffle makers, Abe Doumar saw an opportunity. 
               His four-iron design meant that while one waffle was being rolled into a cone, three others 
               were cooking. This simple innovation quadrupled production and allowed Doumar&apos;s to serve 
               thousands of customers daily.
             </p>
-            <p className="text-gray-600 leading-relaxed">
+            <p className="text-sm md:text-base text-gray-600 leading-relaxed mb-6 md:mb-8">
               Today, visitors can watch this piece of history in action. The same machine that rolled cones 
               for visitors to the 1907 Jamestown Exhibition continues to delight customers over a century later. 
               Each cone is still hand-rolled using Abe&apos;s original recipe, taking exactly 90 seconds to achieve 
@@ -167,12 +167,12 @@ export function ConeMachineLegacy() {
             
             {/* Call to Action */}
             <motion.div
-              className="mt-8 inline-flex items-center gap-2 text-primary font-semibold"
+              className="inline-flex items-center gap-2 text-primary font-semibold text-sm md:text-base"
               whileHover={{ x: 5 }}
               transition={{ type: "spring", bounce: 0.5 }}
             >
               <span>Watch the machine in action at our Norfolk location</span>
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </motion.div>

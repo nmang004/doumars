@@ -150,11 +150,11 @@ export function FamilyTreeSection() {
               </div>
 
               {/* Family Members Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 ml-16">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6 ml-8 md:ml-16">
                 {gen.members.map((member, memberIndex) => (
                   <motion.div
                     key={memberIndex}
-                    className={`relative bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 p-6 ${
+                    className={`relative bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 p-4 md:p-6 ${
                       member.highlight ? 'ring-2 ring-primary ring-offset-2' : ''
                     }`}
                     initial={{ opacity: 0, x: memberIndex % 2 === 0 ? -30 : 30 }}
@@ -174,35 +174,35 @@ export function FamilyTreeSection() {
                       </motion.div>
                     )}
 
-                    <div className="flex items-start gap-4">
+                    <div className="flex items-start gap-3 md:gap-4">
                       <div className="flex-shrink-0">
-                        <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center">
-                          <Users className="w-6 h-6 text-gray-600" />
+                        <div className="w-10 h-10 md:w-12 md:h-12 bg-gray-100 rounded-full flex items-center justify-center">
+                          <Users className="w-5 h-5 md:w-6 md:h-6 text-gray-600" />
                         </div>
                       </div>
                       <div className="flex-1">
-                        <h4 className="text-lg font-heading font-bold text-gray-900">
+                        <h4 className="text-base md:text-lg font-heading font-bold text-gray-900">
                           {member.name}
                         </h4>
-                        <p className="text-primary font-semibold text-sm mb-1">
+                        <p className="text-primary font-semibold text-xs md:text-sm mb-1">
                           {member.role}
                         </p>
                         {member.years && (
-                          <p className="text-gray-500 text-sm mb-3">{member.years}</p>
+                          <p className="text-gray-500 text-xs md:text-sm mb-2 md:mb-3">{member.years}</p>
                         )}
                         
-                        <ul className="space-y-2">
+                        <ul className="space-y-1.5 md:space-y-2">
                           {member.achievements.map((achievement, achIndex) => (
                             <motion.li
                               key={achIndex}
-                              className="flex items-start gap-2 text-sm text-gray-600"
+                              className="flex items-start gap-2 text-xs md:text-sm text-gray-600"
                               initial={{ opacity: 0, x: -20 }}
                               whileInView={{ opacity: 1, x: 0 }}
                               viewport={{ once: true }}
                               transition={{ delay: 0.3 + achIndex * 0.1 }}
                             >
                               <Heart className="w-3 h-3 text-primary mt-0.5 flex-shrink-0" />
-                              <span>{achievement}</span>
+                              <span className="leading-tight">{achievement}</span>
                             </motion.li>
                           ))}
                         </ul>
@@ -214,7 +214,7 @@ export function FamilyTreeSection() {
 
               {/* Connecting Line */}
               {genIndex < familyGenerations.length - 1 && (
-                <div className="absolute left-6 top-full h-12 w-0.5 bg-gray-300" />
+                <div className="absolute left-6 top-full h-8 md:h-12 w-0.5 bg-gray-300" />
               )}
             </motion.div>
           ))}
@@ -222,16 +222,16 @@ export function FamilyTreeSection() {
 
         {/* Family Values */}
         <motion.div
-          className="mt-20 bg-primary/5 rounded-2xl p-8 md:p-12 text-center"
+          className="mt-16 md:mt-20 bg-primary/5 rounded-2xl p-6 md:p-8 lg:p-12 text-center"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <h3 className="text-2xl font-heading font-bold text-gray-900 mb-4">
+          <h3 className="text-xl md:text-2xl font-heading font-bold text-gray-900 mb-4">
             The Values We Pass Down
           </h3>
-          <p className="text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-sm md:text-base text-gray-600 max-w-3xl mx-auto leading-relaxed">
             Through four generations, the Doumar family has maintained the same commitment to quality, 
             innovation, and community that Abe Doumar established in 1904. Each generation has added 
             their own contributions while preserving the core traditions that make Doumar&apos;s special. 

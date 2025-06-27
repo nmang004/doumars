@@ -52,17 +52,17 @@ export function AnimatedHistoryHero() {
 
           {/* Animated Timeline Preview */}
           <motion.div
-            className="relative max-w-4xl mx-auto"
+            className="relative max-w-4xl mx-auto px-4"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
-            <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-primary/30 to-transparent transform -translate-y-1/2" />
-            <div className="flex justify-between items-center relative">
+            <div className="hidden sm:block absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-primary/30 to-transparent transform -translate-y-1/2" />
+            <div className="flex flex-col sm:flex-row sm:justify-between items-center relative gap-6 sm:gap-0">
               {["1904", "1907", "1934", "Today"].map((year, index) => (
                 <motion.div
                   key={year}
-                  className="relative"
+                  className="relative flex flex-col items-center"
                   initial={{ opacity: 0, scale: 0 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{
@@ -74,7 +74,7 @@ export function AnimatedHistoryHero() {
                 >
                   <div className="w-4 h-4 bg-primary rounded-full shadow-lg ring-4 ring-white" />
                   <motion.span
-                    className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-sm font-semibold text-gray-700 whitespace-nowrap"
+                    className="mt-3 text-sm font-semibold text-gray-700 whitespace-nowrap"
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.7 + index * 0.1 }}
@@ -88,7 +88,7 @@ export function AnimatedHistoryHero() {
 
           {/* Animated Stats Cards */}
           <motion.div
-            className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-20 max-w-5xl mx-auto"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mt-16 md:mt-20 max-w-5xl mx-auto px-4"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
@@ -127,7 +127,7 @@ export function AnimatedHistoryHero() {
                 transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
                 whileHover={{ y: -5 }}
               >
-                <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 p-6 h-full border border-gray-100">
+                <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 p-4 md:p-6 h-full border border-gray-100">
                   <motion.div
                     className="flex justify-center mb-4"
                     whileHover={{ rotate: 360 }}
@@ -138,7 +138,7 @@ export function AnimatedHistoryHero() {
                     </div>
                   </motion.div>
                   <motion.div
-                    className="text-3xl md:text-4xl font-bold text-primary font-heading mb-1"
+                    className="text-2xl md:text-3xl lg:text-4xl font-bold text-primary font-heading mb-1"
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     transition={{
@@ -149,8 +149,8 @@ export function AnimatedHistoryHero() {
                   >
                     {stat.number}
                   </motion.div>
-                  <div className="text-gray-700 font-semibold mb-1">{stat.label}</div>
-                  <div className="text-sm text-gray-500">{stat.description}</div>
+                  <div className="text-sm md:text-base text-gray-700 font-semibold mb-1">{stat.label}</div>
+                  <div className="text-xs md:text-sm text-gray-500">{stat.description}</div>
                 </div>
               </motion.div>
             ))}

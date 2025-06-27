@@ -132,7 +132,7 @@ export function EnhancedHistoryTimeline() {
           viewport={{ once: true }}
         >
           {/* Animated Timeline Line */}
-          <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gray-200 overflow-hidden">
+          <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-0.5 bg-gray-200 overflow-hidden">
             <motion.div
               className="absolute top-0 left-0 right-0 bg-gradient-to-b from-primary via-primary to-transparent"
               style={{ height: lineHeight }}
@@ -150,24 +150,24 @@ export function EnhancedHistoryTimeline() {
               >
                 {/* Timeline Node */}
                 <motion.div
-                  className="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 z-20"
+                  className="absolute left-2 md:left-1/2 transform md:-translate-x-1/2 z-20"
                   initial={{ scale: 0 }}
                   whileInView={{ scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.2, type: "spring", bounce: 0.5 }}
                 >
                   <div
-                    className={`w-16 h-16 rounded-full border-4 border-white shadow-xl flex items-center justify-center ${
+                    className={`w-12 h-12 md:w-16 md:h-16 rounded-full border-4 border-white shadow-xl flex items-center justify-center ${
                       event.highlight ? 'bg-primary' : 'bg-gray-600'
                     }`}
                   >
-                    <event.icon className="w-8 h-8 text-white" />
+                    <event.icon className="w-5 h-5 md:w-8 md:h-8 text-white" />
                   </div>
                 </motion.div>
 
                 {/* Content Card */}
                 <div
-                  className={`w-full md:w-5/12 ml-24 md:ml-0 ${
+                  className={`w-full md:w-5/12 ml-16 md:ml-0 ${
                     index % 2 === 0 ? 'md:mr-auto md:pr-12' : 'md:ml-auto md:pl-12'
                   }`}
                 >
@@ -178,7 +178,7 @@ export function EnhancedHistoryTimeline() {
                     whileHover={{ y: -5 }}
                   >
                     {event.image && (
-                      <div className="relative h-64 overflow-hidden">
+                      <div className="relative h-48 md:h-64 overflow-hidden">
                         <motion.img
                           src={event.image}
                           alt={event.title}
@@ -187,21 +187,21 @@ export function EnhancedHistoryTimeline() {
                           transition={{ duration: 0.3 }}
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                        <div className="absolute bottom-4 left-6 text-white">
-                          <span className="text-3xl font-bold font-heading">{event.year}</span>
+                        <div className="absolute bottom-3 left-4 md:bottom-4 md:left-6 text-white">
+                          <span className="text-2xl md:text-3xl font-bold font-heading">{event.year}</span>
                         </div>
                       </div>
                     )}
-                    <div className="p-8">
-                      <div className="flex items-center gap-3 mb-4">
+                    <div className="p-4 md:p-8">
+                      <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mb-4">
                         {!event.image && (
-                          <span className="text-2xl font-bold font-heading text-primary">
+                          <span className="text-xl md:text-2xl font-bold font-heading text-primary">
                             {event.year}
                           </span>
                         )}
                         {event.highlight && (
                           <motion.div
-                            className="bg-primary text-white text-xs px-3 py-1 rounded-full font-semibold uppercase tracking-wide"
+                            className="bg-primary text-white text-xs px-3 py-1 rounded-full font-semibold uppercase tracking-wide w-fit"
                             initial={{ scale: 0 }}
                             animate={{ scale: 1 }}
                             transition={{ delay: 0.5, type: "spring" }}
@@ -210,15 +210,15 @@ export function EnhancedHistoryTimeline() {
                           </motion.div>
                         )}
                       </div>
-                      <h3 className="text-2xl font-heading font-bold text-gray-900 mb-4">
+                      <h3 className="text-xl md:text-2xl font-heading font-bold text-gray-900 mb-3 md:mb-4">
                         {event.title}
                       </h3>
-                      <p className="text-gray-600 leading-relaxed mb-6">
+                      <p className="text-sm md:text-base text-gray-600 leading-relaxed mb-4 md:mb-6">
                         {event.description}
                       </p>
                       {event.details && (
                         <motion.div
-                          className="space-y-2 pt-4 border-t border-gray-100"
+                          className="space-y-2 pt-3 md:pt-4 border-t border-gray-100"
                           initial={{ opacity: 0 }}
                           whileInView={{ opacity: 1 }}
                           viewport={{ once: true }}
@@ -226,8 +226,8 @@ export function EnhancedHistoryTimeline() {
                         >
                           {event.details.map((detail, idx) => (
                             <div key={idx} className="flex items-start gap-2">
-                              <div className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0" />
-                              <p className="text-sm text-gray-500">{detail}</p>
+                              <div className="w-1.5 h-1.5 bg-primary rounded-full mt-1.5 md:mt-2 flex-shrink-0" />
+                              <p className="text-xs md:text-sm text-gray-500 leading-relaxed">{detail}</p>
                             </div>
                           ))}
                         </motion.div>
@@ -242,13 +242,13 @@ export function EnhancedHistoryTimeline() {
 
         {/* Timeline Summary */}
         <motion.div
-          className="text-center mt-20"
+          className="text-center mt-16 md:mt-20"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.5 }}
         >
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+          <p className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed px-4">
             From a teenage immigrant&apos;s innovation to a fourth-generation family business, 
             Doumar&apos;s story is one of American entrepreneurship, family dedication, and 
             the simple pleasure of a hand-rolled waffle cone filled with ice cream.
