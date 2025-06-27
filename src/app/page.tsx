@@ -54,10 +54,10 @@ export default function Home() {
               </div>
 
               <div className="pt-6 flex flex-col sm:flex-row gap-4">
-                <Button asChild variant="default" size="lg" className="flex-1 sm:flex-none h-20 sm:h-14 px-8 py-4 text-lg font-semibold">
+                <Button asChild variant="default" size="lg" className="flex-1 sm:flex-none h-18 sm:h-14 px-6 text-lg font-semibold">
                   <Link href="/about">Discover Our Full Story</Link>
                 </Button>
-                <Button asChild variant="outline" size="lg" className="flex-1 sm:flex-none h-20 sm:h-14 px-8 py-4 text-lg font-semibold border-primary-red text-primary-red hover:bg-primary-red hover:text-white">
+                <Button asChild variant="outline" size="lg" className="flex-1 sm:flex-none h-18 sm:h-14 px-6 text-lg font-semibold border-primary-red text-primary-red hover:bg-primary-red hover:text-white">
                   <Link href="/our-scrapbook">View Our Family Scrapbook</Link>
                 </Button>
               </div>
