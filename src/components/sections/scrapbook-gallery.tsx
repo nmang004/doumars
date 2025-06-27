@@ -365,19 +365,19 @@ export function ScrapbookGallery() {
         </div>
       </section>
 
-      {/* Filters */}
-      <section className="py-8 bg-white/80 backdrop-blur-sm sticky top-20 z-40 border-b border-amber-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col lg:flex-row gap-6 items-center justify-center">
+      {/* Filters - Static and ultrathin on mobile */}
+      <section className="py-2 sm:py-8 bg-white/80 backdrop-blur-sm sm:sticky sm:top-20 z-40 border-b border-amber-200">
+        <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
+          <div className="flex flex-col lg:flex-row gap-2 sm:gap-6 items-center justify-center">
             {/* Category Filter */}
-            <div className="flex flex-wrap justify-center gap-2">
+            <div className="flex flex-wrap justify-center gap-1 sm:gap-2">
               {categories.map((category) => (
                 <Button
                   key={category}
                   variant={selectedCategory === category ? "default" : "outline"}
                   size="sm"
                   onClick={() => setSelectedCategory(category)}
-                  className={`transition-all duration-300 ${
+                  className={`text-xs sm:text-sm px-2 py-1 sm:px-3 sm:py-1.5 h-7 sm:h-8 transition-all duration-300 ${
                     selectedCategory === category 
                       ? 'bg-primary-red hover:bg-primary-red/90 text-white shadow-lg' 
                       : 'border-amber-300 text-neutral-charcoal hover:bg-amber-100'
@@ -389,14 +389,14 @@ export function ScrapbookGallery() {
             </div>
 
             {/* Decade Filter */}
-            <div className="flex flex-wrap justify-center gap-2">
+            <div className="flex flex-wrap justify-center gap-1 sm:gap-2">
               {decades.map((decade) => (
                 <Button
                   key={decade}
                   variant={selectedDecade === decade ? "default" : "outline"}
                   size="sm"
                   onClick={() => setSelectedDecade(decade)}
-                  className={`transition-all duration-300 ${
+                  className={`text-xs sm:text-sm px-2 py-1 sm:px-3 sm:py-1.5 h-7 sm:h-8 transition-all duration-300 ${
                     selectedDecade === decade 
                       ? 'bg-primary-yellow hover:bg-primary-yellow/90 text-neutral-charcoal shadow-lg' 
                       : 'border-amber-300 text-neutral-charcoal hover:bg-amber-100'
