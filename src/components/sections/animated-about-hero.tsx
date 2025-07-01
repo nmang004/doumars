@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion"
 import { SectionHeading } from "@/components/ui/section-heading"
-import { AnimatedIceCreamCone } from "@/components/animations/animated-food-elements"
 
 export function AnimatedAboutHero() {
   return (
@@ -22,25 +21,6 @@ export function AnimatedAboutHero() {
             />
           </motion.div>
           
-          {/* Single Featured Animation - Clean and Focused */}
-          <motion.div 
-            className="flex justify-center py-8"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.4 }}
-          >
-            <div className="text-center">
-              <AnimatedIceCreamCone delay={0.6} />
-              <motion.p 
-                className="text-lg font-semibold text-gray-700 mt-4"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1.2 }}
-              >
-                Birthplace of the Waffle Cone
-              </motion.p>
-            </div>
-          </motion.div>
           
           {/* Stats with Animation */}
           <motion.div 
