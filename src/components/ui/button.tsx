@@ -5,14 +5,14 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg font-semibold transition-all duration-250 disabled:pointer-events-none disabled:opacity-60 disabled:cursor-not-allowed [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none border-2 border-transparent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg font-semibold transition-all duration-250 disabled:pointer-events-none disabled:opacity-60 disabled:cursor-not-allowed [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none border-2 border-transparent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background",
   {
     variants: {
       variant: {
         default:
           "bg-primary-red text-white shadow-sm hover:bg-primary-red-hover hover:-translate-y-0.5 hover:shadow-md active:translate-y-0 active:shadow-sm",
         accent:
-          "bg-primary-yellow text-neutral-black font-bold uppercase tracking-wider shadow-sm hover:bg-primary-yellow-hover hover:scale-105 active:scale-100",
+          "bg-primary-red text-white font-bold uppercase tracking-wider shadow-sm hover:bg-primary-red-hover hover:scale-105 active:scale-100",
         secondary:
           "bg-transparent text-primary-red border-primary-red hover:bg-primary-red hover:text-white",
         navy:
