@@ -12,7 +12,6 @@ export const menuData: MenuItem[] = [
     id: 'pork-barbeque',
     category: 'Sandwiches',
     name: 'Pork Barbeque',
-    imageUrl: '/images/food/bbq-sandwich.jpg',
     description: 'Cooked in our own inimitable way',
     variations: [
       { name: 'Minced with slaw, our best seller', price: 3.80 },
@@ -314,7 +313,6 @@ export const menuData: MenuItem[] = [
     id: 'ice-cream-sundaes-basic',
     category: 'Desserts',
     name: 'Chocolate, Hot Fudge, Strawberry, Pineapple',
-    imageUrl: '/images/restaurant/ice-cream-sundae.jpg',
     description: 'Our Sundaes come with whip cream and a cherry and are made with Vanilla Ice Cream.',
     variations: [
       { name: 'Small', price: 5.00 },
@@ -375,7 +373,6 @@ export const menuData: MenuItem[] = [
     id: 'one-scoop-cone',
     category: 'Desserts',
     name: 'One Scoop',
-    imageUrl: '/images/restaurant/cone-machine-operator.jpg',
     description: 'The cones are still made by hand • Vanilla, Chocolate, Strawberry, Butter Pecan, Lime Sherbet, and Orange Sherbet.',
     price: 3.20
   },
@@ -383,7 +380,6 @@ export const menuData: MenuItem[] = [
     id: 'two-scoop-cone',
     category: 'Desserts',
     name: 'Two Scoops',
-    imageUrl: '/images/restaurant/cone-machine-operator.jpg',
     description: 'The cones are still made by hand • Vanilla, Chocolate, Strawberry, Butter Pecan, Lime Sherbet, and Orange Sherbet.',
     price: 4.60
   },
@@ -391,7 +387,6 @@ export const menuData: MenuItem[] = [
     id: 'big-daddy-cone',
     category: 'Desserts',
     name: 'Big Daddy Cone',
-    imageUrl: '/images/restaurant/cone-machine-operator.jpg',
     description: 'Two scoops.',
     price: 5.60
   },
@@ -417,7 +412,6 @@ export const menuData: MenuItem[] = [
     id: 'cone-jars',
     category: 'Bulk Items',
     name: 'Souvenir Jars of 2 Dozen Cones',
-    imageUrl: '/images/restaurant/cone-machine-operator.jpg',
     price: 22.00
   }
 ]
