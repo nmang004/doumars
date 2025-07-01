@@ -16,6 +16,7 @@ const navigation = [
     subItems: [
       { name: "History", href: "/history" },
       { name: "Scrapbook", href: "/our-scrapbook" },
+      { name: "Careers", href: "/careers" },
     ]
   },
   { name: "News", href: "/news" },
