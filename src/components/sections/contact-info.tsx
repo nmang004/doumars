@@ -102,7 +102,7 @@ export function ContactInfo() {
               key={index}
               variants={staggerItem}
             >
-              <Card className="h-full hover:shadow-lg transition-shadow duration-300 bg-white">
+              <Card className="h-full hover:shadow-lg transition-shadow duration-300 !bg-white">
                 <CardContent className="p-6 text-center">
                   <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                     <detail.icon className="w-6 h-6 text-primary" />

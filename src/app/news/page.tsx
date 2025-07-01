@@ -74,7 +74,7 @@ export default function NewsPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {newsItems.map((item) => (
-              <Card key={item.id} className="group overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
+              <Card key={item.id} className="group overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 !bg-white">
                 <div className="aspect-h-3 aspect-w-4 relative">
                   <ImageWithFallback
                     src={item.image}
