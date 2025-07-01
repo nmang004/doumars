@@ -150,30 +150,17 @@ export function ContactInfo() {
           >
             <Card className="overflow-hidden h-full">
               <CardContent className="p-0">
-                <div className="aspect-video bg-gray-200 flex items-center justify-center">
-                  {/* Placeholder for Google Maps - would be replaced with actual map */}
-                  <div className="text-center">
-                    <MapPin className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-                    <h3 className="text-lg font-semibold text-gray-600 mb-2">
-                      Interactive Map
-                    </h3>
-                    <p className="text-gray-500 text-sm mb-4">
-                      20th Street & Monticello Ave<br />
-                      Norfolk, VA 23517
-                    </p>
-                    <Button
-                      asChild
-                      className="bg-primary hover:bg-primary/90 text-white"
-                    >
-                      <a
-                        href="https://maps.google.com/?q=Doumar's+Norfolk+VA"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Open in Google Maps
-                      </a>
-                    </Button>
-                  </div>
+                <div className="aspect-video bg-gray-200 relative">
+                  <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3192.0101070671913!2d-76.2849643!3d36.866176900000006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89ba983c902ff9bb%3A0x4bb1cfcf7cbfba44!2sDoumar&#39;s%20Cones%20%26%20Barbecue!5e0!3m2!1sen!2sus!4v1751336474523!5m2!1sen!2sus" 
+                    width="100%" 
+                    height="100%" 
+                    style={{ border: 0 }} 
+                    allowFullScreen 
+                    loading="lazy" 
+                    referrerPolicy="no-referrer-when-downgrade"
+                    className="absolute inset-0"
+                  />
                 </div>
               </CardContent>
             </Card>
@@ -197,32 +184,32 @@ export function ContactInfo() {
                       <label className="block text-sm font-medium text-gray-700 mb-2">
                         First Name
                       </label>
-                      <Input placeholder="Your first name" />
+                      <Input placeholder="Your first name" className="border-gray-300 bg-white focus:border-primary" />
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
                         Last Name
                       </label>
-                      <Input placeholder="Your last name" />
+                      <Input placeholder="Your last name" className="border-gray-300 bg-white focus:border-primary" />
                     </div>
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       Email
                     </label>
-                    <Input type="email" placeholder="your.email@example.com" />
+                    <Input type="email" placeholder="your.email@example.com" className="border-gray-300 bg-white focus:border-primary" />
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       Phone (Optional)
                     </label>
-                    <Input type="tel" placeholder="(757) 123-4567" />
+                    <Input type="tel" placeholder="(757) 123-4567" className="border-gray-300 bg-white focus:border-primary" />
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       Subject
                     </label>
-                    <Input placeholder="What can we help you with?" />
+                    <Input placeholder="What can we help you with?" className="border-gray-300 bg-white focus:border-primary" />
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -231,6 +218,7 @@ export function ContactInfo() {
                     <Textarea
                       placeholder="Tell us how we can help you..."
                       rows={4}
+                      className="border-gray-300 bg-white focus:border-primary"
                     />
                   </div>
                   <Button
