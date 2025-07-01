@@ -30,7 +30,7 @@
   --color-info-light: #E1F5FE;
 
   /* Focus States */
-  --color-focus-ring: #F9E152;
+  --color-focus-ring: #97111f;
   --color-focus-ring-offset: 2px;
 
   /* Typography */
@@ -222,7 +222,7 @@
 @media (prefers-contrast: high) {
   :root {
     --color-primary-red: #7a0e19;
-    --color-primary-yellow: #FFD700;
+    --color-primary-yellow: #97111f;
     --color-text-primary: #000000;
     --color-bg-primary: #FFFFFF;
   }
