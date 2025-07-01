@@ -2,18 +2,21 @@
 
 🍦 **Home of the World's First Waffle Cone Since 1904** 🍦
 
-A modern, responsive website for Doumar's Cones and BBQ that honors 120+ years of family tradition while delivering a seamless digital experience.
+A modern, responsive website for Doumar's Cones and BBQ that honors 120+ years of family tradition while delivering a seamless digital experience across all devices.
 
 ## 🎯 Project Overview
 
 This is a complete modern rebuild of the Doumar's website, featuring:
 - ✨ Contemporary responsive design honoring classic Doumar's branding
 - 🛒 Integrated online ordering system with Toast POS
-- 📱 Mobile-first, fully responsive experience
+- 📱 Mobile-first, fully responsive experience with zero yellow highlights
 - ⚡ Lightning-fast performance with Next.js 15
 - 🎬 Smooth animations and polished micro-interactions
 - 📖 Rich storytelling with interactive heritage timeline
 - 🏆 Accessible design meeting WCAG 2.1 AA standards
+- 📰 News and press coverage showcase
+- 📸 Family scrapbook with historical photos
+- 🎥 Enhanced video hero with professional controls
 
 ## 🛠️ Tech Stack
 
@@ -25,6 +28,7 @@ This is a complete modern rebuild of the Doumar's website, featuring:
 - **Animations**: Framer Motion for smooth, professional interactions
 - **Icons**: Lucide React for crisp, scalable icons
 - **Typography**: Inter (body) & Playfair Display (headings)
+- **Images**: Next.js Image optimization with fallback handling
 
 ### Backend & Database
 - **Database**: Supabase (PostgreSQL) with real-time capabilities
@@ -37,15 +41,16 @@ This is a complete modern rebuild of the Doumar's website, featuring:
 - **Development**: Hot reload with Turbopack for instant updates
 - **Code Quality**: ESLint 9 with Next.js best practices
 - **Version Control**: Git with conventional commits
+- **Mobile Optimization**: Comprehensive touch and tap highlight fixes
 
 ## 🎨 Design System
 
 ### Brand Colors
 - **Heritage Red**: `#97111f` (Primary brand color - updated 2024)
-- **Waffle Cone Yellow**: `#F9E152` (Accent color)
 - **Vintage Navy**: `#003164` (Secondary color)
 - **Warm Off-White**: `#FDFBF7` (Background)
 - **Rich Black**: `#1A1A1A` (Text)
+- **Accent Colors**: Removed problematic yellows for better mobile UX
 
 ### Typography Scale
 - **Headings**: Playfair Display (elegant serif for heritage feel)
@@ -53,11 +58,11 @@ This is a complete modern rebuild of the Doumar's website, featuring:
 - **Responsive**: Clamp-based scaling from mobile to desktop
 - **Accessibility**: WCAG AA contrast ratios (8.12:1 for red on white)
 
-### Component System
-- Consistent 8pt grid system for spacing
-- Unified border radius and shadow tokens
-- Accessible focus states with visible indicators
-- Smooth transitions and hover effects
+### Mobile-First Design
+- Zero yellow tap highlights on any device
+- Clean gray placeholder text in forms
+- Professional card styling with subtle borders
+- Touch-optimized interaction areas
 
 ## 🏗️ Project Structure
 
@@ -66,13 +71,18 @@ doumars-website/
 ├── src/
 │   ├── app/                     # Next.js App Router
 │   │   ├── about/              # Heritage story and timeline
+│   │   ├── accessibility/      # Accessibility statement
 │   │   ├── auth/               # Login and signup pages
 │   │   ├── contact/            # Contact form and location
+│   │   ├── history/            # Comprehensive family history
 │   │   ├── menu/               # Interactive menu display
-│   │   ├── news/               # News and announcements
+│   │   ├── news/               # News and press coverage
+│   │   ├── our-scrapbook/      # Family photo gallery
+│   │   ├── privacy/            # Privacy policy
+│   │   ├── terms/              # Terms of service
 │   │   ├── page.tsx            # Enhanced homepage
 │   │   ├── layout.tsx          # Root layout with providers
-│   │   └── globals.css         # Global styles and CSS variables
+│   │   └── globals.css         # Global styles with mobile fixes
 │   ├── components/
 │   │   ├── layout/             # Header, footer, main layout
 │   │   ├── sections/           # Page-specific sections
@@ -80,7 +90,16 @@ doumars-website/
 │   │   │   ├── family-story.tsx # Heritage storytelling
 │   │   │   ├── timeline.tsx    # Interactive milestone timeline
 │   │   │   ├── awards.tsx      # Recognition and achievements
-│   │   │   └── photo-gallery.tsx # Optimized image gallery
+│   │   │   ├── contact-info.tsx # Contact forms and maps
+│   │   │   ├── menu-display.tsx # Menu with categories
+│   │   │   ├── scrapbook-gallery.tsx # Historical photos
+│   │   │   └── history/        # Dedicated history components
+│   │   │       ├── animated-history-hero.tsx
+│   │   │       ├── cone-machine-legacy.tsx
+│   │   │       ├── enhanced-history-timeline.tsx
+│   │   │       ├── family-tree-section.tsx
+│   │   │       ├── historical-artifacts-gallery.tsx
+│   │   │       └── legacy-quote-section.tsx
 │   │   └── ui/                 # Reusable UI components (shadcn/ui)
 │   ├── contexts/               # React contexts for state management
 │   ├── lib/                    # Utilities and configurations
@@ -94,7 +113,8 @@ doumars-website/
 │   ├── images/                 # Organized image assets
 │   │   ├── historical/         # Heritage photos and documents
 │   │   ├── food/              # Menu item photography
-│   │   └── restaurant/        # Current restaurant photos
+│   │   ├── restaurant/        # Current restaurant photos
+│   │   └── family/            # Family photos and portraits
 │   └── videos/                # Hero background video
 ├── DESIGN-SYSTEM.md           # Comprehensive design documentation
 ├── CLAUDE.md                  # AI development context and guidelines
@@ -157,38 +177,62 @@ npm run type-check
 - Smooth scroll indicator to guide user journey
 - Mobile-optimized video loading and autoplay handling
 
-### 📜 **Interactive Heritage Story**
-- Expandable statistics grid (1904 Founded, 4 Generations, 120+ Years, 1M+ Cones)
-- Interactive timeline showcasing key milestones from 1904 to today
-- Hover animations and visual feedback throughout
-- Norfolk Historic Institution recognition badge
+### 📜 **Comprehensive Heritage Story**
+- **About Page**: Family legacy with animated hero section
+- **History Page**: Detailed timeline from 1904 to present
+- **Cone Machine Legacy**: Interactive demonstration showcase
+- **Family Tree**: Multi-generational family portraits
+- **Historical Artifacts**: Document and photo galleries
 
 ### 🍽️ **Modern Menu Experience**
-- Featured menu items with high-quality photography
-- Hover effects and smooth transitions
+- Desktop-optimized layout with category navigation
+- Mobile-responsive card grids
+- High-quality food photography
 - Direct integration with Toast POS for online ordering
-- Mobile-optimized card layouts
+- Smooth hover effects and transitions
 
-### 🏆 **Awards & Recognition**
-- Dedicated section highlighting James Beard Award
-- Professional presentation of accolades and press coverage
-- Trust signals for new customers
+### 📰 **News & Press Coverage**
+- Dedicated news page with article cards
+- Press coverage and media features
+- Company announcements
+- Clean, professional layout
 
-### 📍 **Location & Contact**
-- Embedded Google Maps with custom styling
+### 📸 **Family Scrapbook**
+- Interactive photo gallery with decades of memories
+- Historical photo showcases
+- Family portraits through generations
+- Responsive grid layouts
+
+### 📍 **Enhanced Contact Experience**
+- Interactive Google Maps integration
+- Contact form with professional styling
 - Quick action buttons (directions, phone, online ordering)
-- Operating hours and contact information
-- Special features callouts (curb service, live demonstrations)
+- Operating hours and location details
+- Feature highlights (curb service, live demonstrations)
+
+### 📄 **Legal & Accessibility**
+- Dedicated accessibility statement
+- Privacy policy and terms of service
+- WCAG 2.1 AA compliance
+- Mobile-optimized legal content
 
 ### 🎨 **Design Excellence**
 - Consistent visual hierarchy with Playfair Display headings
 - Smooth micro-interactions powered by Framer Motion
 - Responsive typography that scales beautifully across devices
-- WCAG 2.1 AA accessibility compliance
+- Zero yellow highlights on mobile devices
+- Professional gray placeholder text
+- Clean card styling with subtle borders
 
-## 📱 Responsive Design
+## 📱 Mobile Optimization
 
-### Mobile-First Approach
+### Touch-First Design
+- **Zero Yellow Highlights**: Comprehensive webkit tap highlight elimination
+- **Clean Forms**: Gray placeholder text instead of pink/red
+- **Professional Cards**: Subtle gray borders, no yellow outlines
+- **Touch Controls**: Optimized touch targets and interaction areas
+
+### Responsive Breakpoints
 - **320px+**: Optimized for small mobile devices
 - **640px+**: Enhanced layouts for larger phones
 - **768px+**: Tablet-optimized spacing and typography
@@ -201,24 +245,30 @@ npm run type-check
 - Optimized font loading with display: swap
 - Turbopack for lightning-fast development builds
 
-## 🔧 Recent Updates
+## 🔧 Recent Major Updates
+
+### 2024-12-27: Mobile UX Perfection
+- **Eliminated all yellow tap highlights** on mobile devices
+- **Fixed pink placeholder text** to professional gray
+- **Enhanced card styling** with clean borders
+- **Comprehensive touch optimization** for iOS and Android
+
+### 2024-12-27: Content Expansion
+- **History Page**: Complete family timeline from 1904
+- **News Page**: Press coverage and announcements
+- **Scrapbook**: Family photo galleries spanning decades
+- **Legal Pages**: Privacy, terms, and accessibility statements
+
+### 2024-12-26: Desktop Menu Optimization
+- **Category-based navigation** for easier menu browsing
+- **Desktop-optimized layouts** with improved spacing
+- **Enhanced food photography** presentation
+- **Streamlined ordering flow** integration
 
 ### 2024-12-26: Brand Color Refresh
 - Updated primary red from `#A51931` to `#97111f` for improved brand identity
 - Enhanced contrast ratio to 8.12:1 for better accessibility
 - Consistent application across all components and documentation
-
-### 2024-12-26: Mobile Layout Improvements
-- Streamlined navigation by removing Sign In button for cleaner UX
-- Repositioned Order Online button to prominent far-right location
-- Optimized legacy section spacing and eliminated visual clutter
-- Improved timeline responsiveness with mobile-specific sizing
-
-### 2024-12-26: Homepage Enhancement
-- Expanded statistics from 2 to 4 compelling data points
-- Added interactive heritage timeline with hover effects
-- Introduced Norfolk Historic Institution badge for credibility
-- Better space utilization with 5-column responsive grid
 
 ## 🚀 Deployment
 
@@ -245,6 +295,7 @@ STRIPE_SECRET_KEY=your_stripe_secret_key
 - **Core Web Vitals**: All green metrics
 - **Bundle Size**: Optimized with tree shaking and code splitting
 - **Image Optimization**: Next.js automatic WebP conversion and sizing
+- **Mobile Performance**: Zero layout shifts, smooth scrolling
 
 ## 🤝 Contributing
 
@@ -257,7 +308,7 @@ STRIPE_SECRET_KEY=your_stripe_secret_key
 ## 📞 Project Information
 
 - **Client**: Doumar's Cones and BBQ - Norfolk's Historic Institution Since 1904
-- **Status**: ✅ Production Ready
+- **Status**: ✅ Production Ready with Mobile-Perfect UX
 - **Framework**: Next.js 15 with TypeScript
 - **Deployment**: Vercel Production Environment
 - **Repository**: [GitHub](https://github.com/nmang004/doumars)
