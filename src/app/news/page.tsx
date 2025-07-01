@@ -56,9 +56,9 @@ export default function NewsPage() {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="py-24 md:py-32 bg-gradient-to-br from-doumar-cream to-white">
+      <section className="py-8 md:py-12 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center space-y-6">
+          <div className="text-center space-y-3">
             <SectionHeading
               subtitle="Stay Connected"
               title="Doumar's News & Press"
@@ -70,9 +70,9 @@ export default function NewsPage() {
       </section>
 
       {/* News Grid */}
-      <section className="py-20 md:py-32">
+      <section className="py-8 md:py-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {newsItems.map((item) => (
               <Card key={item.id} className="group overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
                 <div className="aspect-h-3 aspect-w-4 relative">
@@ -137,7 +137,7 @@ export default function NewsPage() {
       </section>
 
       {/* Contact Section */}
-      <section className="py-20 md:py-32 bg-doumar-black text-white">
+      <section className="py-8 md:py-10 bg-doumar-black text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="space-y-6">
             <SectionHeading

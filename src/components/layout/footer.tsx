@@ -73,16 +73,12 @@ export function Footer() {
             {/* Brand Section */}
             <div className="space-y-6 lg:col-span-1">
               <div>
-                <div className="flex items-center space-x-3 mb-4">
+                <div className="mb-4">
                   <img 
                     src="/images/doumarslogo.png" 
                     alt="Doumar's Logo" 
-                    className="h-14 w-auto object-contain brightness-0 invert"
+                    className="h-14 w-auto object-contain"
                   />
-                  <div>
-                    <h3 className="font-heading text-2xl font-bold">Doumar's</h3>
-                    <p className="text-sm text-primary-yellow">Since 1904</p>
-                  </div>
                 </div>
                 <p className="text-neutral-gray-light text-base leading-relaxed">
                   Home of the world's first waffle cone. Four generations of family tradition 

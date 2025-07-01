@@ -39,19 +39,13 @@ export function Header() {
         <div className="flex h-20 items-center justify-between">
           {/* Logo */}
           <div className="flex items-center">
-            <Link href="/" className="flex items-center space-x-3 group">
+            <Link href="/" className="flex items-center group">
               <div className="h-12 w-auto transition-transform duration-250 group-hover:scale-105">
                 <img 
                   src="/images/doumarslogo.png" 
                   alt="Doumar's Logo" 
                   className="h-12 w-auto object-contain"
                 />
-              </div>
-              <div className="hidden sm:block">
-                <h1 className="font-heading text-2xl font-bold text-neutral-black">
-                  Doumar&apos;s
-                </h1>
-                <p className="text-sm text-neutral-gray-dark">Since 1904</p>
               </div>
             </Link>
           </div>

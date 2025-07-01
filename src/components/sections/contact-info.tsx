@@ -67,7 +67,7 @@ const features = [
 
 export function ContactInfo() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-doumar-cream to-white">
+    <div className="min-h-screen bg-white">
       {/* Hero Section */}
       <section className="pt-32 pb-16 bg-gradient-to-r from-doumar-black to-gray-800 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
